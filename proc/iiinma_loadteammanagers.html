@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="MPMD-style Fortran (2008) coarray example program to illustrate a simple PGAS load balancing technique">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>IIinma_LoadTeamManagers &ndash; MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+            <li><a href="../program/main.html">Program</a></li>
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>IIinma_LoadTeamManagers
+    <small>Subroutine</small>
+    
+    </h1>
+	 
+<div class="row">
+<div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+    <li><i class="fa fa-code"></i><a href="../src/OOOPinma_admInitialManager.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li><a href='../sourcefile/ooopinma_adminitialmanager.f90.html'>OOOPinma_admInitialManager.f90</a></li>
+  
+     <li><a href='../module/ooopinma_adminitialmanager.html'>OOOPinma_admInitialManager</a></li>
+  
+     <li class="active">IIinma_LoadTeamManagers</li>
+  </ol>
+</div>
+</div>
+</div>
+    
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-3">
+    
+<div id="sidebar">
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars">Variables</a></h3></div>
+    <div id="vars" class="panel-collapse collapse">
+      <div class="list-group">
+        
+        <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html#variable-uustartpath1">UUStartPath1</a>
+        
+        <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html#variable-openstatus">OpenStatus</a>
+        
+        <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html#variable-openaccess">OpenAccess</a>
+        
+        <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html#variable-openform">OpenForm</a>
+        
+        <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html#variable-openposition">OpenPosition</a>
+        
+        <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html#variable-openaction">OpenAction</a>
+        
+        <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html#variable-openblank">OpenBlank</a>
+        
+        <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html#variable-chrstartpath">chrStartPath</a>
+        
+        <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html#variable-logexist">logExist</a>
+        
+        <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html#variable-intrecl">intRecl</a>
+        
+        <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html#variable-fileunit">FileUnit</a>
+        
+        <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html#variable-filestatus">FileStatus</a>
+        
+        <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html#variable-chrpathandfilename">chrPathAndFileName</a>
+        
+        <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html#variable-intcounter%7E2">intCounter</a>
+        
+        <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html#variable-intnumberofteammanagers%7E3">intNumberOfTeamManagers</a>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+    <div class="list-group">
+      <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html#src">IIinma_LoadTeamManagers</a>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprocs">All Procedures</a></h3></div>
+    <div id="allprocs" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../proc/entry_main_sub.html">Entry_Main_Sub</a>
+          
+          <a class="list-group-item" href="../proc/iiimma_errorhandler.html">IIimma_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiimma_sync_checkactivityflag.html">IIimma_SYNC_CheckActivityFlag</a>
+          
+          <a class="list-group-item" href="../proc/iiimmc_errorhandler.html">IIimmc_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiimmc_imagenumberbounderror_ca.html">IIimmc_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iiimsc_errorhandler.html">IIimsc_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiimsc_imagenumberbounderror_ca.html">IIimsc_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iiinma_activateteammanagerimage.html">IIinma_ActivateTeamManagerImage</a>
+          
+          <a class="list-group-item" href="../proc/iiinma_errorhandler.html">IIinma_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html">IIinma_LoadTeamManagers</a>
+          
+          <a class="list-group-item" href="../proc/iiinmc_errorhandler.html">IIinmc_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiinmc_imagenumberbounderror_ca.html">IIinmc_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iistpa_errorhandler.html">IIstpa_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iitema_activateteammemberimage.html">IItema_ActivateTeamMemberImage</a>
+          
+          <a class="list-group-item" href="../proc/iitema_errorhandler.html">IItema_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iitema_loadteammembers.html">IItema_LoadTeamMembers</a>
+          
+          <a class="list-group-item" href="../proc/iitemc_errorhandler.html">IItemc_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iitemc_imagenumberbounderror_ca.html">IItemc_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iitmec_errorhandler.html">IItmec_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iitmec_imagenumberbounderror_ca.html">IItmec_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iitmem_errorhandler.html">IItmem_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/oooeerroc_addobject.html">OOOEerroc_AddObject</a>
+          
+          <a class="list-group-item" href="../proc/ooogglob_subresetprocedures.html">OOOGglob_subResetProcedures</a>
+          
+          <a class="list-group-item" href="../proc/ooogglob_subsetprocedures.html">OOOGglob_subSetProcedures</a>
+          
+          <a class="list-group-item" href="../proc/ooopimma_start.html">OOOPimma_Start</a>
+          
+          <a class="list-group-item" href="../proc/ooopimma_structureconstructor.html">OOOPimma_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmc_structureconstructor.html">OOOPimmc_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmccopyimgtoimg_chrteammembersfilename_ca.html">OOOPimmcCopyImgToImg_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmccopyimgtoimg_intimageactivityflag_ca.html">OOOPimmcCopyImgToImg_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcdc_copycoarrayobjimgtoimg_ca.html">OOOPimmcDC_CopyCoarrayObjImgToImg_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcg_chrteammembersfilename_ca.html">OOOPimmcG_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcg_intimageactivityflag_ca.html">OOOPimmcG_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcs_chrteammembersfilename_ca.html">OOOPimmcS_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcs_intimageactivityflag_ca.html">OOOPimmcS_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimsc_structureconstructor.html">OOOPimsc_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopimsc_structureconstructor_ca.html">OOOPimsc_StructureConstructor_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimsccopyimgtoimg_intimageactivityflag_ca.html">OOOPimscCopyImgToImg_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimscdc_copycoarrayobjimgtoimg_ca.html">OOOPimscDC_CopyCoarrayObjImgToImg_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimscg_intimageactivityflag_ca.html">OOOPimscG_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimscs_intimageactivityflag_ca.html">OOOPimscS_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinma_start.html">OOOPinma_Start</a>
+          
+          <a class="list-group-item" href="../proc/ooopinma_structureconstructor.html">OOOPinma_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmag_intnumberofteammanagers.html">OOOPinmaG_intNumberOfTeamManagers</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmas_intnumberofteammanagers.html">OOOPinmaS_intNumberOfTeamManagers</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmc_structureconstructor.html">OOOPinmc_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmccopyaimgtoimg_chrteammembersfiles99_ca.html">OOOPinmcCopyAImgToImg_chrTeamMembersFiles99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmccopyaimgtoimg_intteammanagerimages99_ca.html">OOOPinmcCopyAImgToImg_intTeamManagerImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmccopyimgtoimg_intnumberofteammanagers_ca.html">OOOPinmcCopyImgToImg_intNumberOfTeamManagers_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcdc_copycoarrayobjimgtoimg_ca.html">OOOPinmcDC_CopyCoarrayObjImgToImg_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcg_intnumberofteammanagers_ca.html">OOOPinmcG_intNumberOfTeamManagers_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcga_chrteammembersfiles99_ca.html">OOOPinmcGA_chrTeamMembersFiles99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcga_intteammanagerimages99_ca.html">OOOPinmcGA_intTeamManagerImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcs_intnumberofteammanagers_ca.html">OOOPinmcS_intNumberOfTeamManagers_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcsa_chrteammembersfiles99_ca.html">OOOPinmcSA_chrTeamMembersFiles99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcsa_intteammanagerimages99_ca.html">OOOPinmcSA_intTeamManagerImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopstpa_loadpath.html">OOOPstpa_LoadPath</a>
+          
+          <a class="list-group-item" href="../proc/ooopstpag_chrpath.html">OOOPstpaG_chrPath</a>
+          
+          <a class="list-group-item" href="../proc/ooopstpas_chrpath.html">OOOPstpaS_chrPath</a>
+          
+          <a class="list-group-item" href="../proc/oooptema_start.html">OOOPtema_Start</a>
+          
+          <a class="list-group-item" href="../proc/oooptema_structureconstructor.html">OOOPtema_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/oooptemag_chrteammembersfilename.html">OOOPtemaG_chrTeamMembersFileName</a>
+          
+          <a class="list-group-item" href="../proc/oooptemag_intnumberofteammembers.html">OOOPtemaG_intNumberOfTeamMembers</a>
+          
+          <a class="list-group-item" href="../proc/oooptemas_chrteammembersfilename.html">OOOPtemaS_chrTeamMembersFileName</a>
+          
+          <a class="list-group-item" href="../proc/oooptemas_intnumberofteammembers.html">OOOPtemaS_intNumberOfTeamMembers</a>
+          
+          <a class="list-group-item" href="../proc/oooptemc_structureconstructor.html">OOOPtemc_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/oooptemccopyaimgtoimg_intteammemberimages99_ca.html">OOOPtemcCopyAImgToImg_intTeamMemberImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemccopyimgtoimg_chrteammembersfilename_ca.html">OOOPtemcCopyImgToImg_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemccopyimgtoimg_intnumberofteammembers_ca.html">OOOPtemcCopyImgToImg_intNumberOfTeamMembers_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcdc_copycoarrayobjimgtoimg_ca.html">OOOPtemcDC_CopyCoarrayObjImgToImg_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcg_chrteammembersfilename_ca.html">OOOPtemcG_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcg_intnumberofteammembers_ca.html">OOOPtemcG_intNumberOfTeamMembers_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcga_intteammemberimages99_ca.html">OOOPtemcGA_intTeamMemberImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcs_chrteammembersfilename_ca.html">OOOPtemcS_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcs_intnumberofteammembers_ca.html">OOOPtemcS_intNumberOfTeamMembers_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcsa_intteammemberimages99_ca.html">OOOPtemcSA_intTeamMemberImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptmec_structureconstructor.html">OOOPtmec_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/oooptmem_start.html">OOOPtmem_Start</a>
+          
+          <a class="list-group-item" href="../proc/oooptmem_structureconstructor.html">OOOPtmem_StructureConstructor</a>
+          
+        </div>
+    </div>
+  </div>
+  
+</div>
+
+    </div>
+    
+    <div class="col-lg-9" id='text'>
+    <h2>
+private subroutine IIinma_LoadTeamManagers(Object)
+    
+    
+    
+</h2>
+    
+  
+
+
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-object%7E5"></span>type(<a href='../type/ooopinma_adtinitialmanager.html'>OOOPinma_adtInitialManager</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>Object</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    
+     <h3>Calls</h3>
+     
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: proc~~iiinma_loadteammanagers~~CallsGraph Pages: 1 -->
+<svg id="prociiinma_loadteammanagersCallsGraph" width="641pt" height="259pt"
+ viewBox="0.00 0.00 641.00 259.04" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph" class="graph" transform="scale(0.824968 0.824968) rotate(0) translate(4 310)">
+<title>proc~~iiinma_loadteammanagers~~CallsGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-310 773,-310 773,4 -4,4"/>
+<!-- proc~iiinma_loadteammanagers -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_node1" class="node"><title>proc~iiinma_loadteammanagers</title>
+<polygon fill="none" stroke="black" points="148,-164 0,-164 0,-140 148,-140 148,-164"/>
+<text text-anchor="middle" x="74" y="-149.6" font-family="Helvetica,sans-Serif" font-size="10.50">IIinma_LoadTeamManagers</text>
+</g>
+<!-- ma_intteammanagerimages99 -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_node2" class="node"><title>ma_intteammanagerimages99</title>
+<polygon fill="#777777" stroke="#777777" points="371.5,-306 213.5,-306 213.5,-282 371.5,-282 371.5,-306"/>
+<text text-anchor="middle" x="292.5" y="-291.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ma_intteammanagerimages99</text>
+</g>
+<!-- proc~iiinma_loadteammanagers&#45;&gt;ma_intteammanagerimages99 -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge11" class="edge"><title>proc~iiinma_loadteammanagers&#45;&gt;ma_intteammanagerimages99</title>
+<path fill="none" stroke="black" d="M82.6831,-164.004C98.5588,-187.781 137.421,-240.902 184,-268 191.277,-272.233 199.214,-275.779 207.372,-278.749"/>
+<polygon fill="black" stroke="black" points="206.431,-282.125 217.025,-281.977 208.651,-275.486 206.431,-282.125"/>
+</g>
+<!-- proc~ooogglob_subsetprocedures -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_node3" class="node"><title>proc~ooogglob_subsetprocedures</title>
+<g id="a_proc~~iiinma_loadteammanagers~~CallsGraph_node3"><a xlink:href="../proc/ooogglob_subsetprocedures.html" xlink:title="OOOGglob_subSetProcedures">
+<polygon fill="#d9534f" stroke="#d9534f" points="603,-186 443,-186 443,-162 603,-162 603,-186"/>
+<text text-anchor="middle" x="523" y="-171.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOGglob_subSetProcedures</text>
+</a>
+</g>
+</g>
+<!-- proc~iiinma_loadteammanagers&#45;&gt;proc~ooogglob_subsetprocedures -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge12" class="edge"><title>proc~iiinma_loadteammanagers&#45;&gt;proc~ooogglob_subsetprocedures</title>
+<path fill="none" stroke="black" d="M85.5896,-164.051C103.535,-183.45 142.081,-220.857 184,-235 275.383,-265.832 312.898,-274.237 401,-235 422.849,-225.269 416.487,-207.299 437,-195 440.025,-193.186 443.2,-191.529 446.473,-190.014"/>
+<polygon fill="black" stroke="black" points="448.007,-193.167 455.912,-186.113 445.334,-186.698 448.007,-193.167"/>
+</g>
+<!-- proc~ooopstpag_chrpath -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_node4" class="node"><title>proc~ooopstpag_chrpath</title>
+<g id="a_proc~~iiinma_loadteammanagers~~CallsGraph_node4"><a xlink:href="../proc/ooopstpag_chrpath.html" xlink:title="OOOPstpaG_chrPath">
+<polygon fill="#d9534f" stroke="#d9534f" points="350,-184 235,-184 235,-160 350,-160 350,-184"/>
+<text text-anchor="middle" x="292.5" y="-169.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPstpaG_chrPath</text>
+</a>
+</g>
+</g>
+<!-- proc~iiinma_loadteammanagers&#45;&gt;proc~ooopstpag_chrpath -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge13" class="edge"><title>proc~iiinma_loadteammanagers&#45;&gt;proc~ooopstpag_chrpath</title>
+<path fill="none" stroke="black" d="M148.297,-158.771C172.985,-161.052 200.39,-163.583 224.562,-165.816"/>
+<polygon fill="black" stroke="black" points="224.426,-169.319 234.706,-166.753 225.07,-162.348 224.426,-169.319"/>
+</g>
+<!-- proc~ooogglob_subresetprocedures -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_node5" class="node"><title>proc~ooogglob_subresetprocedures</title>
+<g id="a_proc~~iiinma_loadteammanagers~~CallsGraph_node5"><a xlink:href="../proc/ooogglob_subresetprocedures.html" xlink:title="OOOGglob_subResetProcedures">
+<polygon fill="#d9534f" stroke="#d9534f" points="609,-144 437,-144 437,-120 609,-120 609,-144"/>
+<text text-anchor="middle" x="523" y="-129.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOGglob_subResetProcedures</text>
+</a>
+</g>
+</g>
+<!-- proc~iiinma_loadteammanagers&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge14" class="edge"><title>proc~iiinma_loadteammanagers&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M148.312,-148.72C224.278,-145.321 343.328,-139.994 426.583,-136.269"/>
+<polygon fill="black" stroke="black" points="426.975,-139.755 436.808,-135.812 426.662,-132.762 426.975,-139.755"/>
+</g>
+<!-- proc~iiinma_errorhandler -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_node6" class="node"><title>proc~iiinma_errorhandler</title>
+<g id="a_proc~~iiinma_loadteammanagers~~CallsGraph_node6"><a xlink:href="../proc/iiinma_errorhandler.html" xlink:title="IIinma_ErrorHandler">
+<polygon fill="#d9534f" stroke="#d9534f" points="577.5,-102 468.5,-102 468.5,-78 577.5,-78 577.5,-102"/>
+<text text-anchor="middle" x="523" y="-87.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IIinma_ErrorHandler</text>
+</a>
+</g>
+</g>
+<!-- proc~iiinma_loadteammanagers&#45;&gt;proc~iiinma_errorhandler -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge15" class="edge"><title>proc~iiinma_loadteammanagers&#45;&gt;proc~iiinma_errorhandler</title>
+<path fill="none" stroke="black" d="M85.9466,-139.926C104.108,-120.901 142.591,-84.7014 184,-71 280.992,-38.9073 402.103,-59.1572 469.861,-75.4639"/>
+<polygon fill="black" stroke="black" points="469.316,-78.9344 479.864,-77.9364 470.996,-72.1389 469.316,-78.9344"/>
+</g>
+<!-- proc~ooopinmas_intnumberofteammanagers -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_node7" class="node"><title>proc~ooopinmas_intnumberofteammanagers</title>
+<g id="a_proc~~iiinma_loadteammanagers~~CallsGraph_node7"><a xlink:href="../proc/ooopinmas_intnumberofteammanagers.html" xlink:title="OOOPinmaS_intNumberOfTeamManagers">
+<polygon fill="#d9534f" stroke="#d9534f" points="401,-104 184,-104 184,-80 401,-80 401,-104"/>
+<text text-anchor="middle" x="292.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinmaS_intNumberOfTeamManagers</text>
+</a>
+</g>
+</g>
+<!-- proc~iiinma_loadteammanagers&#45;&gt;proc~ooopinmas_intnumberofteammanagers -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge16" class="edge"><title>proc~iiinma_loadteammanagers&#45;&gt;proc~ooopinmas_intnumberofteammanagers</title>
+<path fill="none" stroke="black" d="M111.655,-139.913C132.72,-133.131 159.736,-124.711 184,-118 198.435,-114.008 214.053,-110.034 228.794,-106.439"/>
+<polygon fill="black" stroke="black" points="229.934,-109.765 238.833,-104.015 228.291,-102.96 229.934,-109.765"/>
+</g>
+<!-- proc~ooopstpa_loadpath -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_node8" class="node"><title>proc~ooopstpa_loadpath</title>
+<g id="a_proc~~iiinma_loadteammanagers~~CallsGraph_node8"><a xlink:href="../proc/ooopstpa_loadpath.html" xlink:title="OOOPstpa_LoadPath">
+<polygon fill="#d9534f" stroke="#d9534f" points="350.5,-226 234.5,-226 234.5,-202 350.5,-202 350.5,-226"/>
+<text text-anchor="middle" x="292.5" y="-211.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPstpa_LoadPath</text>
+</a>
+</g>
+</g>
+<!-- proc~iiinma_loadteammanagers&#45;&gt;proc~ooopstpa_loadpath -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge17" class="edge"><title>proc~iiinma_loadteammanagers&#45;&gt;proc~ooopstpa_loadpath</title>
+<path fill="none" stroke="black" d="M103.251,-164.115C125.004,-173.077 155.991,-185.056 184,-193 196.902,-196.659 210.854,-199.896 224.297,-202.665"/>
+<polygon fill="black" stroke="black" points="223.962,-206.167 234.453,-204.691 225.331,-199.302 223.962,-206.167"/>
+</g>
+<!-- ma_chrteammembersfiles99 -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_node9" class="node"><title>ma_chrteammembersfiles99</title>
+<polygon fill="#777777" stroke="#777777" points="366.5,-24 218.5,-24 218.5,-0 366.5,-0 366.5,-24"/>
+<text text-anchor="middle" x="292.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ma_chrteammembersfiles99</text>
+</g>
+<!-- proc~iiinma_loadteammanagers&#45;&gt;ma_chrteammembersfiles99 -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge18" class="edge"><title>proc~iiinma_loadteammanagers&#45;&gt;ma_chrteammembersfiles99</title>
+<path fill="none" stroke="black" d="M82.9832,-139.844C99.1063,-116.31 137.967,-64.5134 184,-38 191.759,-33.531 200.259,-29.8274 208.971,-26.7587"/>
+<polygon fill="black" stroke="black" points="210.052,-30.0875 218.484,-23.6717 207.892,-23.4293 210.052,-30.0875"/>
+</g>
+<!-- proc~ooopstpag_chrpath&#45;&gt;proc~ooogglob_subsetprocedures -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge1" class="edge"><title>proc~ooopstpag_chrpath&#45;&gt;proc~ooogglob_subsetprocedures</title>
+<path fill="none" stroke="black" d="M350.277,-172.497C375.115,-172.714 404.854,-172.975 432.55,-173.217"/>
+<polygon fill="black" stroke="black" points="432.618,-176.718 442.649,-173.305 432.68,-169.718 432.618,-176.718"/>
+</g>
+<!-- proc~ooopstpag_chrpath&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge2" class="edge"><title>proc~ooopstpag_chrpath&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M350.277,-162.061C378.302,-157.155 412.565,-151.157 443.094,-145.813"/>
+<polygon fill="black" stroke="black" points="444.043,-149.2 453.29,-144.028 442.836,-142.305 444.043,-149.2"/>
+</g>
+<!-- proc~oooeerroc_addobject -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_node10" class="node"><title>proc~oooeerroc_addobject</title>
+<g id="a_proc~~iiinma_loadteammanagers~~CallsGraph_node10"><a xlink:href="../proc/oooeerroc_addobject.html" xlink:title="OOOEerroc_AddObject">
+<polygon fill="#d9534f" stroke="#d9534f" points="769,-165 645,-165 645,-141 769,-141 769,-165"/>
+<text text-anchor="middle" x="707" y="-150.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOEerroc_AddObject</text>
+</a>
+</g>
+</g>
+<!-- proc~iiinma_errorhandler&#45;&gt;proc~oooeerroc_addobject -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge3" class="edge"><title>proc~iiinma_errorhandler&#45;&gt;proc~oooeerroc_addobject</title>
+<path fill="none" stroke="black" d="M577.895,-101.878C588.306,-104.576 599.062,-107.647 609,-111 630.47,-118.244 653.795,-128.271 672.191,-136.711"/>
+<polygon fill="black" stroke="black" points="670.782,-139.916 681.325,-140.957 673.732,-133.568 670.782,-139.916"/>
+</g>
+<!-- proc~ooopinmas_intnumberofteammanagers&#45;&gt;proc~ooogglob_subsetprocedures -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge4" class="edge"><title>proc~ooopinmas_intnumberofteammanagers&#45;&gt;proc~ooogglob_subsetprocedures</title>
+<path fill="none" stroke="black" d="M318.432,-104.043C346.691,-117.35 394.373,-138.776 437,-153 443.741,-155.249 450.854,-157.378 457.98,-159.354"/>
+<polygon fill="black" stroke="black" points="457.104,-162.743 467.669,-161.952 458.917,-155.981 457.104,-162.743"/>
+</g>
+<!-- proc~ooopinmas_intnumberofteammanagers&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge5" class="edge"><title>proc~ooopinmas_intnumberofteammanagers&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M362.058,-104.001C387.585,-108.47 416.757,-113.577 443.136,-118.195"/>
+<polygon fill="black" stroke="black" points="442.643,-121.661 453.096,-119.938 443.85,-114.766 442.643,-121.661"/>
+</g>
+<!-- proc~ooopinmas_intnumberofteammanagers&#45;&gt;proc~iiinma_errorhandler -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge6" class="edge"><title>proc~ooopinmas_intnumberofteammanagers&#45;&gt;proc~iiinma_errorhandler</title>
+<path fill="none" stroke="black" d="M401.059,-91.0586C420.605,-90.8875 440.413,-90.7141 458.185,-90.5586"/>
+<polygon fill="black" stroke="black" points="458.426,-94.0567 468.395,-90.4692 458.365,-87.0569 458.426,-94.0567"/>
+</g>
+<!-- proc~ooopstpa_loadpath&#45;&gt;proc~ooogglob_subsetprocedures -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge8" class="edge"><title>proc~ooopstpa_loadpath&#45;&gt;proc~ooogglob_subsetprocedures</title>
+<path fill="none" stroke="black" d="M350.571,-204.009C378.48,-199.124 412.523,-193.165 442.894,-187.848"/>
+<polygon fill="black" stroke="black" points="443.793,-191.244 453.039,-186.072 442.586,-184.349 443.793,-191.244"/>
+</g>
+<!-- proc~ooopstpa_loadpath&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge9" class="edge"><title>proc~ooopstpa_loadpath&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M350.587,-209.804C367.614,-206.761 385.778,-201.624 401,-193 421.81,-181.21 416.487,-165.299 437,-153 440.025,-151.186 443.2,-149.529 446.473,-148.014"/>
+<polygon fill="black" stroke="black" points="448.007,-151.167 455.912,-144.113 445.334,-144.698 448.007,-151.167"/>
+</g>
+<!-- proc~iistpa_errorhandler -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_node11" class="node"><title>proc~iistpa_errorhandler</title>
+<g id="a_proc~~iiinma_loadteammanagers~~CallsGraph_node11"><a xlink:href="../proc/iistpa_errorhandler.html" xlink:title="IIstpa_ErrorHandler">
+<polygon fill="#d9534f" stroke="#d9534f" points="576,-228 470,-228 470,-204 576,-204 576,-228"/>
+<text text-anchor="middle" x="523" y="-213.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IIstpa_ErrorHandler</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopstpa_loadpath&#45;&gt;proc~iistpa_errorhandler -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge10" class="edge"><title>proc~ooopstpa_loadpath&#45;&gt;proc~iistpa_errorhandler</title>
+<path fill="none" stroke="black" d="M350.571,-214.5C383.754,-214.79 425.608,-215.156 459.653,-215.454"/>
+<polygon fill="black" stroke="black" points="459.92,-218.957 469.95,-215.544 459.981,-211.957 459.92,-218.957"/>
+</g>
+<!-- proc~iistpa_errorhandler&#45;&gt;proc~oooeerroc_addobject -->
+<g id="proc~~iiinma_loadteammanagers~~CallsGraph_edge7" class="edge"><title>proc~iistpa_errorhandler&#45;&gt;proc~oooeerroc_addobject</title>
+<path fill="none" stroke="black" d="M576.089,-204.587C587.056,-201.779 598.486,-198.548 609,-195 630.47,-187.756 653.795,-177.729 672.191,-169.289"/>
+<polygon fill="black" stroke="black" points="673.732,-172.432 681.325,-165.043 670.782,-166.084 673.732,-172.432"/>
+</g>
+</g>
+</svg>
+</div>
+                <script>var panprociiinma_loadteammanagersCallsGraph = svgPanZoom('#prociiinma_loadteammanagersCallsGraph', {
+                    zoomEnabled: true,
+                    controlIconsEnabled: true,
+                    fit: true,
+                    center: true,});
+                    </script>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="26pt"
+ viewBox="0.00 0.00 641.00 25.98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.811906 0.811906) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 785.5,-28 785.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="139.5,-24 72.5,-24 72.5,-0 139.5,-0 139.5,-24"/>
+<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="212,-24 158,-24 158,-0 212,-0 212,-24"/>
+<text text-anchor="middle" x="185" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-24 230,-24 230,-0 294,-0 294,-24"/>
+<text text-anchor="middle" x="262" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="366,-24 312,-24 312,-0 366,-0 366,-24"/>
+<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="439.5,-24 384.5,-24 384.5,-0 439.5,-0 439.5,-24"/>
+<text text-anchor="middle" x="412" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="594,-24 458,-24 458,-0 594,-0 594,-24"/>
+<text text-anchor="middle" x="526" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666,-24 612,-24 612,-0 666,-0 666,-24"/>
+<text text-anchor="middle" x="639" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="781.5,-24 684.5,-24 684.5,-0 781.5,-0 781.5,-24"/>
+<text text-anchor="middle" x="733" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+     
+     
+     <h3>Called By</h3>
+     
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: proc~~iiinma_loadteammanagers~~CalledByGraph Pages: 1 -->
+<svg id="prociiinma_loadteammanagersCalledByGraph" width="640pt" height="32pt"
+ viewBox="0.00 0.00 640.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~iiinma_loadteammanagers~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~iiinma_loadteammanagers~~CalledByGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 636,-28 636,4 -4,4"/>
+<!-- proc~iiinma_loadteammanagers -->
+<g id="proc~~iiinma_loadteammanagers~~CalledByGraph_node1" class="node"><title>proc~iiinma_loadteammanagers</title>
+<polygon fill="none" stroke="black" points="632,-24 484,-24 484,-0 632,-0 632,-24"/>
+<text text-anchor="middle" x="558" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">IIinma_LoadTeamManagers</text>
+</g>
+<!-- proc~ooopinma_start -->
+<g id="proc~~iiinma_loadteammanagers~~CalledByGraph_node2" class="node"><title>proc~ooopinma_start</title>
+<g id="a_proc~~iiinma_loadteammanagers~~CalledByGraph_node2"><a xlink:href="../proc/ooopinma_start.html" xlink:title="OOOPinma_Start">
+<polygon fill="#d9534f" stroke="#d9534f" points="448,-24 352,-24 352,-0 448,-0 448,-24"/>
+<text text-anchor="middle" x="400" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinma_Start</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopinma_start&#45;&gt;proc~iiinma_loadteammanagers -->
+<g id="proc~~iiinma_loadteammanagers~~CalledByGraph_edge4" class="edge"><title>proc~ooopinma_start&#45;&gt;proc~iiinma_loadteammanagers</title>
+<path fill="none" stroke="black" d="M448.228,-12C456.285,-12 464.864,-12 473.533,-12"/>
+<polygon fill="black" stroke="black" points="473.726,-15.5001 483.726,-12 473.726,-8.5001 473.726,-15.5001"/>
+</g>
+<!-- proc~ooopimma_start -->
+<g id="proc~~iiinma_loadteammanagers~~CalledByGraph_node3" class="node"><title>proc~ooopimma_start</title>
+<g id="a_proc~~iiinma_loadteammanagers~~CalledByGraph_node3"><a xlink:href="../proc/ooopimma_start.html" xlink:title="OOOPimma_Start">
+<polygon fill="#d9534f" stroke="#d9534f" points="316,-24 217,-24 217,-0 316,-0 316,-24"/>
+<text text-anchor="middle" x="266.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimma_Start</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimma_start&#45;&gt;proc~ooopinma_start -->
+<g id="proc~~iiinma_loadteammanagers~~CalledByGraph_edge3" class="edge"><title>proc~ooopimma_start&#45;&gt;proc~ooopinma_start</title>
+<path fill="none" stroke="black" d="M316.092,-12C324.414,-12 333.131,-12 341.656,-12"/>
+<polygon fill="black" stroke="black" points="341.92,-15.5001 351.92,-12 341.92,-8.5001 341.92,-15.5001"/>
+</g>
+<!-- proc~entry_main_sub -->
+<g id="proc~~iiinma_loadteammanagers~~CalledByGraph_node4" class="node"><title>proc~entry_main_sub</title>
+<g id="a_proc~~iiinma_loadteammanagers~~CalledByGraph_node4"><a xlink:href="../proc/entry_main_sub.html" xlink:title="Entry_Main_Sub">
+<polygon fill="#d9534f" stroke="#d9534f" points="181,-24 90,-24 90,-0 181,-0 181,-24"/>
+<text text-anchor="middle" x="135.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Entry_Main_Sub</text>
+</a>
+</g>
+</g>
+<!-- proc~entry_main_sub&#45;&gt;proc~ooopimma_start -->
+<g id="proc~~iiinma_loadteammanagers~~CalledByGraph_edge2" class="edge"><title>proc~entry_main_sub&#45;&gt;proc~ooopimma_start</title>
+<path fill="none" stroke="black" d="M181.256,-12C189.43,-12 198.072,-12 206.584,-12"/>
+<polygon fill="black" stroke="black" points="206.861,-15.5001 216.861,-12 206.861,-8.5001 206.861,-15.5001"/>
+</g>
+<!-- program~main -->
+<g id="proc~~iiinma_loadteammanagers~~CalledByGraph_node5" class="node"><title>program~main</title>
+<g id="a_proc~~iiinma_loadteammanagers~~CalledByGraph_node5"><a xlink:href="../program/main.html" xlink:title="Main">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Main</text>
+</a>
+</g>
+</g>
+<!-- program~main&#45;&gt;proc~entry_main_sub -->
+<g id="proc~~iiinma_loadteammanagers~~CalledByGraph_edge1" class="edge"><title>program~main&#45;&gt;proc~entry_main_sub</title>
+<path fill="none" stroke="black" d="M54.0528,-12C61.8379,-12 70.6832,-12 79.5905,-12"/>
+<polygon fill="black" stroke="black" points="79.6202,-15.5001 89.6202,-12 79.6201,-8.5001 79.6202,-15.5001"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="26pt"
+ viewBox="0.00 0.00 641.00 25.98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.811906 0.811906) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 785.5,-28 785.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="139.5,-24 72.5,-24 72.5,-0 139.5,-0 139.5,-24"/>
+<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="212,-24 158,-24 158,-0 212,-0 212,-24"/>
+<text text-anchor="middle" x="185" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-24 230,-24 230,-0 294,-0 294,-24"/>
+<text text-anchor="middle" x="262" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="366,-24 312,-24 312,-0 366,-0 366,-24"/>
+<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="439.5,-24 384.5,-24 384.5,-0 439.5,-0 439.5,-24"/>
+<text text-anchor="middle" x="412" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="594,-24 458,-24 458,-0 594,-0 594,-24"/>
+<text text-anchor="middle" x="526" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666,-24 612,-24 612,-0 666,-0 666,-24"/>
+<text text-anchor="middle" x="639" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="781.5,-24 684.5,-24 684.5,-0 781.5,-0 781.5,-24"/>
+<text text-anchor="middle" x="733" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+     
+    <br>
+    
+    <section>
+    <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-uustartpath1"></span>type(OOOPstpa_adtStartPath),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>UUStartPath1</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-openstatus"></span>character(kind=OOOGglob_kcha,LEN=OOOGglob_Len40),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>OpenStatus</strong></td><td> =</td><td>'OLD'</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-openaccess"></span>character(kind=OOOGglob_kcha,LEN=OOOGglob_Len40),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>OpenAccess</strong></td><td> =</td><td>'SEQUENTIAL'</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-openform"></span>character(kind=OOOGglob_kcha,LEN=OOOGglob_Len40),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>OpenForm</strong></td><td> =</td><td>'FORMATTED'</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-openposition"></span>character(kind=OOOGglob_kcha,LEN=OOOGglob_Len40),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>OpenPosition</strong></td><td> =</td><td>'REWIND'</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-openaction"></span>character(kind=OOOGglob_kcha,LEN=OOOGglob_Len40),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>OpenAction</strong></td><td> =</td><td>'READ'</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-openblank"></span>character(kind=OOOGglob_kcha,LEN=OOOGglob_Len40),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>OpenBlank</strong></td><td> =</td><td>'NULL'</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-chrstartpath"></span>character(kind=OOOGglob_kcha,LEN=OOOGglob_Len200),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>chrStartPath</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-logexist"></span>logical(kind=OOOGglob_klog),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>logExist</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-intrecl"></span>integer(kind=OOOGglob_kint),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>intRecl</strong></td><td> =</td><td>0</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-fileunit"></span>integer(kind=OOOGglob_kint),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>FileUnit</strong></td><td> =</td><td>0</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-filestatus"></span>integer(kind=OOOGglob_kint),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>FileStatus</strong></td><td> =</td><td>0</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-chrpathandfilename"></span>character(kind=OOOGglob_kcha,LEN=OOOGglob_Len200),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>chrPathAndFileName</strong></td><td> =</td><td>""</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-intcounter%7E2"></span>integer(kind=OOOGglob_kint),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>intCounter</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-intnumberofteammanagers%7E3"></span>integer(kind=OOOGglob_kint),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>intNumberOfTeamManagers</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="k">SUBROUTINE </span><span class="n">IIinma_LoadTeamManagers</span> <span class="p">(</span><span class="n">Object</span><span class="p">)</span>
+  <span class="c">! method, loads the data from TeamManagers.txt</span>
+  <span class="k">TYPE</span> <span class="p">(</span><span class="n">OOOPinma_adtInitialManager</span><span class="p">),</span> <span class="k">INTENT</span> <span class="p">(</span><span class="n">INOUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">Object</span>
+  <span class="c">!</span>
+  <span class="k">TYPE</span> <span class="p">(</span><span class="n">OOOPstpa_adtStartPath</span><span class="p">)</span> <span class="kd">::</span> <span class="n">UUStartPath1</span>
+  <span class="c">!</span>
+  <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">OOOGglob_kcha</span><span class="p">,</span><span class="nb">LEN</span><span class="o">=</span><span class="n">OOOGglob_Len40</span><span class="p">)</span> <span class="kd">::</span> <span class="n">OpenStatus</span> <span class="o">=</span> <span class="s1">&#39;OLD&#39;</span>
+  <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">OOOGglob_kcha</span><span class="p">,</span><span class="nb">LEN</span><span class="o">=</span><span class="n">OOOGglob_Len40</span><span class="p">)</span> <span class="kd">::</span> <span class="n">OpenAccess</span>  <span class="o">=</span> <span class="s1">&#39;SEQUENTIAL&#39;</span>
+  <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">OOOGglob_kcha</span><span class="p">,</span><span class="nb">LEN</span><span class="o">=</span><span class="n">OOOGglob_Len40</span><span class="p">)</span> <span class="kd">::</span> <span class="n">OpenForm</span> <span class="o">=</span> <span class="s1">&#39;FORMATTED&#39;</span>
+  <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">OOOGglob_kcha</span><span class="p">,</span><span class="nb">LEN</span><span class="o">=</span><span class="n">OOOGglob_Len40</span><span class="p">)</span> <span class="kd">::</span> <span class="n">OpenPosition</span> <span class="o">=</span> <span class="s1">&#39;REWIND&#39;</span>
+  <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">OOOGglob_kcha</span><span class="p">,</span><span class="nb">LEN</span><span class="o">=</span><span class="n">OOOGglob_Len40</span><span class="p">)</span> <span class="kd">::</span> <span class="n">OpenAction</span> <span class="o">=</span> <span class="s1">&#39;READ&#39;</span>
+  <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">OOOGglob_kcha</span><span class="p">,</span><span class="nb">LEN</span><span class="o">=</span><span class="n">OOOGglob_Len40</span><span class="p">)</span> <span class="kd">::</span> <span class="n">OpenBlank</span> <span class="o">=</span> <span class="s1">&#39;NULL&#39;</span>
+  <span class="c">!</span>
+  <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">OOOGglob_kcha</span><span class="p">,</span><span class="nb">LEN</span><span class="o">=</span><span class="n">OOOGglob_Len200</span><span class="p">)</span> <span class="kd">::</span> <span class="n">chrStartPath</span>
+  <span class="c">!</span>
+  <span class="c">! for INQUIRE:</span>
+  <span class="kt">LOGICAL</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">OOOGglob_klog</span><span class="p">)</span> <span class="kd">::</span> <span class="n">logExist</span>
+  <span class="kt">INTEGER</span><span class="p">(</span><span class="n">OOOGglob_kint</span><span class="p">)</span> <span class="kd">::</span> <span class="n">intRecl</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="c">!</span>
+  <span class="kt">INTEGER</span><span class="p">(</span><span class="n">OOOGglob_kint</span><span class="p">)</span> <span class="kd">::</span> <span class="n">FileUnit</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="kt">INTEGER</span><span class="p">(</span><span class="n">OOOGglob_kint</span><span class="p">)</span> <span class="kd">::</span> <span class="n">FileStatus</span> <span class="o">=</span> <span class="mi">0</span> <span class="c">! File-error-Status</span>
+  <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">KIND</span><span class="o">=</span><span class="n">OOOGglob_kcha</span><span class="p">,</span><span class="nb">LEN</span><span class="o">=</span><span class="n">OOOGglob_Len200</span><span class="p">)</span> <span class="kd">::</span> <span class="n">chrPathAndFileName</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+  <span class="kt">INTEGER</span><span class="p">(</span><span class="n">OOOGglob_kint</span><span class="p">)</span> <span class="kd">::</span> <span class="n">intCounter</span> <span class="c">! do loop counter</span>
+  <span class="kt">INTEGER</span><span class="p">(</span><span class="n">OOOGglob_kint</span><span class="p">)</span> <span class="kd">::</span> <span class="n">intNumberOfTeamManagers</span>
+  <span class="c">!</span>
+                                                                <span class="k">CALL </span><span class="n">OOOGglob_subSetProcedures</span> <span class="p">(</span><span class="s2">&quot;IIinma_LoadTeamManagers&quot;</span><span class="p">)</span>
+  <span class="c">!</span>
+  <span class="n">FileUnit</span> <span class="o">=</span> <span class="n">OOOGglob_FileUnitA</span>
+  <span class="c">!</span>
+  <span class="k">CALL </span><span class="n">OOOPstpa_LoadPath</span> <span class="p">(</span><span class="n">UUStartPath1</span><span class="p">)</span>
+  <span class="k">CALL </span><span class="n">OOOPstpaG_chrPath</span> <span class="p">(</span><span class="n">UUStartPath1</span><span class="p">,</span> <span class="n">chrStartPath</span><span class="p">)</span>
+  <span class="c">!</span>
+  <span class="n">chrPathAndFileName</span> <span class="o">=</span> <span class="nb">TRIM</span><span class="p">(</span><span class="n">chrStartPath</span><span class="p">)</span> <span class="o">//</span> <span class="s1">&#39;TeamManagers.txt&#39;</span>
+  <span class="c">!</span>
+  <span class="k">OPEN</span> <span class="p">(</span><span class="n">UNIT</span><span class="o">=</span><span class="n">FileUnit</span><span class="p">,</span> <span class="n">IOSTAT</span><span class="o">=</span><span class="n">FileStatus</span><span class="p">,</span> <span class="k">FILE</span><span class="o">=</span><span class="nb">TRIM</span><span class="p">(</span><span class="n">chrPathAndFileName</span><span class="p">),</span> <span class="p">&amp;</span>
+      <span class="n">STATUS</span><span class="o">=</span><span class="nb">TRIM</span><span class="p">(</span><span class="n">OpenStatus</span><span class="p">),</span> <span class="nb">ACCESS</span><span class="o">=</span><span class="nb">TRIM</span><span class="p">(</span><span class="n">OpenAccess</span><span class="p">),</span> <span class="n">FORM</span><span class="o">=</span><span class="nb">TRIM</span><span class="p">(</span><span class="n">OpenForm</span><span class="p">),</span> <span class="p">&amp;</span>
+      <span class="n">POSITION</span><span class="o">=</span><span class="nb">TRIM</span><span class="p">(</span><span class="n">OpenPosition</span><span class="p">),</span> <span class="n">ACTION</span><span class="o">=</span><span class="nb">TRIM</span><span class="p">(</span><span class="n">OpenAction</span><span class="p">),</span> <span class="p">&amp;</span>
+      <span class="n">BLANK</span><span class="o">=</span><span class="nb">TRIM</span><span class="p">(</span><span class="n">OpenBlank</span><span class="p">),</span> <span class="n">DELIM</span><span class="o">=</span><span class="s1">&#39;APOSTROPHE&#39;</span><span class="p">)</span>
+                                                                <span class="c">!</span>
+                                                                <span class="k">IF</span> <span class="p">(</span><span class="n">FileStatus</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">                                                                  CALL </span><span class="n">IIinma_ErrorHandler</span> <span class="p">(</span><span class="n">Object</span><span class="p">,</span> <span class="s2">&quot;File Open-error&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                                    <span class="n">OOOGglob_error</span><span class="p">,</span> <span class="n">FileStatus</span><span class="p">)</span>
+                                                                  <span class="k">CALL </span><span class="n">OOOGglob_subResetProcedures</span>
+                                                                  <span class="k">RETURN</span>
+<span class="k">                                                                END IF</span>
+  <span class="c">!</span>
+  <span class="k">READ</span> <span class="p">(</span><span class="n">UNIT</span><span class="o">=</span><span class="n">FileUnit</span><span class="p">,</span> <span class="n">FMT</span><span class="o">=*</span><span class="p">,</span> <span class="n">IOSTAT</span><span class="o">=</span><span class="n">FileStatus</span><span class="p">)</span> <span class="n">intNumberOfTeamManagers</span>
+                                                                <span class="c">!</span>
+                                                                <span class="k">IF</span> <span class="p">(</span><span class="n">FileStatus</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">                                                                  CALL </span><span class="n">IIinma_ErrorHandler</span> <span class="p">(</span><span class="n">Object</span><span class="p">,</span> <span class="s2">&quot;File READ-Error 1&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                                    <span class="n">OOOGglob_error</span><span class="p">,</span> <span class="n">FileStatus</span><span class="p">)</span>
+                                                                  <span class="k">CALL </span><span class="n">OOOGglob_subResetProcedures</span>
+                                                                  <span class="k">RETURN</span>
+<span class="k">                                                                END IF</span>
+  <span class="c">!</span>
+  <span class="k">CALL </span><span class="n">OOOPinmaS_intNumberOfTeamManagers</span> <span class="p">(</span><span class="n">Object</span><span class="p">,</span> <span class="n">intNumberOfTeamManagers</span><span class="p">)</span> <span class="c">! contains error handling</span>
+  <span class="c">!</span>
+  <span class="c">! read the TeamManagerImages and there TeamMembers file name from the TeamManagers.txt file</span>
+  <span class="k">DO </span><span class="n">intCounter</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Object</span> <span class="p">%</span> <span class="n">m_intNumberOfTeamManagers</span>
+    <span class="k">READ</span> <span class="p">(</span><span class="n">UNIT</span><span class="o">=</span><span class="n">FileUnit</span><span class="p">,</span> <span class="n">FMT</span><span class="o">=*</span><span class="p">,</span> <span class="n">IOSTAT</span><span class="o">=</span><span class="n">FileStatus</span><span class="p">)</span> <span class="n">Object</span> <span class="p">%</span> <span class="n">mA_intTeamManagerImages99</span> <span class="p">(</span><span class="n">intCounter</span><span class="p">),</span> <span class="p">&amp;</span>
+      <span class="n">Object</span> <span class="p">%</span> <span class="n">mA_chrTeamMembersFiles99</span> <span class="p">(</span><span class="n">intCounter</span><span class="p">)</span>
+    <span class="c">!</span>
+                                                                <span class="k">IF</span> <span class="p">(</span><span class="n">FileStatus</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">THEN</span>
+                                                                  <span class="c">! FileStatus error</span>
+                                                                  <span class="k">CALL </span><span class="n">IIinma_ErrorHandler</span> <span class="p">(</span><span class="n">Object</span><span class="p">,</span> <span class="s2">&quot;File READ-Error 2&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                                    <span class="n">OOOGglob_error</span><span class="p">,</span> <span class="n">FileStatus</span><span class="p">)</span>
+                                                                  <span class="k">CALL </span><span class="n">OOOGglob_subResetProcedures</span>
+                                                                  <span class="k">RETURN</span>
+<span class="k">                                                                END IF</span>
+<span class="k">  END DO</span>
+  <span class="c">!</span>
+  <span class="k">CLOSE</span> <span class="p">(</span><span class="n">UNIT</span><span class="o">=</span><span class="n">FileUnit</span><span class="p">,</span> <span class="n">IOSTAT</span><span class="o">=</span><span class="n">FileStatus</span><span class="p">,</span> <span class="n">STATUS</span><span class="o">=</span><span class="s1">&#39;KEEP&#39;</span><span class="p">)</span>
+                                                                <span class="k">IF</span> <span class="p">(</span><span class="n">FileStatus</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">                                                                  CALL </span><span class="n">IIinma_ErrorHandler</span> <span class="p">(</span><span class="n">Object</span><span class="p">,</span> <span class="s2">&quot;File-Close-error&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                                    <span class="n">OOOGglob_error</span><span class="p">,</span> <span class="n">FileStatus</span><span class="p">)</span>
+                                                                  <span class="k">CALL </span><span class="n">OOOGglob_subResetProcedures</span>
+                                                                  <span class="k">RETURN</span>
+<span class="k">                                                                END IF</span>
+  <span class="c">!</span>
+                                                                <span class="k">CALL </span><span class="n">OOOGglob_subResetProcedures</span>
+  <span class="c">!</span>
+<span class="k">END SUBROUTINE </span><span class="n">IIinma_LoadTeamManagers</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-4">&copy; 2016 </div>
+	<div class="col-md-4"><span class="text-center"> MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program was developed by Michael Siehl</span></div>
+        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

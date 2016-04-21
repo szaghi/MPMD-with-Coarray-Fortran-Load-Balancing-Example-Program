@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="MPMD-style Fortran (2008) coarray example program to illustrate a simple PGAS load balancing technique">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>OOOPtemcDC_CopyCoarrayObjImgToImg_CA &ndash; MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+            <li><a href="../program/main.html">Program</a></li>
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>OOOPtemcDC_CopyCoarrayObjImgToImg_CA
+    <small>Subroutine</small>
+    
+    </h1>
+	 
+<div class="row">
+<div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+    <li><i class="fa fa-code"></i><a href="../src/OOOPtemc_admTeamManager_CA.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li><a href='../sourcefile/oooptemc_admteammanager_ca.f90.html'>OOOPtemc_admTeamManager_CA.f90</a></li>
+  
+     <li><a href='../module/oooptemc_admteammanager_ca.html'>OOOPtemc_admTeamManager_CA</a></li>
+  
+     <li class="active">OOOPtemcDC_CopyCoarrayObjImgToImg_CA</li>
+  </ol>
+</div>
+</div>
+</div>
+    
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-3">
+    
+<div id="sidebar">
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars">Variables</a></h3></div>
+    <div id="vars" class="panel-collapse collapse">
+      <div class="list-group">
+        
+        <a class="list-group-item" href="../proc/oooptemcdc_copycoarrayobjimgtoimg_ca.html#variable-status%7E13">Status</a>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+    <div class="list-group">
+      <a class="list-group-item" href="../proc/oooptemcdc_copycoarrayobjimgtoimg_ca.html#src">OOOPtemcDC_CopyCoarrayObjImgToImg_CA</a>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprocs">All Procedures</a></h3></div>
+    <div id="allprocs" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../proc/entry_main_sub.html">Entry_Main_Sub</a>
+          
+          <a class="list-group-item" href="../proc/iiimma_errorhandler.html">IIimma_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiimma_sync_checkactivityflag.html">IIimma_SYNC_CheckActivityFlag</a>
+          
+          <a class="list-group-item" href="../proc/iiimmc_errorhandler.html">IIimmc_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiimmc_imagenumberbounderror_ca.html">IIimmc_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iiimsc_errorhandler.html">IIimsc_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiimsc_imagenumberbounderror_ca.html">IIimsc_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iiinma_activateteammanagerimage.html">IIinma_ActivateTeamManagerImage</a>
+          
+          <a class="list-group-item" href="../proc/iiinma_errorhandler.html">IIinma_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html">IIinma_LoadTeamManagers</a>
+          
+          <a class="list-group-item" href="../proc/iiinmc_errorhandler.html">IIinmc_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiinmc_imagenumberbounderror_ca.html">IIinmc_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iistpa_errorhandler.html">IIstpa_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iitema_activateteammemberimage.html">IItema_ActivateTeamMemberImage</a>
+          
+          <a class="list-group-item" href="../proc/iitema_errorhandler.html">IItema_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iitema_loadteammembers.html">IItema_LoadTeamMembers</a>
+          
+          <a class="list-group-item" href="../proc/iitemc_errorhandler.html">IItemc_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iitemc_imagenumberbounderror_ca.html">IItemc_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iitmec_errorhandler.html">IItmec_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iitmec_imagenumberbounderror_ca.html">IItmec_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iitmem_errorhandler.html">IItmem_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/oooeerroc_addobject.html">OOOEerroc_AddObject</a>
+          
+          <a class="list-group-item" href="../proc/ooogglob_subresetprocedures.html">OOOGglob_subResetProcedures</a>
+          
+          <a class="list-group-item" href="../proc/ooogglob_subsetprocedures.html">OOOGglob_subSetProcedures</a>
+          
+          <a class="list-group-item" href="../proc/ooopimma_start.html">OOOPimma_Start</a>
+          
+          <a class="list-group-item" href="../proc/ooopimma_structureconstructor.html">OOOPimma_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmc_structureconstructor.html">OOOPimmc_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmccopyimgtoimg_chrteammembersfilename_ca.html">OOOPimmcCopyImgToImg_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmccopyimgtoimg_intimageactivityflag_ca.html">OOOPimmcCopyImgToImg_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcdc_copycoarrayobjimgtoimg_ca.html">OOOPimmcDC_CopyCoarrayObjImgToImg_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcg_chrteammembersfilename_ca.html">OOOPimmcG_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcg_intimageactivityflag_ca.html">OOOPimmcG_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcs_chrteammembersfilename_ca.html">OOOPimmcS_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcs_intimageactivityflag_ca.html">OOOPimmcS_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimsc_structureconstructor.html">OOOPimsc_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopimsc_structureconstructor_ca.html">OOOPimsc_StructureConstructor_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimsccopyimgtoimg_intimageactivityflag_ca.html">OOOPimscCopyImgToImg_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimscdc_copycoarrayobjimgtoimg_ca.html">OOOPimscDC_CopyCoarrayObjImgToImg_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimscg_intimageactivityflag_ca.html">OOOPimscG_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimscs_intimageactivityflag_ca.html">OOOPimscS_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinma_start.html">OOOPinma_Start</a>
+          
+          <a class="list-group-item" href="../proc/ooopinma_structureconstructor.html">OOOPinma_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmag_intnumberofteammanagers.html">OOOPinmaG_intNumberOfTeamManagers</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmas_intnumberofteammanagers.html">OOOPinmaS_intNumberOfTeamManagers</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmc_structureconstructor.html">OOOPinmc_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmccopyaimgtoimg_chrteammembersfiles99_ca.html">OOOPinmcCopyAImgToImg_chrTeamMembersFiles99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmccopyaimgtoimg_intteammanagerimages99_ca.html">OOOPinmcCopyAImgToImg_intTeamManagerImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmccopyimgtoimg_intnumberofteammanagers_ca.html">OOOPinmcCopyImgToImg_intNumberOfTeamManagers_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcdc_copycoarrayobjimgtoimg_ca.html">OOOPinmcDC_CopyCoarrayObjImgToImg_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcg_intnumberofteammanagers_ca.html">OOOPinmcG_intNumberOfTeamManagers_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcga_chrteammembersfiles99_ca.html">OOOPinmcGA_chrTeamMembersFiles99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcga_intteammanagerimages99_ca.html">OOOPinmcGA_intTeamManagerImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcs_intnumberofteammanagers_ca.html">OOOPinmcS_intNumberOfTeamManagers_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcsa_chrteammembersfiles99_ca.html">OOOPinmcSA_chrTeamMembersFiles99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcsa_intteammanagerimages99_ca.html">OOOPinmcSA_intTeamManagerImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopstpa_loadpath.html">OOOPstpa_LoadPath</a>
+          
+          <a class="list-group-item" href="../proc/ooopstpag_chrpath.html">OOOPstpaG_chrPath</a>
+          
+          <a class="list-group-item" href="../proc/ooopstpas_chrpath.html">OOOPstpaS_chrPath</a>
+          
+          <a class="list-group-item" href="../proc/oooptema_start.html">OOOPtema_Start</a>
+          
+          <a class="list-group-item" href="../proc/oooptema_structureconstructor.html">OOOPtema_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/oooptemag_chrteammembersfilename.html">OOOPtemaG_chrTeamMembersFileName</a>
+          
+          <a class="list-group-item" href="../proc/oooptemag_intnumberofteammembers.html">OOOPtemaG_intNumberOfTeamMembers</a>
+          
+          <a class="list-group-item" href="../proc/oooptemas_chrteammembersfilename.html">OOOPtemaS_chrTeamMembersFileName</a>
+          
+          <a class="list-group-item" href="../proc/oooptemas_intnumberofteammembers.html">OOOPtemaS_intNumberOfTeamMembers</a>
+          
+          <a class="list-group-item" href="../proc/oooptemc_structureconstructor.html">OOOPtemc_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/oooptemccopyaimgtoimg_intteammemberimages99_ca.html">OOOPtemcCopyAImgToImg_intTeamMemberImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemccopyimgtoimg_chrteammembersfilename_ca.html">OOOPtemcCopyImgToImg_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemccopyimgtoimg_intnumberofteammembers_ca.html">OOOPtemcCopyImgToImg_intNumberOfTeamMembers_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcdc_copycoarrayobjimgtoimg_ca.html">OOOPtemcDC_CopyCoarrayObjImgToImg_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcg_chrteammembersfilename_ca.html">OOOPtemcG_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcg_intnumberofteammembers_ca.html">OOOPtemcG_intNumberOfTeamMembers_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcga_intteammemberimages99_ca.html">OOOPtemcGA_intTeamMemberImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcs_chrteammembersfilename_ca.html">OOOPtemcS_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcs_intnumberofteammembers_ca.html">OOOPtemcS_intNumberOfTeamMembers_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcsa_intteammemberimages99_ca.html">OOOPtemcSA_intTeamMemberImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptmec_structureconstructor.html">OOOPtmec_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/oooptmem_start.html">OOOPtmem_Start</a>
+          
+          <a class="list-group-item" href="../proc/oooptmem_structureconstructor.html">OOOPtmem_StructureConstructor</a>
+          
+        </div>
+    </div>
+  </div>
+  
+</div>
+
+    </div>
+    
+    <div class="col-lg-9" id='text'>
+    <h2>
+public subroutine OOOPtemcDC_CopyCoarrayObjImgToImg_CA(Object_CA, intImageNumberToCopyFrom, intImageNumberToCopyTo)
+    
+    
+    
+</h2>
+    
+  
+
+
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-object_ca%7E18"></span>type(<a href='../type/oooptemc_adtteammanager_ca.html'>OOOPtemc_adtTeamManager_CA</a>),</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>CODIMENSION[*]</td><td>::</td>
+  <td><strong>Object_CA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-intimagenumbertocopyfrom%7E6"></span>integer(kind=OOOGglob_kint),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>intImageNumberToCopyFrom</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-intimagenumbertocopyto%7E6"></span>integer(kind=OOOGglob_kint),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>intImageNumberToCopyTo</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    <h3>Description</h3>
+    <hr>
+<p>copy the properties:</p>
+<hr>
+<hr>
+<hr>
+<hr>
+<p>if necessary further properties must be copied here</p>
+<hr>
+    
+    
+     <h3>Calls</h3>
+     
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph Pages: 1 -->
+<svg id="procoooptemcdc_copycoarrayobjimgtoimg_caCallsGraph" width="641pt" height="161pt"
+ viewBox="0.00 0.00 641.00 161.35" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph" class="graph" transform="scale(0.661507 0.661507) rotate(0) translate(4 239.906)">
+<title>proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-239.906 965,-239.906 965,4 -4,4"/>
+<!-- proc~oooptemcdc_copycoarrayobjimgtoimg_ca -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node1" class="node"><title>proc~oooptemcdc_copycoarrayobjimgtoimg_ca</title>
+<polygon fill="none" stroke="black" points="237,-143.333 0,-143.333 0,-119.333 237,-119.333 237,-143.333"/>
+<text text-anchor="middle" x="118.5" y="-128.933" font-family="Helvetica,sans-Serif" font-size="10.50">OOOPtemcDC_CopyCoarrayObjImgToImg_CA</text>
+</g>
+<!-- proc~oooptemccopyimgtoimg_chrteammembersfilename_ca -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node2" class="node"><title>proc~oooptemccopyimgtoimg_chrteammembersfilename_ca</title>
+<g id="a_proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node2"><a xlink:href="../proc/oooptemccopyimgtoimg_chrteammembersfilename_ca.html" xlink:title="OOOPtemcCopyImgToImg_chrTeamMembersFileName_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="574,-185.333 273,-185.333 273,-161.333 574,-161.333 574,-185.333"/>
+<text text-anchor="middle" x="423.5" y="-170.933" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemcCopyImgToImg_chrTeamMembersFileName_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~oooptemccopyimgtoimg_chrteammembersfilename_ca -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge15" class="edge"><title>proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~oooptemccopyimgtoimg_chrteammembersfilename_ca</title>
+<path fill="none" stroke="black" d="M206.328,-143.369C243.651,-148.542 287.421,-154.61 325.777,-159.926"/>
+<polygon fill="black" stroke="black" points="325.536,-163.426 335.922,-161.332 326.497,-156.493 325.536,-163.426"/>
+</g>
+<!-- proc~ooogglob_subsetprocedures -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node3" class="node"><title>proc~ooogglob_subsetprocedures</title>
+<g id="a_proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node3"><a xlink:href="../proc/ooogglob_subsetprocedures.html" xlink:title="OOOGglob_subSetProcedures">
+<polygon fill="#d9534f" stroke="#d9534f" points="785.5,-227.333 625.5,-227.333 625.5,-203.333 785.5,-203.333 785.5,-227.333"/>
+<text text-anchor="middle" x="705.5" y="-212.933" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOGglob_subSetProcedures</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooogglob_subsetprocedures -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge16" class="edge"><title>proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooogglob_subsetprocedures</title>
+<path fill="none" stroke="black" d="M135.405,-143.442C162.102,-162.924 218.388,-200.447 273,-214.333 388.349,-243.664 526.721,-236.974 615.111,-227.676"/>
+<polygon fill="black" stroke="black" points="615.54,-231.15 625.103,-226.591 614.784,-224.191 615.54,-231.15"/>
+</g>
+<!-- proc~oooptemccopyimgtoimg_intnumberofteammembers_ca -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node4" class="node"><title>proc~oooptemccopyimgtoimg_intnumberofteammembers_ca</title>
+<g id="a_proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node4"><a xlink:href="../proc/oooptemccopyimgtoimg_intnumberofteammembers_ca.html" xlink:title="OOOPtemcCopyImgToImg_intNumberOfTeamMembers_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="574,-143.333 273,-143.333 273,-119.333 574,-119.333 574,-143.333"/>
+<text text-anchor="middle" x="423.5" y="-128.933" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemcCopyImgToImg_intNumberOfTeamMembers_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~oooptemccopyimgtoimg_intnumberofteammembers_ca -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge17" class="edge"><title>proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~oooptemccopyimgtoimg_intnumberofteammembers_ca</title>
+<path fill="none" stroke="black" d="M237.081,-131.333C245.511,-131.333 254.088,-131.333 262.7,-131.333"/>
+<polygon fill="black" stroke="black" points="262.821,-134.833 272.821,-131.333 262.821,-127.833 262.821,-134.833"/>
+</g>
+<!-- proc~ooogglob_subresetprocedures -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node5" class="node"><title>proc~ooogglob_subresetprocedures</title>
+<g id="a_proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node5"><a xlink:href="../proc/ooogglob_subresetprocedures.html" xlink:title="OOOGglob_subResetProcedures">
+<polygon fill="#d9534f" stroke="#d9534f" points="791.5,-185.333 619.5,-185.333 619.5,-161.333 791.5,-161.333 791.5,-185.333"/>
+<text text-anchor="middle" x="705.5" y="-170.933" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOGglob_subResetProcedures</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge18" class="edge"><title>proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M141.023,-143.334C169.971,-158.721 223.541,-184.579 273,-194.333 398.461,-219.078 548.206,-201.547 634.238,-187.077"/>
+<polygon fill="black" stroke="black" points="634.888,-190.516 644.152,-185.375 633.704,-183.617 634.888,-190.516"/>
+</g>
+<!-- proc~iitemc_errorhandler -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node6" class="node"><title>proc~iitemc_errorhandler</title>
+<g id="a_proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node6"><a xlink:href="../proc/iitemc_errorhandler.html" xlink:title="IItemc_ErrorHandler">
+<polygon fill="#d9534f" stroke="#d9534f" points="760,-101.333 651,-101.333 651,-77.3334 760,-77.3334 760,-101.333"/>
+<text text-anchor="middle" x="705.5" y="-86.9334" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IItemc_ErrorHandler</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~iitemc_errorhandler -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge19" class="edge"><title>proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~iitemc_errorhandler</title>
+<path fill="none" stroke="black" d="M132.558,-119.211C157.52,-96.9661 214.728,-50.3488 273,-33.3334 401.415,4.16388 450.048,16.9896 574,-33.3334 594.676,-41.7277 590.363,-57.733 610,-68.3334 619.511,-73.4678 630.208,-77.3478 640.894,-80.2796"/>
+<polygon fill="black" stroke="black" points="640.121,-83.6939 650.67,-82.7143 641.812,-76.9014 640.121,-83.6939"/>
+</g>
+<!-- proc~oooptemccopyaimgtoimg_intteammemberimages99_ca -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node7" class="node"><title>proc~oooptemccopyaimgtoimg_intteammemberimages99_ca</title>
+<g id="a_proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node7"><a xlink:href="../proc/oooptemccopyaimgtoimg_intteammemberimages99_ca.html" xlink:title="OOOPtemcCopyAImgToImg_intTeamMemberImages99_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="573.5,-101.333 273.5,-101.333 273.5,-77.3334 573.5,-77.3334 573.5,-101.333"/>
+<text text-anchor="middle" x="423.5" y="-86.9334" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemcCopyAImgToImg_intTeamMemberImages99_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~oooptemccopyaimgtoimg_intteammemberimages99_ca -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge20" class="edge"><title>proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~oooptemccopyaimgtoimg_intteammemberimages99_ca</title>
+<path fill="none" stroke="black" d="M206.328,-119.298C243.651,-114.124 287.421,-108.057 325.777,-102.741"/>
+<polygon fill="black" stroke="black" points="326.497,-106.174 335.922,-101.334 325.536,-99.2406 326.497,-106.174"/>
+</g>
+<!-- proc~iitemc_imagenumberbounderror_ca -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node8" class="node"><title>proc~iitemc_imagenumberbounderror_ca</title>
+<g id="a_proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node8"><a xlink:href="../proc/iitemc_imagenumberbounderror_ca.html" xlink:title="IItemc_ImageNumberBoundError_CA">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="801,-143.333 610,-143.333 610,-119.333 801,-119.333 801,-143.333"/>
+<text text-anchor="middle" x="705.5" y="-128.933" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IItemc_ImageNumberBoundError_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~iitemc_imagenumberbounderror_ca -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge21" class="edge"><title>proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~iitemc_imagenumberbounderror_ca</title>
+<path fill="none" stroke="black" d="M141.023,-119.333C169.971,-103.946 223.541,-78.0881 273,-68.3334 404.249,-42.4472 452.461,-12.4334 574,-68.3334 596.336,-78.6066 588.918,-97.6843 610,-110.333 613.047,-112.161 616.235,-113.831 619.52,-115.355"/>
+<polygon fill="black" stroke="black" points="618.42,-118.688 628.998,-119.279 621.097,-112.22 618.42,-118.688"/>
+</g>
+<!-- proc~oooptemccopyimgtoimg_chrteammembersfilename_ca&#45;&gt;proc~ooogglob_subsetprocedures -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge1" class="edge"><title>proc~oooptemccopyimgtoimg_chrteammembersfilename_ca&#45;&gt;proc~ooogglob_subsetprocedures</title>
+<path fill="none" stroke="black" d="M504.737,-185.369C539.154,-190.531 579.503,-196.584 614.894,-201.893"/>
+<polygon fill="black" stroke="black" points="614.811,-205.419 625.22,-203.441 615.849,-198.497 614.811,-205.419"/>
+</g>
+<!-- proc~oooptemccopyimgtoimg_chrteammembersfilename_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge3" class="edge"><title>proc~oooptemccopyimgtoimg_chrteammembersfilename_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M574.337,-173.333C586.083,-173.333 597.737,-173.333 608.966,-173.333"/>
+<polygon fill="black" stroke="black" points="609.148,-176.833 619.148,-173.333 609.148,-169.833 609.148,-176.833"/>
+</g>
+<!-- proc~oooptemccopyimgtoimg_chrteammembersfilename_ca&#45;&gt;proc~iitemc_errorhandler -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge2" class="edge"><title>proc~oooptemccopyimgtoimg_chrteammembersfilename_ca&#45;&gt;proc~iitemc_errorhandler</title>
+<path fill="none" stroke="black" d="M554.084,-161.28C560.988,-158.754 567.678,-155.794 574,-152.333 595.566,-140.528 588.918,-122.982 610,-110.333 619.379,-104.706 630.096,-100.583 640.865,-97.5625"/>
+<polygon fill="black" stroke="black" points="641.885,-100.915 650.733,-95.0873 640.182,-94.1256 641.885,-100.915"/>
+</g>
+<!-- proc~oooptemccopyimgtoimg_chrteammembersfilename_ca&#45;&gt;proc~iitemc_imagenumberbounderror_ca -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge4" class="edge"><title>proc~oooptemccopyimgtoimg_chrteammembersfilename_ca&#45;&gt;proc~iitemc_imagenumberbounderror_ca</title>
+<path fill="none" stroke="black" d="M512.291,-161.3C532.567,-158.438 554.044,-155.34 574,-152.333 589.264,-150.033 605.516,-147.492 621.183,-144.996"/>
+<polygon fill="black" stroke="black" points="622.057,-148.4 631.378,-143.364 620.951,-141.488 622.057,-148.4"/>
+</g>
+<!-- proc~oooptemccopyimgtoimg_intnumberofteammembers_ca&#45;&gt;proc~ooogglob_subsetprocedures -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge5" class="edge"><title>proc~oooptemccopyimgtoimg_intnumberofteammembers_ca&#45;&gt;proc~ooogglob_subsetprocedures</title>
+<path fill="none" stroke="black" d="M554.084,-143.386C560.988,-145.913 567.678,-148.872 574,-152.333 595.566,-164.139 588.918,-181.684 610,-194.333 613.047,-196.161 616.235,-197.831 619.52,-199.355"/>
+<polygon fill="black" stroke="black" points="618.42,-202.688 628.998,-203.279 621.097,-196.22 618.42,-202.688"/>
+</g>
+<!-- proc~oooptemccopyimgtoimg_intnumberofteammembers_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge7" class="edge"><title>proc~oooptemccopyimgtoimg_intnumberofteammembers_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M512.291,-143.366C532.567,-146.228 554.044,-149.326 574,-152.333 589.264,-154.633 605.516,-157.174 621.183,-159.671"/>
+<polygon fill="black" stroke="black" points="620.951,-163.178 631.378,-161.303 622.057,-156.266 620.951,-163.178"/>
+</g>
+<!-- proc~oooptemccopyimgtoimg_intnumberofteammembers_ca&#45;&gt;proc~iitemc_errorhandler -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge6" class="edge"><title>proc~oooptemccopyimgtoimg_intnumberofteammembers_ca&#45;&gt;proc~iitemc_errorhandler</title>
+<path fill="none" stroke="black" d="M512.291,-119.3C532.567,-116.438 554.044,-113.34 574,-110.333 595.842,-107.042 619.708,-103.257 640.989,-99.8149"/>
+<polygon fill="black" stroke="black" points="641.576,-103.265 650.887,-98.2085 640.455,-96.3558 641.576,-103.265"/>
+</g>
+<!-- proc~oooptemccopyimgtoimg_intnumberofteammembers_ca&#45;&gt;proc~iitemc_imagenumberbounderror_ca -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge8" class="edge"><title>proc~oooptemccopyimgtoimg_intnumberofteammembers_ca&#45;&gt;proc~iitemc_imagenumberbounderror_ca</title>
+<path fill="none" stroke="black" d="M574.337,-131.333C582.933,-131.333 591.48,-131.333 599.847,-131.333"/>
+<polygon fill="black" stroke="black" points="599.955,-134.833 609.955,-131.333 599.955,-127.833 599.955,-134.833"/>
+</g>
+<!-- proc~oooeerroc_addobject -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node9" class="node"><title>proc~oooeerroc_addobject</title>
+<g id="a_proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node9"><a xlink:href="../proc/oooeerroc_addobject.html" xlink:title="OOOEerroc_AddObject">
+<polygon fill="#d9534f" stroke="#d9534f" points="961,-101.333 837,-101.333 837,-77.3334 961,-77.3334 961,-101.333"/>
+<text text-anchor="middle" x="899" y="-86.9334" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOEerroc_AddObject</text>
+</a>
+</g>
+</g>
+<!-- proc~iitemc_errorhandler&#45;&gt;proc~oooeerroc_addobject -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge9" class="edge"><title>proc~iitemc_errorhandler&#45;&gt;proc~oooeerroc_addobject</title>
+<path fill="none" stroke="black" d="M760.098,-89.3334C780.824,-89.3334 804.842,-89.3334 826.97,-89.3334"/>
+<polygon fill="black" stroke="black" points="826.985,-92.8335 836.985,-89.3334 826.985,-85.8335 826.985,-92.8335"/>
+</g>
+<!-- proc~oooptemccopyaimgtoimg_intteammemberimages99_ca&#45;&gt;proc~ooogglob_subsetprocedures -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge10" class="edge"><title>proc~oooptemccopyaimgtoimg_intteammemberimages99_ca&#45;&gt;proc~ooogglob_subsetprocedures</title>
+<path fill="none" stroke="black" d="M560.093,-101.482C564.966,-104.055 569.627,-106.99 574,-110.333 606.268,-135.003 578.733,-168.407 610,-194.333 612.038,-196.023 614.182,-197.584 616.413,-199.026"/>
+<polygon fill="black" stroke="black" points="614.958,-202.222 625.4,-204.019 618.358,-196.103 614.958,-202.222"/>
+</g>
+<!-- proc~oooptemccopyaimgtoimg_intteammemberimages99_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge13" class="edge"><title>proc~oooptemccopyaimgtoimg_intteammemberimages99_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M554.084,-101.386C560.988,-103.913 567.678,-106.872 574,-110.333 595.566,-122.139 588.918,-139.684 610,-152.333 613.047,-154.161 616.235,-155.831 619.52,-157.355"/>
+<polygon fill="black" stroke="black" points="618.42,-160.688 628.998,-161.279 621.097,-154.22 618.42,-160.688"/>
+</g>
+<!-- proc~oooptemccopyaimgtoimg_intteammemberimages99_ca&#45;&gt;proc~iitemc_errorhandler -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge12" class="edge"><title>proc~oooptemccopyaimgtoimg_intteammemberimages99_ca&#45;&gt;proc~iitemc_errorhandler</title>
+<path fill="none" stroke="black" d="M573.518,-89.3334C597.096,-89.3334 620.331,-89.3334 640.534,-89.3334"/>
+<polygon fill="black" stroke="black" points="640.808,-92.8335 650.808,-89.3334 640.808,-85.8335 640.808,-92.8335"/>
+</g>
+<!-- proc~oooptemccopyaimgtoimg_intteammemberimages99_ca&#45;&gt;proc~iitemc_imagenumberbounderror_ca -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge14" class="edge"><title>proc~oooptemccopyaimgtoimg_intteammemberimages99_ca&#45;&gt;proc~iitemc_imagenumberbounderror_ca</title>
+<path fill="none" stroke="black" d="M512.291,-101.366C532.567,-104.228 554.044,-107.326 574,-110.333 589.264,-112.633 605.516,-115.174 621.183,-117.671"/>
+<polygon fill="black" stroke="black" points="620.951,-121.178 631.378,-119.303 622.057,-114.266 620.951,-121.178"/>
+</g>
+<!-- ma_intteammemberimages99 -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_node10" class="node"><title>ma_intteammemberimages99</title>
+<polygon fill="#777777" stroke="#777777" points="783,-59.3334 628,-59.3334 628,-35.3334 783,-35.3334 783,-59.3334"/>
+<text text-anchor="middle" x="705.5" y="-44.9334" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ma_intteammemberimages99</text>
+</g>
+<!-- proc~oooptemccopyaimgtoimg_intteammemberimages99_ca&#45;&gt;ma_intteammemberimages99 -->
+<g id="proc~~oooptemcdc_copycoarrayobjimgtoimg_ca~~CallsGraph_edge11" class="edge"><title>proc~oooptemccopyaimgtoimg_intteammemberimages99_ca&#45;&gt;ma_intteammemberimages99</title>
+<path fill="none" stroke="black" d="M504.737,-77.2979C540.04,-72.0024 581.585,-65.7706 617.618,-60.3656"/>
+<polygon fill="black" stroke="black" points="618.256,-63.8093 627.626,-58.8645 617.217,-56.8867 618.256,-63.8093"/>
+</g>
+</g>
+</svg>
+</div>
+                <script>var panprocoooptemcdc_copycoarrayobjimgtoimg_caCallsGraph = svgPanZoom('#procoooptemcdc_copycoarrayobjimgtoimg_caCallsGraph', {
+                    zoomEnabled: true,
+                    controlIconsEnabled: true,
+                    fit: true,
+                    center: true,});
+                    </script>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="26pt"
+ viewBox="0.00 0.00 641.00 25.98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.811906 0.811906) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 785.5,-28 785.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="139.5,-24 72.5,-24 72.5,-0 139.5,-0 139.5,-24"/>
+<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="212,-24 158,-24 158,-0 212,-0 212,-24"/>
+<text text-anchor="middle" x="185" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-24 230,-24 230,-0 294,-0 294,-24"/>
+<text text-anchor="middle" x="262" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="366,-24 312,-24 312,-0 366,-0 366,-24"/>
+<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="439.5,-24 384.5,-24 384.5,-0 439.5,-0 439.5,-24"/>
+<text text-anchor="middle" x="412" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="594,-24 458,-24 458,-0 594,-0 594,-24"/>
+<text text-anchor="middle" x="526" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666,-24 612,-24 612,-0 666,-0 666,-24"/>
+<text text-anchor="middle" x="639" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="781.5,-24 684.5,-24 684.5,-0 781.5,-0 781.5,-24"/>
+<text text-anchor="middle" x="733" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+     
+     
+    <br>
+    
+    <section>
+    <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-status%7E13"></span>integer(kind=OOOGglob_kint),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>Status</strong></td><td> =</td><td>0</td><td><hr></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="k">SUBROUTINE </span><span class="n">OOOPtemcDC_CopyCoarrayObjImgToImg_CA</span> <span class="p">(</span><span class="n">Object_CA</span><span class="p">,</span> <span class="n">intImageNumberToCopyFrom</span><span class="p">,</span> <span class="n">intImageNumberToCopyTo</span><span class="p">)</span>
+  <span class="c">! copy from any (remote) image to any other (remote) image</span>
+  <span class="c">! (static members only)</span>
+  <span class="k">TYPE</span> <span class="p">(</span><span class="n">OOOPtemc_adtTeamManager_CA</span><span class="p">),</span> <span class="k">CODIMENSION</span><span class="p">[</span><span class="o">*</span><span class="p">],</span> <span class="k">INTENT</span> <span class="p">(</span><span class="n">INOUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">Object_CA</span>
+  <span class="kt">INTEGER</span><span class="p">(</span><span class="n">OOOGglob_kint</span><span class="p">),</span> <span class="k">INTENT</span> <span class="p">(</span><span class="n">IN</span><span class="p">)</span> <span class="kd">::</span> <span class="n">intImageNumberToCopyFrom</span>
+  <span class="kt">INTEGER</span><span class="p">(</span><span class="n">OOOGglob_kint</span><span class="p">),</span> <span class="k">INTENT</span> <span class="p">(</span><span class="n">IN</span><span class="p">)</span> <span class="kd">::</span> <span class="n">intImageNumberToCopyTo</span>
+  <span class="kt">INTEGER</span><span class="p">(</span><span class="n">OOOGglob_kint</span><span class="p">)</span> <span class="kd">::</span> <span class="n">Status</span> <span class="o">=</span> <span class="mi">0</span> <span class="c">! error status</span>
+  <span class="c">!******************************************</span>
+                                                                <span class="k">CALL </span><span class="n">OOOGglob_subSetProcedures</span>  <span class="p">&amp;</span>
+                                                                <span class="p">(</span><span class="s2">&quot;OOOPtemcDC_CopyCoarrayObjImgToImg_CA&quot;</span><span class="p">)</span>
+                                                                <span class="c">!</span>
+                                                                <span class="k">IF</span> <span class="p">(</span><span class="n">IItemc_ImageNumberBoundError_CA</span> <span class="p">&amp;</span>
+                                                                <span class="p">(</span><span class="n">Object_CA</span><span class="p">,</span> <span class="n">intImageNumberToCopyFrom</span><span class="p">))</span> <span class="k">THEN</span>
+<span class="k">                                                                  CALL </span><span class="n">IItemc_ErrorHandler</span> <span class="p">(</span><span class="n">Object_CA</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                                       <span class="s2">&quot;no valid image number 1&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                                    <span class="n">OOOGglob_error</span><span class="p">,</span> <span class="n">Status</span><span class="p">)</span>
+                                                                  <span class="k">CALL </span><span class="n">OOOGglob_subResetProcedures</span>
+                                                                  <span class="k">RETURN</span>
+<span class="k">                                                                END IF</span>
+                                                                <span class="c">!</span>
+                                                                <span class="k">IF</span> <span class="p">(</span><span class="n">IItemc_ImageNumberBoundError_CA</span> <span class="p">&amp;</span>
+                                                                <span class="p">(</span><span class="n">Object_CA</span><span class="p">,</span> <span class="n">intImageNumberToCopyTo</span><span class="p">))</span> <span class="k">THEN</span>
+<span class="k">                                                                  CALL </span><span class="n">IItemc_ErrorHandler</span> <span class="p">(</span><span class="n">Object_CA</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                                       <span class="s2">&quot;no valid image number 2&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                                    <span class="n">OOOGglob_error</span><span class="p">,</span> <span class="n">Status</span><span class="p">)</span>
+                                                                  <span class="k">CALL </span><span class="n">OOOGglob_subResetProcedures</span>
+                                                                  <span class="k">RETURN</span>
+<span class="k">                                                                END IF</span>
+                                                                <span class="c">!</span>
+  <span class="c">!*******************************************</span>
+  <span class="c">! copy the properties:</span>
+  <span class="c">!****************</span>
+  <span class="k">CALL </span><span class="n">OOOPtemcCopyImgToImg_chrTeamMembersFileName_CA</span> <span class="p">(</span><span class="n">Object_CA</span><span class="p">,</span> <span class="n">intImageNumberToCopyFrom</span><span class="p">,</span> <span class="n">intImageNumberToCopyTo</span><span class="p">)</span>
+  <span class="c">!****************</span>
+  <span class="k">CALL </span><span class="n">OOOPtemcCopyImgToImg_intNumberOfTeamMembers_CA</span> <span class="p">(</span><span class="n">Object_CA</span><span class="p">,</span> <span class="n">intImageNumberToCopyFrom</span><span class="p">,</span> <span class="n">intImageNumberToCopyTo</span><span class="p">)</span>
+  <span class="c">!****************</span>
+  <span class="k">CALL </span><span class="n">OOOPtemcCopyAImgToImg_intTeamMemberImages99_CA</span> <span class="p">(</span><span class="n">Object_CA</span><span class="p">,</span> <span class="n">intImageNumberToCopyFrom</span><span class="p">,</span> <span class="n">intImageNumberToCopyTo</span><span class="p">)</span>
+  <span class="c">!****************</span>
+  <span class="c">! if necessary further properties must be copied here</span>
+  <span class="c">!*******************************************</span>
+ <span class="c">!</span>
+                                                                <span class="k">CALL </span><span class="n">OOOGglob_subResetProcedures</span>
+<span class="k">END SUBROUTINE </span><span class="n">OOOPtemcDC_CopyCoarrayObjImgToImg_CA</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-4">&copy; 2016 </div>
+	<div class="col-md-4"><span class="text-center"> MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program was developed by Michael Siehl</span></div>
+        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

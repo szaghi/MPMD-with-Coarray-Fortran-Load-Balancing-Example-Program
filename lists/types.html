@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="MPMD-style Fortran (2008) coarray example program to illustrate a simple PGAS load balancing technique">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>
+All Types &ndash; MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program
+</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+            <li><a href="../program/main.html">Program</a></li>
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+      <div class="row">
+        <div class="col-lg-12" id='text'>
+			 <h1>Derived Types</h1>
+			 <table class="table table-striped nostretched">
+			 <thead>
+			 <tr><th>Type</th><th>Location</th><th>Extends</th><th>Description</th></tr>
+			 </thead><tbody>
+			 
+			   <tr><td><a href='../type/oooeerroc_colerror.html'>OOOEerroc_colError</a></td><td><a href='../module/oooeerro_admerror.html'>OOOEerro_admError</a></td><td>None</td><td><p>Errors handler class.</p></td></tr>
+			 
+			   <tr><td><a href='../type/ooopimma_adtimagemanager.html'>OOOPimma_adtImageManager</a></td><td><a href='../module/ooopimma_admimagemanager.html'>OOOPimma_admImageManager</a></td><td>None</td><td><p>Abstract image manager.</p></td></tr>
+			 
+			   <tr><td><a href='../type/ooopimmc_adtimagemanager_ca.html'>OOOPimmc_adtImageManager_CA</a></td><td><a href='../module/ooopimmc_admimagemanager_ca.html'>OOOPimmc_admImageManager_CA</a></td><td>None</td><td></td></tr>
+			 
+			   <tr><td><a href='../type/ooopimsc_adtimagestatus_ca.html'>OOOPimsc_adtImageStatus_CA</a></td><td><a href='../module/ooopimsc_admimagestatus_ca.html'>OOOPimsc_admImageStatus_CA</a></td><td>None</td><td></td></tr>
+			 
+			   <tr><td><a href='../type/ooopimsc_dontuse1.html'>OOOPimsc_DontUse1</a></td><td><a href='../module/ooopimsc_admimagestatus_ca.html'>OOOPimsc_admImageStatus_CA</a></td><td>None</td><td></td></tr>
+			 
+			   <tr><td><a href='../type/ooopinma_adtinitialmanager.html'>OOOPinma_adtInitialManager</a></td><td><a href='../module/ooopinma_adminitialmanager.html'>OOOPinma_admInitialManager</a></td><td>None</td><td></td></tr>
+			 
+			   <tr><td><a href='../type/ooopinmc_adtinitialmanager_ca.html'>OOOPinmc_adtInitialManager_CA</a></td><td><a href='../module/ooopinmc_adminitialmanager_ca.html'>OOOPinmc_admInitialManager_CA</a></td><td>None</td><td></td></tr>
+			 
+			   <tr><td><a href='../type/ooopstpa_adtstartpath.html'>OOOPstpa_adtStartPath</a></td><td><a href='../module/ooopstpa_admstartpath.html'>OOOPstpa_admStartPath</a></td><td>None</td><td></td></tr>
+			 
+			   <tr><td><a href='../type/oooptema_adtteammanager.html'>OOOPtema_adtTeamManager</a></td><td><a href='../module/oooptema_admteammanager.html'>OOOPtema_admTeamManager</a></td><td>None</td><td></td></tr>
+			 
+			   <tr><td><a href='../type/oooptemc_adtteammanager_ca.html'>OOOPtemc_adtTeamManager_CA</a></td><td><a href='../module/oooptemc_admteammanager_ca.html'>OOOPtemc_admTeamManager_CA</a></td><td>None</td><td></td></tr>
+			 
+			   <tr><td><a href='../type/oooptmec_adtteammember_ca.html'>OOOPtmec_adtTeamMember_CA</a></td><td><a href='../module/oooptmec_admteammember_ca.html'>OOOPtmec_admTeamMember_CA</a></td><td>None</td><td></td></tr>
+			 
+			   <tr><td><a href='../type/oooptmem_adtteammember.html'>OOOPtmem_adtTeamMember</a></td><td><a href='../module/oooptmem_admteammember.html'>OOOPtmem_admTeamMember</a></td><td>None</td><td></td></tr>
+			 
+			 </tbody></table>
+             
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: type~~graph~~TypeGraph Pages: 1 -->
+<svg id="typegraphTypeGraph" width="416pt" height="410pt"
+ viewBox="0.00 0.00 416.00 410.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~graph~~TypeGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 406)">
+<title>type~~graph~~TypeGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-406 412,-406 412,4 -4,4"/>
+<!-- type~ooopimma_adtimagemanager -->
+<g id="type~~graph~~TypeGraph_node1" class="node"><title>type~ooopimma_adtimagemanager</title>
+<g id="a_type~~graph~~TypeGraph_node1"><a xlink:href="../type/ooopimma_adtimagemanager.html" xlink:title="OOOPimma_adtImageManager">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="398,-402 234,-402 234,-378 398,-378 398,-402"/>
+<text text-anchor="middle" x="316" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimma_adtImageManager</text>
+</a>
+</g>
+</g>
+<!-- type~oooptema_adtteammanager -->
+<g id="type~~graph~~TypeGraph_node2" class="node"><title>type~oooptema_adtteammanager</title>
+<g id="a_type~~graph~~TypeGraph_node2"><a xlink:href="../type/oooptema_adtteammanager.html" xlink:title="OOOPtema_adtTeamManager">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="396,-360 236,-360 236,-336 396,-336 396,-360"/>
+<text text-anchor="middle" x="316" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtema_adtTeamManager</text>
+</a>
+</g>
+</g>
+<!-- type~ooopimsc_adtimagestatus_ca -->
+<g id="type~~graph~~TypeGraph_node3" class="node"><title>type~ooopimsc_adtimagestatus_ca</title>
+<g id="a_type~~graph~~TypeGraph_node3"><a xlink:href="../type/ooopimsc_adtimagestatus_ca.html" xlink:title="OOOPimsc_adtImageStatus_CA">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="399.5,-318 232.5,-318 232.5,-294 399.5,-294 399.5,-318"/>
+<text text-anchor="middle" x="316" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimsc_adtImageStatus_CA</text>
+</a>
+</g>
+</g>
+<!-- type~oooptemc_adtteammanager_ca -->
+<g id="type~~graph~~TypeGraph_node4" class="node"><title>type~oooptemc_adtteammanager_ca</title>
+<g id="a_type~~graph~~TypeGraph_node4"><a xlink:href="../type/oooptemc_adtteammanager_ca.html" xlink:title="OOOPtemc_adtTeamManager_CA">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="405.5,-276 226.5,-276 226.5,-252 405.5,-252 405.5,-276"/>
+<text text-anchor="middle" x="316" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemc_adtTeamManager_CA</text>
+</a>
+</g>
+</g>
+<!-- type~ooopimsc_dontuse1 -->
+<g id="type~~graph~~TypeGraph_node5" class="node"><title>type~ooopimsc_dontuse1</title>
+<g id="a_type~~graph~~TypeGraph_node5"><a xlink:href="../type/ooopimsc_dontuse1.html" xlink:title="OOOPimsc_DontUse1">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="119,-255 0,-255 0,-231 119,-231 119,-255"/>
+<text text-anchor="middle" x="59.5" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimsc_DontUse1</text>
+</a>
+</g>
+</g>
+<!-- type~ooopinma_adtinitialmanager -->
+<g id="type~~graph~~TypeGraph_node6" class="node"><title>type~ooopinma_adtinitialmanager</title>
+<g id="a_type~~graph~~TypeGraph_node6"><a xlink:href="../type/ooopinma_adtinitialmanager.html" xlink:title="OOOPinma_adtInitialManager">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="394,-234 238,-234 238,-210 394,-210 394,-234"/>
+<text text-anchor="middle" x="316" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinma_adtInitialManager</text>
+</a>
+</g>
+</g>
+<!-- type~ooopinmc_adtinitialmanager_ca -->
+<g id="type~~graph~~TypeGraph_node7" class="node"><title>type~ooopinmc_adtinitialmanager_ca</title>
+<g id="a_type~~graph~~TypeGraph_node7"><a xlink:href="../type/ooopinmc_adtinitialmanager_ca.html" xlink:title="OOOPinmc_adtInitialManager_CA">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="403.5,-192 228.5,-192 228.5,-168 403.5,-168 403.5,-192"/>
+<text text-anchor="middle" x="316" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinmc_adtInitialManager_CA</text>
+</a>
+</g>
+</g>
+<!-- type~oooptmem_adtteammember -->
+<g id="type~~graph~~TypeGraph_node8" class="node"><title>type~oooptmem_adtteammember</title>
+<g id="a_type~~graph~~TypeGraph_node8"><a xlink:href="../type/oooptmem_adtteammember.html" xlink:title="OOOPtmem_adtTeamMember">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="396,-150 236,-150 236,-126 396,-126 396,-150"/>
+<text text-anchor="middle" x="316" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtmem_adtTeamMember</text>
+</a>
+</g>
+</g>
+<!-- type~ooopstpa_adtstartpath -->
+<g id="type~~graph~~TypeGraph_node9" class="node"><title>type~ooopstpa_adtstartpath</title>
+<g id="a_type~~graph~~TypeGraph_node9"><a xlink:href="../type/ooopstpa_adtstartpath.html" xlink:title="OOOPstpa_adtStartPath">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="381,-108 251,-108 251,-84 381,-84 381,-108"/>
+<text text-anchor="middle" x="316" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPstpa_adtStartPath</text>
+</a>
+</g>
+</g>
+<!-- type~oooeerroc_colerror -->
+<g id="type~~graph~~TypeGraph_node10" class="node"><title>type~oooeerroc_colerror</title>
+<g id="a_type~~graph~~TypeGraph_node10"><a xlink:href="../type/oooeerroc_colerror.html" xlink:title="OOOEerroc_colError">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="115.5,-297 3.5,-297 3.5,-273 115.5,-273 115.5,-297"/>
+<text text-anchor="middle" x="59.5" y="-282.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOEerroc_colError</text>
+</a>
+</g>
+</g>
+<!-- type~ooopimmc_adtimagemanager_ca -->
+<g id="type~~graph~~TypeGraph_node11" class="node"><title>type~ooopimmc_adtimagemanager_ca</title>
+<g id="a_type~~graph~~TypeGraph_node11"><a xlink:href="../type/ooopimmc_adtimagemanager_ca.html" xlink:title="OOOPimmc_adtImageManager_CA">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="408,-66 224,-66 224,-42 408,-42 408,-66"/>
+<text text-anchor="middle" x="316" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmc_adtImageManager_CA</text>
+</a>
+</g>
+</g>
+<!-- type~oooptmec_adtteammember_ca -->
+<g id="type~~graph~~TypeGraph_node12" class="node"><title>type~oooptmec_adtteammember_ca</title>
+<g id="a_type~~graph~~TypeGraph_node12"><a xlink:href="../type/oooptmec_adtteammember_ca.html" xlink:title="OOOPtmec_adtTeamMember_CA">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="404,-24 228,-24 228,-0 404,-0 404,-24"/>
+<text text-anchor="middle" x="316" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtmec_adtTeamMember_CA</text>
+</a>
+</g>
+</g>
+<!-- OOOEerroc_colError -->
+<g id="type~~graph~~TypeGraph_node13" class="node"><title>OOOEerroc_colError</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="115.5,-213 3.5,-213 3.5,-189 115.5,-189 115.5,-213"/>
+<text text-anchor="middle" x="59.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOEerroc_colError</text>
+</g>
+<!-- OOOEerroc_colError&#45;&gt;type~ooopimma_adtimagemanager -->
+<g id="type~~graph~~TypeGraph_edge1" class="edge"><title>OOOEerroc_colError&#45;&gt;type~ooopimma_adtimagemanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M108.789,-213.126C112.637,-215.562 116.136,-218.487 119,-222 154.747,-265.843 98.9434,-306.147 137,-348 158.973,-372.165 192.028,-383.692 223.711,-388.835"/>
+<polygon fill="black" stroke="black" points="223.541,-392.345 233.934,-390.288 224.526,-385.415 223.541,-392.345"/>
+<text text-anchor="middle" x="171.5" y="-386.4" font-family="Helvetica,sans-Serif" font-size="9.50">m_UUerrocError</text>
+</g>
+<!-- OOOEerroc_colError&#45;&gt;type~oooptema_adtteammanager -->
+<g id="type~~graph~~TypeGraph_edge2" class="edge"><title>OOOEerroc_colError&#45;&gt;type~oooptema_adtteammanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M107.855,-213.109C111.995,-215.549 115.814,-218.48 119,-222 141.133,-246.457 115.087,-269.346 137,-294 159.554,-319.374 193.6,-333.015 225.897,-340.28"/>
+<polygon fill="black" stroke="black" points="225.348,-343.74 235.85,-342.335 226.765,-336.885 225.348,-343.74"/>
+<text text-anchor="middle" x="171.5" y="-336.4" font-family="Helvetica,sans-Serif" font-size="9.50">m_UUerrocError</text>
+</g>
+<!-- OOOEerroc_colError&#45;&gt;type~ooopimsc_adtimagestatus_ca -->
+<g id="type~~graph~~TypeGraph_edge3" class="edge"><title>OOOEerroc_colError&#45;&gt;type~ooopimsc_adtimagestatus_ca</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M105.258,-213.044C110.208,-215.511 114.923,-218.466 119,-222 131.919,-233.2 123.954,-244.948 137,-256 168.099,-282.345 184.765,-273.961 224,-285 232.077,-287.273 240.607,-289.485 249.077,-291.567"/>
+<polygon fill="black" stroke="black" points="248.42,-295.009 258.962,-293.949 250.06,-288.204 248.42,-295.009"/>
+<text text-anchor="middle" x="171.5" y="-282.4" font-family="Helvetica,sans-Serif" font-size="9.50">m_UUerrocError</text>
+</g>
+<!-- OOOEerroc_colError&#45;&gt;type~oooptemc_adtteammanager_ca -->
+<g id="type~~graph~~TypeGraph_edge4" class="edge"><title>OOOEerroc_colError&#45;&gt;type~oooptemc_adtteammanager_ca</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M94.9224,-213.105C108.006,-217.479 123.104,-222.257 137,-226 170.727,-235.084 208.514,-243.408 240.568,-249.935"/>
+<polygon fill="black" stroke="black" points="240.266,-253.444 250.761,-251.989 241.65,-246.582 240.266,-253.444"/>
+<text text-anchor="middle" x="171.5" y="-244.4" font-family="Helvetica,sans-Serif" font-size="9.50">m_UUerrocError</text>
+</g>
+<!-- OOOEerroc_colError&#45;&gt;type~ooopinma_adtinitialmanager -->
+<g id="type~~graph~~TypeGraph_edge5" class="edge"><title>OOOEerroc_colError&#45;&gt;type~ooopinma_adtinitialmanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M115.723,-205.557C148.328,-208.247 190.341,-211.714 227.378,-214.77"/>
+<polygon fill="black" stroke="black" points="227.427,-218.286 237.681,-215.62 228.002,-211.309 227.427,-218.286"/>
+<text text-anchor="middle" x="171.5" y="-214.4" font-family="Helvetica,sans-Serif" font-size="9.50">m_UUerrocError</text>
+</g>
+<!-- OOOEerroc_colError&#45;&gt;type~ooopinmc_adtinitialmanager_ca -->
+<g id="type~~graph~~TypeGraph_edge6" class="edge"><title>OOOEerroc_colError&#45;&gt;type~ooopinmc_adtinitialmanager_ca</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M115.637,-195.026C122.82,-194.309 130.083,-193.614 137,-193 163.41,-190.655 192.051,-188.426 218.482,-186.496"/>
+<polygon fill="black" stroke="black" points="218.773,-189.984 228.494,-185.772 218.268,-183.002 218.773,-189.984"/>
+<text text-anchor="middle" x="171.5" y="-195.4" font-family="Helvetica,sans-Serif" font-size="9.50">m_UUerrocError</text>
+</g>
+<!-- OOOEerroc_colError&#45;&gt;type~oooptmem_adtteammember -->
+<g id="type~~graph~~TypeGraph_edge7" class="edge"><title>OOOEerroc_colError&#45;&gt;type~oooptmem_adtteammember</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M89.9368,-188.999C104.011,-183.579 121.2,-177.416 137,-173 166.977,-164.623 200.337,-157.497 230,-151.906"/>
+<polygon fill="black" stroke="black" points="230.713,-155.333 239.907,-150.069 229.437,-148.45 230.713,-155.333"/>
+<text text-anchor="middle" x="171.5" y="-175.4" font-family="Helvetica,sans-Serif" font-size="9.50">m_UUerrocError</text>
+</g>
+<!-- OOOEerroc_colError&#45;&gt;type~ooopstpa_adtstartpath -->
+<g id="type~~graph~~TypeGraph_edge8" class="edge"><title>OOOEerroc_colError&#45;&gt;type~ooopstpa_adtstartpath</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M73.0055,-188.911C87.3659,-175.646 112.157,-154.569 137,-142 169.263,-125.677 207.827,-114.793 240.798,-107.73"/>
+<polygon fill="black" stroke="black" points="241.752,-111.107 250.838,-105.659 240.337,-104.252 241.752,-111.107"/>
+<text text-anchor="middle" x="171.5" y="-144.4" font-family="Helvetica,sans-Serif" font-size="9.50">m_UUerrocError</text>
+</g>
+<!-- OOOEerroc_colError&#45;&gt;type~ooopimmc_adtimagemanager_ca -->
+<g id="type~~graph~~TypeGraph_edge9" class="edge"><title>OOOEerroc_colError&#45;&gt;type~ooopimmc_adtimagemanager_ca</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M66.7837,-188.848C78.07,-168.196 103.733,-126.235 137,-103 160.286,-86.7358 188.78,-75.8601 216.086,-68.5913"/>
+<polygon fill="black" stroke="black" points="217.239,-71.9103 226.081,-66.0732 215.529,-65.1225 217.239,-71.9103"/>
+<text text-anchor="middle" x="171.5" y="-105.4" font-family="Helvetica,sans-Serif" font-size="9.50">m_UUerrocError</text>
+</g>
+<!-- OOOEerroc_colError&#45;&gt;type~oooptmec_adtteammember_ca -->
+<g id="type~~graph~~TypeGraph_edge10" class="edge"><title>OOOEerroc_colError&#45;&gt;type~oooptmec_adtteammember_ca</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M63.4286,-188.845C70.7645,-161.066 92.6061,-92.5934 137,-57 159.913,-38.629 189.39,-27.6527 217.738,-21.128"/>
+<polygon fill="black" stroke="black" points="218.656,-24.5109 227.706,-19.0009 217.195,-17.6651 218.656,-24.5109"/>
+<text text-anchor="middle" x="171.5" y="-59.4" font-family="Helvetica,sans-Serif" font-size="9.50">m_UUerrocError</text>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="26pt"
+ viewBox="0.00 0.00 641.00 25.98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.811906 0.811906) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 785.5,-28 785.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="139.5,-24 72.5,-24 72.5,-0 139.5,-0 139.5,-24"/>
+<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="212,-24 158,-24 158,-0 212,-0 212,-24"/>
+<text text-anchor="middle" x="185" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-24 230,-24 230,-0 294,-0 294,-24"/>
+<text text-anchor="middle" x="262" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="366,-24 312,-24 312,-0 366,-0 366,-24"/>
+<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="439.5,-24 384.5,-24 384.5,-0 439.5,-0 439.5,-24"/>
+<text text-anchor="middle" x="412" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="594,-24 458,-24 458,-0 594,-0 594,-24"/>
+<text text-anchor="middle" x="526" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666,-24 612,-24 612,-0 666,-0 666,-24"/>
+<text text-anchor="middle" x="639" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="781.5,-24 684.5,-24 684.5,-0 781.5,-0 781.5,-24"/>
+<text text-anchor="middle" x="733" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+        </div>
+      </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-4">&copy; 2016 </div>
+	<div class="col-md-4"><span class="text-center"> MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program was developed by Michael Siehl</span></div>
+        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="MPMD-style Fortran (2008) coarray example program to illustrate a simple PGAS load balancing technique">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>OOOGglob_subResetProcedures &ndash; MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+            <li><a href="../program/main.html">Program</a></li>
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>OOOGglob_subResetProcedures
+    <small>Subroutine</small>
+    
+    </h1>
+	 
+<div class="row">
+<div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+    <li><i class="fa fa-code"></i><a href="../src/OOOGglob_Globals.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li><a href='../sourcefile/ooogglob_globals.f90.html'>OOOGglob_Globals.f90</a></li>
+  
+     <li><a href='../module/ooogglob_globals.html'>OOOGglob_Globals</a></li>
+  
+     <li class="active">OOOGglob_subResetProcedures</li>
+  </ol>
+</div>
+</div>
+</div>
+    
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-3">
+    
+<div id="sidebar">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+    <div class="list-group">
+      <a class="list-group-item" href="../proc/ooogglob_subresetprocedures.html#src">OOOGglob_subResetProcedures</a>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprocs">All Procedures</a></h3></div>
+    <div id="allprocs" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../proc/entry_main_sub.html">Entry_Main_Sub</a>
+          
+          <a class="list-group-item" href="../proc/iiimma_errorhandler.html">IIimma_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiimma_sync_checkactivityflag.html">IIimma_SYNC_CheckActivityFlag</a>
+          
+          <a class="list-group-item" href="../proc/iiimmc_errorhandler.html">IIimmc_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiimmc_imagenumberbounderror_ca.html">IIimmc_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iiimsc_errorhandler.html">IIimsc_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiimsc_imagenumberbounderror_ca.html">IIimsc_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iiinma_activateteammanagerimage.html">IIinma_ActivateTeamManagerImage</a>
+          
+          <a class="list-group-item" href="../proc/iiinma_errorhandler.html">IIinma_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html">IIinma_LoadTeamManagers</a>
+          
+          <a class="list-group-item" href="../proc/iiinmc_errorhandler.html">IIinmc_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiinmc_imagenumberbounderror_ca.html">IIinmc_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iistpa_errorhandler.html">IIstpa_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iitema_activateteammemberimage.html">IItema_ActivateTeamMemberImage</a>
+          
+          <a class="list-group-item" href="../proc/iitema_errorhandler.html">IItema_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iitema_loadteammembers.html">IItema_LoadTeamMembers</a>
+          
+          <a class="list-group-item" href="../proc/iitemc_errorhandler.html">IItemc_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iitemc_imagenumberbounderror_ca.html">IItemc_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iitmec_errorhandler.html">IItmec_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iitmec_imagenumberbounderror_ca.html">IItmec_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iitmem_errorhandler.html">IItmem_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/oooeerroc_addobject.html">OOOEerroc_AddObject</a>
+          
+          <a class="list-group-item" href="../proc/ooogglob_subresetprocedures.html">OOOGglob_subResetProcedures</a>
+          
+          <a class="list-group-item" href="../proc/ooogglob_subsetprocedures.html">OOOGglob_subSetProcedures</a>
+          
+          <a class="list-group-item" href="../proc/ooopimma_start.html">OOOPimma_Start</a>
+          
+          <a class="list-group-item" href="../proc/ooopimma_structureconstructor.html">OOOPimma_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmc_structureconstructor.html">OOOPimmc_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmccopyimgtoimg_chrteammembersfilename_ca.html">OOOPimmcCopyImgToImg_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmccopyimgtoimg_intimageactivityflag_ca.html">OOOPimmcCopyImgToImg_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcdc_copycoarrayobjimgtoimg_ca.html">OOOPimmcDC_CopyCoarrayObjImgToImg_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcg_chrteammembersfilename_ca.html">OOOPimmcG_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcg_intimageactivityflag_ca.html">OOOPimmcG_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcs_chrteammembersfilename_ca.html">OOOPimmcS_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcs_intimageactivityflag_ca.html">OOOPimmcS_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimsc_structureconstructor.html">OOOPimsc_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopimsc_structureconstructor_ca.html">OOOPimsc_StructureConstructor_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimsccopyimgtoimg_intimageactivityflag_ca.html">OOOPimscCopyImgToImg_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimscdc_copycoarrayobjimgtoimg_ca.html">OOOPimscDC_CopyCoarrayObjImgToImg_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimscg_intimageactivityflag_ca.html">OOOPimscG_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimscs_intimageactivityflag_ca.html">OOOPimscS_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinma_start.html">OOOPinma_Start</a>
+          
+          <a class="list-group-item" href="../proc/ooopinma_structureconstructor.html">OOOPinma_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmag_intnumberofteammanagers.html">OOOPinmaG_intNumberOfTeamManagers</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmas_intnumberofteammanagers.html">OOOPinmaS_intNumberOfTeamManagers</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmc_structureconstructor.html">OOOPinmc_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmccopyaimgtoimg_chrteammembersfiles99_ca.html">OOOPinmcCopyAImgToImg_chrTeamMembersFiles99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmccopyaimgtoimg_intteammanagerimages99_ca.html">OOOPinmcCopyAImgToImg_intTeamManagerImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmccopyimgtoimg_intnumberofteammanagers_ca.html">OOOPinmcCopyImgToImg_intNumberOfTeamManagers_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcdc_copycoarrayobjimgtoimg_ca.html">OOOPinmcDC_CopyCoarrayObjImgToImg_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcg_intnumberofteammanagers_ca.html">OOOPinmcG_intNumberOfTeamManagers_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcga_chrteammembersfiles99_ca.html">OOOPinmcGA_chrTeamMembersFiles99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcga_intteammanagerimages99_ca.html">OOOPinmcGA_intTeamManagerImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcs_intnumberofteammanagers_ca.html">OOOPinmcS_intNumberOfTeamManagers_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcsa_chrteammembersfiles99_ca.html">OOOPinmcSA_chrTeamMembersFiles99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcsa_intteammanagerimages99_ca.html">OOOPinmcSA_intTeamManagerImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopstpa_loadpath.html">OOOPstpa_LoadPath</a>
+          
+          <a class="list-group-item" href="../proc/ooopstpag_chrpath.html">OOOPstpaG_chrPath</a>
+          
+          <a class="list-group-item" href="../proc/ooopstpas_chrpath.html">OOOPstpaS_chrPath</a>
+          
+          <a class="list-group-item" href="../proc/oooptema_start.html">OOOPtema_Start</a>
+          
+          <a class="list-group-item" href="../proc/oooptema_structureconstructor.html">OOOPtema_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/oooptemag_chrteammembersfilename.html">OOOPtemaG_chrTeamMembersFileName</a>
+          
+          <a class="list-group-item" href="../proc/oooptemag_intnumberofteammembers.html">OOOPtemaG_intNumberOfTeamMembers</a>
+          
+          <a class="list-group-item" href="../proc/oooptemas_chrteammembersfilename.html">OOOPtemaS_chrTeamMembersFileName</a>
+          
+          <a class="list-group-item" href="../proc/oooptemas_intnumberofteammembers.html">OOOPtemaS_intNumberOfTeamMembers</a>
+          
+          <a class="list-group-item" href="../proc/oooptemc_structureconstructor.html">OOOPtemc_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/oooptemccopyaimgtoimg_intteammemberimages99_ca.html">OOOPtemcCopyAImgToImg_intTeamMemberImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemccopyimgtoimg_chrteammembersfilename_ca.html">OOOPtemcCopyImgToImg_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemccopyimgtoimg_intnumberofteammembers_ca.html">OOOPtemcCopyImgToImg_intNumberOfTeamMembers_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcdc_copycoarrayobjimgtoimg_ca.html">OOOPtemcDC_CopyCoarrayObjImgToImg_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcg_chrteammembersfilename_ca.html">OOOPtemcG_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcg_intnumberofteammembers_ca.html">OOOPtemcG_intNumberOfTeamMembers_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcga_intteammemberimages99_ca.html">OOOPtemcGA_intTeamMemberImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcs_chrteammembersfilename_ca.html">OOOPtemcS_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcs_intnumberofteammembers_ca.html">OOOPtemcS_intNumberOfTeamMembers_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcsa_intteammemberimages99_ca.html">OOOPtemcSA_intTeamMemberImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptmec_structureconstructor.html">OOOPtmec_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/oooptmem_start.html">OOOPtmem_Start</a>
+          
+          <a class="list-group-item" href="../proc/oooptmem_structureconstructor.html">OOOPtmem_StructureConstructor</a>
+          
+        </div>
+    </div>
+  </div>
+  
+</div>
+
+    </div>
+    
+    <div class="col-lg-9" id='text'>
+    <h2>
+public subroutine OOOGglob_subResetProcedures()
+    
+    
+    
+</h2>
+    
+  
+
+
+
+    <h3>Arguments</h3>
+    
+      <em>None</em>
+    
+    
+    
+    <h3>Description</h3>
+    <p>Error-Handling and Tracing</p>
+    
+    
+     
+     <h3>Called By</h3>
+     
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: proc~~ooogglob_subresetprocedures~~CalledByGraph Pages: 1 -->
+<svg id="procooogglob_subresetproceduresCalledByGraph" width="641pt" height="940pt"
+ viewBox="0.00 0.00 641.00 940.08" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph" class="graph" transform="scale(0.39301 0.39301) rotate(0) translate(4 2388)">
+<title>proc~~ooogglob_subresetprocedures~~CalledByGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-2388 1627,-2388 1627,4 -4,4"/>
+<!-- proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node1" class="node"><title>proc~ooogglob_subresetprocedures</title>
+<polygon fill="none" stroke="black" points="1623,-1230 1451,-1230 1451,-1206 1623,-1206 1623,-1230"/>
+<text text-anchor="middle" x="1537" y="-1215.6" font-family="Helvetica,sans-Serif" font-size="10.50">OOOGglob_subResetProcedures</text>
+</g>
+<!-- proc~ooopinmcs_intnumberofteammanagers_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node2" class="node"><title>proc~ooopinmcs_intnumberofteammanagers_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node2"><a xlink:href="../proc/ooopinmcs_intnumberofteammanagers_ca.html" xlink:title="OOOPinmcS_intNumberOfTeamManagers_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1381.5,-2384 1145.5,-2384 1145.5,-2360 1381.5,-2360 1381.5,-2384"/>
+<text text-anchor="middle" x="1263.5" y="-2369.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinmcS_intNumberOfTeamManagers_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopinmcs_intnumberofteammanagers_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge40" class="edge"><title>proc~ooopinmcs_intnumberofteammanagers_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1381.83,-2371.63C1394.26,-2367.18 1405.73,-2360.57 1415,-2351 1495.38,-2267.98 1529.83,-1392.61 1535.23,-1240.48"/>
+<polygon fill="black" stroke="black" points="1538.74,-1240.2 1535.6,-1230.09 1531.75,-1239.96 1538.74,-1240.2"/>
+</g>
+<!-- proc~oooptemccopyimgtoimg_chrteammembersfilename_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node3" class="node"><title>proc~oooptemccopyimgtoimg_chrteammembersfilename_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node3"><a xlink:href="../proc/oooptemccopyimgtoimg_chrteammembersfilename_ca.html" xlink:title="OOOPtemcCopyImgToImg_chrTeamMembersFileName_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1414,-2220 1113,-2220 1113,-2196 1414,-2196 1414,-2220"/>
+<text text-anchor="middle" x="1263.5" y="-2205.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemcCopyImgToImg_chrTeamMembersFileName_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemccopyimgtoimg_chrteammembersfilename_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge41" class="edge"><title>proc~oooptemccopyimgtoimg_chrteammembersfilename_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1397.46,-2195.84C1403.86,-2192.04 1409.78,-2187.47 1415,-2182 1482.48,-2111.32 1526.94,-1378.68 1534.76,-1240.44"/>
+<polygon fill="black" stroke="black" points="1538.27,-1240.39 1535.34,-1230.21 1531.28,-1240 1538.27,-1240.39"/>
+</g>
+<!-- proc~ooopimma_start -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node4" class="node"><title>proc~ooopimma_start</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node4"><a xlink:href="../proc/ooopimma_start.html" xlink:title="OOOPimma_Start">
+<polygon fill="#d9534f" stroke="#d9534f" points="316,-1884 217,-1884 217,-1860 316,-1860 316,-1884"/>
+<text text-anchor="middle" x="266.5" y="-1869.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimma_Start</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimma_start&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge42" class="edge"><title>proc~ooopimma_start&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M272.43,-1884.38C283.453,-1910.87 312.28,-1973.98 352,-2015 464.184,-2130.84 519.74,-2168 681,-2168 681,-2168 681,-2168 957.5,-2168 1059.43,-2168 1340.82,-2204.91 1415,-2135 1482.49,-2071.39 1526.71,-1375.83 1534.7,-1240.68"/>
+<polygon fill="black" stroke="black" points="1538.21,-1240.51 1535.3,-1230.32 1531.22,-1240.1 1538.21,-1240.51"/>
+</g>
+<!-- proc~iiimma_sync_checkactivityflag -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node14" class="node"><title>proc~iiimma_sync_checkactivityflag</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node14"><a xlink:href="../proc/iiimma_sync_checkactivityflag.html" xlink:title="IIimma_SYNC_CheckActivityFlag">
+<polygon fill="#d9534f" stroke="#d9534f" points="524,-2006 355,-2006 355,-1982 524,-1982 524,-2006"/>
+<text text-anchor="middle" x="439.5" y="-1991.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IIimma_SYNC_CheckActivityFlag</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimma_start&#45;&gt;proc~iiimma_sync_checkactivityflag -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge7" class="edge"><title>proc~ooopimma_start&#45;&gt;proc~iiimma_sync_checkactivityflag</title>
+<path fill="none" stroke="black" d="M284.521,-1884.14C314.738,-1905.7 377.885,-1950.75 413.205,-1975.95"/>
+<polygon fill="black" stroke="black" points="411.374,-1978.95 421.548,-1981.91 415.44,-1973.25 411.374,-1978.95"/>
+</g>
+<!-- proc~ooopinma_start -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node18" class="node"><title>proc~ooopinma_start</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node18"><a xlink:href="../proc/ooopinma_start.html" xlink:title="OOOPinma_Start">
+<polygon fill="#d9534f" stroke="#d9534f" points="730,-1560 634,-1560 634,-1536 730,-1536 730,-1560"/>
+<text text-anchor="middle" x="682" y="-1545.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinma_Start</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimma_start&#45;&gt;proc~ooopinma_start -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge9" class="edge"><title>proc~ooopimma_start&#45;&gt;proc~ooopinma_start</title>
+<path fill="none" stroke="black" d="M283.205,-1859.69C346.273,-1810.28 581.374,-1626.06 657.237,-1566.62"/>
+<polygon fill="black" stroke="black" points="659.567,-1569.24 665.28,-1560.32 655.249,-1563.73 659.567,-1569.24"/>
+</g>
+<!-- proc~ooopimma_structureconstructor -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node28" class="node"><title>proc~ooopimma_structureconstructor</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node28"><a xlink:href="../proc/ooopimma_structureconstructor.html" xlink:title="OOOPimma_StructureConstructor">
+<polygon fill="#d9534f" stroke="#d9534f" points="527,-1619 352,-1619 352,-1595 527,-1595 527,-1619"/>
+<text text-anchor="middle" x="439.5" y="-1604.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimma_StructureConstructor</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimma_start&#45;&gt;proc~ooopimma_structureconstructor -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge13" class="edge"><title>proc~ooopimma_start&#45;&gt;proc~ooopimma_structureconstructor</title>
+<path fill="none" stroke="black" d="M275.076,-1859.64C289.728,-1835.8 323.06,-1781.84 352,-1737 377.14,-1698.05 407.289,-1653.13 424.539,-1627.6"/>
+<polygon fill="black" stroke="black" points="427.574,-1629.36 430.277,-1619.11 421.775,-1625.44 427.574,-1629.36"/>
+</g>
+<!-- proc~oooptemag_chrteammembersfilename -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node5" class="node"><title>proc~oooptemag_chrteammembersfilename</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node5"><a xlink:href="../proc/oooptemag_chrteammembersfilename.html" xlink:title="OOOPtemaG_chrTeamMembersFileName">
+<polygon fill="#d9534f" stroke="#d9534f" points="1371.5,-1272 1155.5,-1272 1155.5,-1248 1371.5,-1248 1371.5,-1272"/>
+<text text-anchor="middle" x="1263.5" y="-1257.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemaG_chrTeamMembersFileName</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemag_chrteammembersfilename&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge43" class="edge"><title>proc~oooptemag_chrteammembersfilename&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1354.1,-1248C1374.16,-1245.17 1395.32,-1242.08 1415,-1239 1429.29,-1236.76 1444.51,-1234.24 1459.15,-1231.73"/>
+<polygon fill="black" stroke="black" points="1459.92,-1235.15 1469.18,-1230.01 1458.73,-1228.25 1459.92,-1235.15"/>
+</g>
+<!-- proc~ooopinmccopyaimgtoimg_chrteammembersfiles99_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node6" class="node"><title>proc~ooopinmccopyaimgtoimg_chrteammembersfiles99_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node6"><a xlink:href="../proc/ooopinmccopyaimgtoimg_chrteammembersfiles99_ca.html" xlink:title="OOOPinmcCopyAImgToImg_chrTeamMembersFiles99_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1411,-1108 1116,-1108 1116,-1084 1411,-1084 1411,-1108"/>
+<text text-anchor="middle" x="1263.5" y="-1093.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinmcCopyAImgToImg_chrTeamMembersFiles99_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopinmccopyaimgtoimg_chrteammembersfiles99_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge44" class="edge"><title>proc~ooopinmccopyaimgtoimg_chrteammembersfiles99_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1373.33,-1108.09C1387.68,-1111.61 1401.93,-1116.15 1415,-1122 1456.38,-1140.52 1495.88,-1176.45 1517.93,-1198.72"/>
+<polygon fill="black" stroke="black" points="1515.5,-1201.24 1524.98,-1205.97 1520.52,-1196.36 1515.5,-1201.24"/>
+</g>
+<!-- proc~ooopinmag_intnumberofteammanagers -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node7" class="node"><title>proc~ooopinmag_intnumberofteammanagers</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node7"><a xlink:href="../proc/ooopinmag_intnumberofteammanagers.html" xlink:title="OOOPinmaG_intNumberOfTeamManagers">
+<polygon fill="#d9534f" stroke="#d9534f" points="1372.5,-1066 1154.5,-1066 1154.5,-1042 1372.5,-1042 1372.5,-1066"/>
+<text text-anchor="middle" x="1263.5" y="-1051.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinmaG_intNumberOfTeamManagers</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopinmag_intnumberofteammanagers&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge45" class="edge"><title>proc~ooopinmag_intnumberofteammanagers&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1372.85,-1059.37C1387.58,-1062.86 1402.06,-1067.87 1415,-1075 1467.14,-1103.73 1506.59,-1164.49 1524.83,-1196.79"/>
+<polygon fill="black" stroke="black" points="1521.91,-1198.75 1529.8,-1205.83 1528.05,-1195.38 1521.91,-1198.75"/>
+</g>
+<!-- proc~ooopinmcsa_intteammanagerimages99_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node8" class="node"><title>proc~ooopinmcsa_intteammanagerimages99_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node8"><a xlink:href="../proc/ooopinmcsa_intteammanagerimages99_ca.html" xlink:title="OOOPinmcSA_intTeamManagerImages99_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1381,-1024 1146,-1024 1146,-1000 1381,-1000 1381,-1024"/>
+<text text-anchor="middle" x="1263.5" y="-1009.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinmcSA_intTeamManagerImages99_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopinmcsa_intteammanagerimages99_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge46" class="edge"><title>proc~ooopinmcsa_intteammanagerimages99_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1381.09,-1017.97C1393.08,-1021.56 1404.64,-1026.43 1415,-1033 1477.18,-1072.43 1514.12,-1156.67 1528.73,-1196.4"/>
+<polygon fill="black" stroke="black" points="1525.47,-1197.67 1532.11,-1205.93 1532.06,-1195.33 1525.47,-1197.67"/>
+</g>
+<!-- proc~oooptema_structureconstructor -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node9" class="node"><title>proc~oooptema_structureconstructor</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node9"><a xlink:href="../proc/oooptema_structureconstructor.html" xlink:title="OOOPtema_StructureConstructor">
+<polygon fill="#d9534f" stroke="#d9534f" points="1043,-1908 870,-1908 870,-1884 1043,-1884 1043,-1908"/>
+<text text-anchor="middle" x="956.5" y="-1893.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtema_StructureConstructor</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptema_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge47" class="edge"><title>proc~oooptema_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1043.31,-1901.97C1160.45,-1908.18 1361.94,-1911.27 1415,-1864 1510.88,-1778.59 1531.69,-1344.06 1535.33,-1240.28"/>
+<polygon fill="black" stroke="black" points="1538.83,-1240.15 1535.67,-1230.04 1531.84,-1239.92 1538.83,-1240.15"/>
+</g>
+<!-- proc~oooptemccopyimgtoimg_intnumberofteammembers_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node10" class="node"><title>proc~oooptemccopyimgtoimg_intnumberofteammembers_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node10"><a xlink:href="../proc/oooptemccopyimgtoimg_intnumberofteammembers_ca.html" xlink:title="OOOPtemcCopyImgToImg_intNumberOfTeamMembers_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1414,-2342 1113,-2342 1113,-2318 1414,-2318 1414,-2342"/>
+<text text-anchor="middle" x="1263.5" y="-2327.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemcCopyImgToImg_intNumberOfTeamMembers_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemccopyimgtoimg_intnumberofteammembers_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge48" class="edge"><title>proc~oooptemccopyimgtoimg_intnumberofteammembers_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1404.61,-2317.9C1408.3,-2315.27 1411.78,-2312.31 1415,-2309 1492.44,-2229.35 1529.19,-1389.67 1535.13,-1240.57"/>
+<polygon fill="black" stroke="black" points="1538.64,-1240.48 1535.53,-1230.35 1531.64,-1240.21 1538.64,-1240.48"/>
+</g>
+<!-- proc~ooopimmcs_intimageactivityflag_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node11" class="node"><title>proc~ooopimmcs_intimageactivityflag_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node11"><a xlink:href="../proc/ooopimmcs_intimageactivityflag_ca.html" xlink:title="OOOPimmcS_intImageActivityFlag_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1362.5,-982 1164.5,-982 1164.5,-958 1362.5,-958 1362.5,-982"/>
+<text text-anchor="middle" x="1263.5" y="-967.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmcS_intImageActivityFlag_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimmcs_intimageactivityflag_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge49" class="edge"><title>proc~ooopimmcs_intimageactivityflag_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1362.64,-970.242C1381.23,-973.879 1399.65,-980.272 1415,-991 1487.36,-1041.56 1520.11,-1149.36 1531.28,-1195.88"/>
+<polygon fill="black" stroke="black" points="1527.92,-1196.86 1533.57,-1205.82 1534.74,-1195.29 1527.92,-1196.86"/>
+</g>
+<!-- proc~ooopimsc_structureconstructor -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node12" class="node"><title>proc~ooopimsc_structureconstructor</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node12"><a xlink:href="../proc/ooopimsc_structureconstructor.html" xlink:title="OOOPimsc_StructureConstructor">
+<polygon fill="#d9534f" stroke="#d9534f" points="1349,-940 1178,-940 1178,-916 1349,-916 1349,-940"/>
+<text text-anchor="middle" x="1263.5" y="-925.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimsc_StructureConstructor</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimsc_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge50" class="edge"><title>proc~ooopimsc_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1349.09,-925.168C1372.3,-928.085 1396.21,-934.915 1415,-949 1498,-1011.23 1525.41,-1143.43 1533.24,-1195.89"/>
+<polygon fill="black" stroke="black" points="1529.77,-1196.39 1534.62,-1205.81 1536.71,-1195.43 1529.77,-1196.39"/>
+</g>
+<!-- proc~oooptemcga_intteammemberimages99_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node13" class="node"><title>proc~oooptemcga_intteammemberimages99_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node13"><a xlink:href="../proc/oooptemcga_intteammemberimages99_ca.html" xlink:title="OOOPtemcGA_intTeamMemberImages99_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1381,-898 1146,-898 1146,-874 1381,-874 1381,-898"/>
+<text text-anchor="middle" x="1263.5" y="-883.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemcGA_intTeamMemberImages99_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemcga_intteammemberimages99_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge51" class="edge"><title>proc~oooptemcga_intteammemberimages99_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1381.06,-889.38C1393.33,-893.379 1404.96,-899.063 1415,-907 1508.72,-981.128 1529.97,-1137.68 1534.69,-1195.73"/>
+<polygon fill="black" stroke="black" points="1531.21,-1196.25 1535.43,-1205.97 1538.2,-1195.74 1531.21,-1196.25"/>
+</g>
+<!-- proc~iiimma_sync_checkactivityflag&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge52" class="edge"><title>proc~iiimma_sync_checkactivityflag&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M498.905,-2006C519.141,-2009.88 542.012,-2013.96 563,-2017 656.894,-2030.58 1343.37,-2135.21 1415,-2073 1480.17,-2016.4 1526.01,-1369.69 1534.56,-1240.41"/>
+<polygon fill="black" stroke="black" points="1538.07,-1240.36 1535.23,-1230.15 1531.08,-1239.9 1538.07,-1240.36"/>
+</g>
+<!-- proc~oooptmem_start -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node16" class="node"><title>proc~oooptmem_start</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node16"><a xlink:href="../proc/oooptmem_start.html" xlink:title="OOOPtmem_Start">
+<polygon fill="#d9534f" stroke="#d9534f" points="1006.5,-2026 906.5,-2026 906.5,-2002 1006.5,-2002 1006.5,-2026"/>
+<text text-anchor="middle" x="956.5" y="-2011.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtmem_Start</text>
+</a>
+</g>
+</g>
+<!-- proc~iiimma_sync_checkactivityflag&#45;&gt;proc~oooptmem_start -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge8" class="edge"><title>proc~iiimma_sync_checkactivityflag&#45;&gt;proc~oooptmem_start</title>
+<path fill="none" stroke="black" d="M524.103,-1997.25C628.467,-2001.3 804.37,-2008.13 895.987,-2011.69"/>
+<polygon fill="black" stroke="black" points="896.067,-2015.19 906.196,-2012.09 896.339,-2008.2 896.067,-2015.19"/>
+</g>
+<!-- proc~oooptema_start -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node19" class="node"><title>proc~oooptema_start</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node19"><a xlink:href="../proc/oooptema_start.html" xlink:title="OOOPtema_Start">
+<polygon fill="#d9534f" stroke="#d9534f" points="730.5,-1866 633.5,-1866 633.5,-1842 730.5,-1842 730.5,-1866"/>
+<text text-anchor="middle" x="682" y="-1851.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtema_Start</text>
+</a>
+</g>
+</g>
+<!-- proc~iiimma_sync_checkactivityflag&#45;&gt;proc~oooptema_start -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge10" class="edge"><title>proc~iiimma_sync_checkactivityflag&#45;&gt;proc~oooptema_start</title>
+<path fill="none" stroke="black" d="M461.422,-1981.82C504.26,-1956.88 602.065,-1899.95 651.392,-1871.24"/>
+<polygon fill="black" stroke="black" points="653.416,-1874.11 660.298,-1866.05 649.894,-1868.06 653.416,-1874.11"/>
+</g>
+<!-- proc~ooopimmcg_chrteammembersfilename_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node35" class="node"><title>proc~ooopimmcg_chrteammembersfilename_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node35"><a xlink:href="../proc/ooopimmcg_chrteammembersfilename_ca.html" xlink:title="OOOPimmcG_chrTeamMembersFileName_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="801,-1986 563,-1986 563,-1962 801,-1962 801,-1986"/>
+<text text-anchor="middle" x="682" y="-1971.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmcG_chrTeamMembersFileName_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~iiimma_sync_checkactivityflag&#45;&gt;proc~ooopimmcg_chrteammembersfilename_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge21" class="edge"><title>proc~iiimma_sync_checkactivityflag&#45;&gt;proc~ooopimmcg_chrteammembersfilename_ca</title>
+<path fill="none" stroke="black" d="M524.278,-1987.03C533.534,-1986.26 543.109,-1985.47 552.753,-1984.67"/>
+<polygon fill="black" stroke="black" points="553.141,-1988.14 562.817,-1983.83 552.561,-1981.17 553.141,-1988.14"/>
+</g>
+<!-- proc~ooopimscg_intimageactivityflag_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node40" class="node"><title>proc~ooopimscg_intimageactivityflag_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node40"><a xlink:href="../proc/ooopimscg_intimageactivityflag_ca.html" xlink:title="OOOPimscG_intImageActivityFlag_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="780,-2140 584,-2140 584,-2116 780,-2116 780,-2140"/>
+<text text-anchor="middle" x="682" y="-2125.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimscG_intImageActivityFlag_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~iiimma_sync_checkactivityflag&#45;&gt;proc~ooopimscg_intimageactivityflag_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge25" class="edge"><title>proc~iiimma_sync_checkactivityflag&#45;&gt;proc~ooopimscg_intimageactivityflag_ca</title>
+<path fill="none" stroke="black" d="M450.539,-2006.25C469.823,-2028.93 514.459,-2077.36 563,-2102 571.698,-2106.42 581.129,-2110.08 590.741,-2113.13"/>
+<polygon fill="black" stroke="black" points="589.81,-2116.51 600.392,-2115.98 591.79,-2109.79 589.81,-2116.51"/>
+</g>
+<!-- proc~ooopinmc_structureconstructor -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node15" class="node"><title>proc~ooopinmc_structureconstructor</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node15"><a xlink:href="../proc/ooopinmc_structureconstructor.html" xlink:title="OOOPinmc_StructureConstructor">
+<polygon fill="#d9534f" stroke="#d9534f" points="1349.5,-856 1177.5,-856 1177.5,-832 1349.5,-832 1349.5,-856"/>
+<text text-anchor="middle" x="1263.5" y="-841.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinmc_StructureConstructor</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopinmc_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge53" class="edge"><title>proc~ooopinmc_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1349.56,-840.031C1372.91,-842.892 1396.78,-849.978 1415,-865 1519.67,-951.322 1534.06,-1132.65 1535.84,-1195.77"/>
+<polygon fill="black" stroke="black" points="1532.34,-1195.89 1536.04,-1205.82 1539.34,-1195.75 1532.34,-1195.89"/>
+</g>
+<!-- proc~oooptmem_start&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge54" class="edge"><title>proc~oooptmem_start&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1006.72,-2018.61C1112.42,-2027.37 1356.32,-2041.13 1415,-1988 1529.19,-1884.6 1535.97,-1356.11 1536.08,-1240.41"/>
+<polygon fill="black" stroke="black" points="1539.58,-1240.25 1536.07,-1230.25 1532.58,-1240.25 1539.58,-1240.25"/>
+</g>
+<!-- proc~oooptmem_structureconstructor -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node21" class="node"><title>proc~oooptmem_structureconstructor</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node21"><a xlink:href="../proc/oooptmem_structureconstructor.html" xlink:title="OOOPtmem_StructureConstructor">
+<polygon fill="#d9534f" stroke="#d9534f" points="1351.5,-2064 1175.5,-2064 1175.5,-2040 1351.5,-2040 1351.5,-2064"/>
+<text text-anchor="middle" x="1263.5" y="-2049.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtmem_StructureConstructor</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptmem_start&#45;&gt;proc~oooptmem_structureconstructor -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge12" class="edge"><title>proc~oooptmem_start&#45;&gt;proc~oooptmem_structureconstructor</title>
+<path fill="none" stroke="black" d="M1006.5,-2020.11C1049.22,-2025.43 1112.44,-2033.3 1165.37,-2039.9"/>
+<polygon fill="black" stroke="black" points="1165.11,-2043.39 1175.46,-2041.16 1165.97,-2036.45 1165.11,-2043.39"/>
+</g>
+<!-- proc~ooopimscs_intimageactivityflag_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node33" class="node"><title>proc~ooopimscs_intimageactivityflag_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node33"><a xlink:href="../proc/ooopimscs_intimageactivityflag_ca.html" xlink:title="OOOPimscS_intImageActivityFlag_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1360.5,-1794 1166.5,-1794 1166.5,-1770 1360.5,-1770 1360.5,-1794"/>
+<text text-anchor="middle" x="1263.5" y="-1779.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimscS_intImageActivityFlag_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptmem_start&#45;&gt;proc~ooopimscs_intimageactivityflag_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge17" class="edge"><title>proc~oooptmem_start&#45;&gt;proc~ooopimscs_intimageactivityflag_ca</title>
+<path fill="none" stroke="black" d="M973.469,-2001.85C1023.7,-1963.64 1178.72,-1845.73 1238.57,-1800.2"/>
+<polygon fill="black" stroke="black" points="1240.85,-1802.87 1246.69,-1794.03 1236.61,-1797.29 1240.85,-1802.87"/>
+</g>
+<!-- proc~oooptemc_structureconstructor -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node17" class="node"><title>proc~oooptemc_structureconstructor</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node17"><a xlink:href="../proc/oooptemc_structureconstructor.html" xlink:title="OOOPtemc_StructureConstructor">
+<polygon fill="#d9534f" stroke="#d9534f" points="1349.5,-814 1177.5,-814 1177.5,-790 1349.5,-790 1349.5,-814"/>
+<text text-anchor="middle" x="1263.5" y="-799.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemc_StructureConstructor</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemc_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge55" class="edge"><title>proc~oooptemc_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1349.88,-797.652C1373.23,-800.504 1397.03,-807.679 1415,-823 1530.56,-921.544 1537.73,-1127.32 1536.76,-1195.51"/>
+<polygon fill="black" stroke="black" points="1533.25,-1195.84 1536.53,-1205.91 1540.25,-1195.99 1533.25,-1195.84"/>
+</g>
+<!-- proc~ooopinma_start&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge56" class="edge"><title>proc~ooopinma_start&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M696.862,-1535.78C722.707,-1513.58 780.743,-1466.37 837,-1439 951.684,-1383.2 987.407,-1384.26 1112,-1357 1244.87,-1327.93 1290.03,-1367.7 1415,-1314 1456.65,-1296.1 1496.06,-1259.97 1518.03,-1237.5"/>
+<polygon fill="black" stroke="black" points="1520.65,-1239.82 1525.04,-1230.17 1515.6,-1234.98 1520.65,-1239.82"/>
+</g>
+<!-- proc~iiinma_loadteammanagers -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node29" class="node"><title>proc~iiinma_loadteammanagers</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node29"><a xlink:href="../proc/iiinma_loadteammanagers.html" xlink:title="IIinma_LoadTeamManagers">
+<polygon fill="#d9534f" stroke="#d9534f" points="1030.5,-1590 882.5,-1590 882.5,-1566 1030.5,-1566 1030.5,-1590"/>
+<text text-anchor="middle" x="956.5" y="-1575.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IIinma_LoadTeamManagers</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopinma_start&#45;&gt;proc~iiinma_loadteammanagers -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge14" class="edge"><title>proc~ooopinma_start&#45;&gt;proc~iiinma_loadteammanagers</title>
+<path fill="none" stroke="black" d="M730.155,-1553.19C769.182,-1557.49 825.576,-1563.7 872.185,-1568.83"/>
+<polygon fill="black" stroke="black" points="871.953,-1572.32 882.276,-1569.94 872.719,-1565.37 871.953,-1572.32"/>
+</g>
+<!-- proc~ooopinma_start&#45;&gt;proc~ooopimscs_intimageactivityflag_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge20" class="edge"><title>proc~ooopinma_start&#45;&gt;proc~ooopimscs_intimageactivityflag_ca</title>
+<path fill="none" stroke="black" d="M690.13,-1560.24C709.295,-1591.9 765.355,-1676.69 837,-1715 890.744,-1743.74 1048.54,-1763.04 1156.1,-1773.27"/>
+<polygon fill="black" stroke="black" points="1156.06,-1776.79 1166.35,-1774.24 1156.72,-1769.82 1156.06,-1776.79"/>
+</g>
+<!-- proc~ooopinma_structureconstructor -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node41" class="node"><title>proc~ooopinma_structureconstructor</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node41"><a xlink:href="../proc/ooopinma_structureconstructor.html" xlink:title="OOOPinma_StructureConstructor">
+<polygon fill="#d9534f" stroke="#d9534f" points="1042.5,-1531 870.5,-1531 870.5,-1507 1042.5,-1507 1042.5,-1531"/>
+<text text-anchor="middle" x="956.5" y="-1516.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinma_StructureConstructor</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopinma_start&#45;&gt;proc~ooopinma_structureconstructor -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge26" class="edge"><title>proc~ooopinma_start&#45;&gt;proc~ooopinma_structureconstructor</title>
+<path fill="none" stroke="black" d="M730.155,-1542.98C765.909,-1539.18 816.24,-1533.82 860.269,-1529.13"/>
+<polygon fill="black" stroke="black" points="860.86,-1532.59 870.433,-1528.05 860.119,-1525.63 860.86,-1532.59"/>
+</g>
+<!-- proc~iiinma_activateteammanagerimage -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node55" class="node"><title>proc~iiinma_activateteammanagerimage</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node55"><a xlink:href="../proc/iiinma_activateteammanagerimage.html" xlink:title="IIinma_ActivateTeamManagerImage">
+<polygon fill="#d9534f" stroke="#d9534f" points="1049.5,-1472 863.5,-1472 863.5,-1448 1049.5,-1448 1049.5,-1472"/>
+<text text-anchor="middle" x="956.5" y="-1457.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IIinma_ActivateTeamManagerImage</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopinma_start&#45;&gt;proc~iiinma_activateteammanagerimage -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge36" class="edge"><title>proc~ooopinma_start&#45;&gt;proc~iiinma_activateteammanagerimage</title>
+<path fill="none" stroke="black" d="M720.017,-1535.94C751.204,-1525.79 797.006,-1510.91 837,-1498 860.447,-1490.43 886.518,-1482.07 908.224,-1475.12"/>
+<polygon fill="black" stroke="black" points="909.407,-1478.41 917.864,-1472.03 907.273,-1471.75 909.407,-1478.41"/>
+</g>
+<!-- proc~oooptema_start&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge57" class="edge"><title>proc~oooptema_start&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M704.598,-1866C733.647,-1881.39 787.398,-1907.25 837,-1917 963.099,-1941.8 1318.84,-1983.26 1415,-1898 1516.29,-1808.2 1533.03,-1347.89 1535.57,-1240.45"/>
+<polygon fill="black" stroke="black" points="1539.08,-1240.21 1535.8,-1230.14 1532.08,-1240.06 1539.08,-1240.21"/>
+</g>
+<!-- proc~oooptema_start&#45;&gt;proc~oooptema_structureconstructor -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge5" class="edge"><title>proc~oooptema_start&#45;&gt;proc~oooptema_structureconstructor</title>
+<path fill="none" stroke="black" d="M730.778,-1861.36C768.454,-1867.17 822.032,-1875.43 867.423,-1882.42"/>
+<polygon fill="black" stroke="black" points="867.154,-1885.92 877.571,-1883.99 868.221,-1879.01 867.154,-1885.92"/>
+</g>
+<!-- proc~oooptemas_chrteammembersfilename -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node32" class="node"><title>proc~oooptemas_chrteammembersfilename</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node32"><a xlink:href="../proc/oooptemas_chrteammembersfilename.html" xlink:title="OOOPtemaS_chrTeamMembersFileName">
+<polygon fill="#d9534f" stroke="#d9534f" points="1063.5,-1866 849.5,-1866 849.5,-1842 1063.5,-1842 1063.5,-1866"/>
+<text text-anchor="middle" x="956.5" y="-1851.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemaS_chrTeamMembersFileName</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptema_start&#45;&gt;proc~oooptemas_chrteammembersfilename -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge15" class="edge"><title>proc~oooptema_start&#45;&gt;proc~oooptemas_chrteammembersfilename</title>
+<path fill="none" stroke="black" d="M730.778,-1854C760.833,-1854 801.008,-1854 839.073,-1854"/>
+<polygon fill="black" stroke="black" points="839.219,-1857.5 849.219,-1854 839.219,-1850.5 839.219,-1857.5"/>
+</g>
+<!-- proc~oooptema_start&#45;&gt;proc~ooopimscs_intimageactivityflag_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge18" class="edge"><title>proc~oooptema_start&#45;&gt;proc~ooopimscs_intimageactivityflag_ca</title>
+<path fill="none" stroke="black" d="M705.131,-1841.89C734.329,-1826.65 787.787,-1801.22 837,-1791 943.994,-1768.78 1069.38,-1769.23 1156.19,-1773.57"/>
+<polygon fill="black" stroke="black" points="1156.15,-1777.08 1166.32,-1774.11 1156.51,-1770.09 1156.15,-1777.08"/>
+</g>
+<!-- proc~iitema_activateteammemberimage -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node50" class="node"><title>proc~iitema_activateteammemberimage</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node50"><a xlink:href="../proc/iitema_activateteammemberimage.html" xlink:title="IItema_ActivateTeamMemberImage">
+<polygon fill="#d9534f" stroke="#d9534f" points="1048.5,-1824 864.5,-1824 864.5,-1800 1048.5,-1800 1048.5,-1824"/>
+<text text-anchor="middle" x="956.5" y="-1809.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IItema_ActivateTeamMemberImage</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptema_start&#45;&gt;proc~iitema_activateteammemberimage -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge33" class="edge"><title>proc~oooptema_start&#45;&gt;proc~iitema_activateteammemberimage</title>
+<path fill="none" stroke="black" d="M730.778,-1846.64C768.454,-1840.83 822.032,-1832.57 867.423,-1825.58"/>
+<polygon fill="black" stroke="black" points="868.221,-1828.99 877.571,-1824.01 867.154,-1822.08 868.221,-1828.99"/>
+</g>
+<!-- proc~iitema_loadteammembers -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node53" class="node"><title>proc~iitema_loadteammembers</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node53"><a xlink:href="../proc/iitema_loadteammembers.html" xlink:title="IItema_LoadTeamMembers">
+<polygon fill="#d9534f" stroke="#d9534f" points="1029,-1706 884,-1706 884,-1682 1029,-1682 1029,-1706"/>
+<text text-anchor="middle" x="956.5" y="-1691.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IItema_LoadTeamMembers</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptema_start&#45;&gt;proc~iitema_loadteammembers -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge35" class="edge"><title>proc~oooptema_start&#45;&gt;proc~iitema_loadteammembers</title>
+<path fill="none" stroke="black" d="M701.736,-1841.79C730.5,-1823.17 787.42,-1786.8 837,-1758 865.735,-1741.31 899.091,-1723.42 923.078,-1710.81"/>
+<polygon fill="black" stroke="black" points="924.868,-1713.83 932.103,-1706.09 921.62,-1707.63 924.868,-1713.83"/>
+</g>
+<!-- proc~ooopinmccopyaimgtoimg_intteammanagerimages99_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node20" class="node"><title>proc~ooopinmccopyaimgtoimg_intteammanagerimages99_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node20"><a xlink:href="../proc/ooopinmccopyaimgtoimg_intteammanagerimages99_ca.html" xlink:title="OOOPinmcCopyAImgToImg_intTeamManagerImages99_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1414.5,-1230 1112.5,-1230 1112.5,-1206 1414.5,-1206 1414.5,-1230"/>
+<text text-anchor="middle" x="1263.5" y="-1215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinmcCopyAImgToImg_intTeamManagerImages99_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopinmccopyaimgtoimg_intteammanagerimages99_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge58" class="edge"><title>proc~ooopinmccopyaimgtoimg_intteammanagerimages99_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1414.54,-1218C1423.35,-1218 1432.07,-1218 1440.57,-1218"/>
+<polygon fill="black" stroke="black" points="1440.8,-1221.5 1450.8,-1218 1440.8,-1214.5 1440.8,-1221.5"/>
+</g>
+<!-- proc~oooptmem_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge59" class="edge"><title>proc~oooptmem_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1351.62,-2054.84C1375.02,-2051.25 1398.41,-2042.97 1415,-2026 1528.24,-1910.19 1535.73,-1357.94 1536.03,-1240.14"/>
+<polygon fill="black" stroke="black" points="1539.53,-1240.13 1536.04,-1230.12 1532.53,-1240.12 1539.53,-1240.13"/>
+</g>
+<!-- proc~ooopinmcga_chrteammembersfiles99_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node22" class="node"><title>proc~ooopinmcga_chrteammembersfiles99_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node22"><a xlink:href="../proc/ooopinmcga_chrteammembersfiles99_ca.html" xlink:title="OOOPinmcGA_chrTeamMembersFiles99_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1378.5,-772 1148.5,-772 1148.5,-748 1378.5,-748 1378.5,-772"/>
+<text text-anchor="middle" x="1263.5" y="-757.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinmcGA_chrTeamMembersFiles99_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopinmcga_chrteammembersfiles99_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge60" class="edge"><title>proc~ooopinmcga_chrteammembersfiles99_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1378.86,-761.407C1392.11,-765.603 1404.58,-771.871 1415,-781 1479.46,-837.495 1521.81,-1114.07 1533.02,-1195.44"/>
+<polygon fill="black" stroke="black" points="1529.58,-1196.14 1534.4,-1205.58 1536.52,-1195.2 1529.58,-1196.14"/>
+</g>
+<!-- proc~oooptemcs_chrteammembersfilename_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node23" class="node"><title>proc~oooptemcs_chrteammembersfilename_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node23"><a xlink:href="../proc/oooptemcs_chrteammembersfilename_ca.html" xlink:title="OOOPtemcS_chrTeamMembersFileName_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1380.5,-730 1146.5,-730 1146.5,-706 1380.5,-706 1380.5,-730"/>
+<text text-anchor="middle" x="1263.5" y="-715.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemcS_chrTeamMembersFileName_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemcs_chrteammembersfilename_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge61" class="edge"><title>proc~oooptemcs_chrteammembersfilename_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1380.57,-719.677C1393.22,-723.903 1405.08,-730.106 1415,-739 1485.2,-801.95 1524.07,-1110.08 1533.64,-1195.82"/>
+<polygon fill="black" stroke="black" points="1530.17,-1196.22 1534.73,-1205.78 1537.12,-1195.46 1530.17,-1196.22"/>
+</g>
+<!-- proc~ooopimmcg_intimageactivityflag_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node24" class="node"><title>proc~ooopimmcg_intimageactivityflag_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node24"><a xlink:href="../proc/ooopimmcg_intimageactivityflag_ca.html" xlink:title="OOOPimmcG_intImageActivityFlag_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1363,-688 1164,-688 1164,-664 1363,-664 1363,-688"/>
+<text text-anchor="middle" x="1263.5" y="-673.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmcG_intImageActivityFlag_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimmcg_intimageactivityflag_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge62" class="edge"><title>proc~ooopimmcg_intimageactivityflag_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1363.09,-672.853C1382.19,-676.615 1400.69,-683.916 1415,-697 1490.82,-766.32 1525.97,-1105.04 1534.11,-1195.66"/>
+<polygon fill="black" stroke="black" points="1530.63,-1196.02 1534.99,-1205.67 1537.6,-1195.4 1530.63,-1196.02"/>
+</g>
+<!-- proc~ooopinmcg_intnumberofteammanagers_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node25" class="node"><title>proc~ooopinmcg_intnumberofteammanagers_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node25"><a xlink:href="../proc/ooopinmcg_intnumberofteammanagers_ca.html" xlink:title="OOOPinmcG_intNumberOfTeamManagers_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1382.5,-646 1144.5,-646 1144.5,-622 1382.5,-622 1382.5,-646"/>
+<text text-anchor="middle" x="1263.5" y="-631.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinmcG_intNumberOfTeamManagers_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopinmcg_intnumberofteammanagers_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge63" class="edge"><title>proc~ooopinmcg_intnumberofteammanagers_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1382.74,-635.988C1394.64,-640.252 1405.72,-646.379 1415,-655 1496.45,-730.707 1527.71,-1099.97 1534.51,-1195.44"/>
+<polygon fill="black" stroke="black" points="1531.03,-1195.95 1535.22,-1205.68 1538.02,-1195.46 1531.03,-1195.95"/>
+</g>
+<!-- proc~oooptmec_structureconstructor -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node26" class="node"><title>proc~oooptmec_structureconstructor</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node26"><a xlink:href="../proc/oooptmec_structureconstructor.html" xlink:title="OOOPtmec_StructureConstructor">
+<polygon fill="#d9534f" stroke="#d9534f" points="1349.5,-604 1177.5,-604 1177.5,-580 1349.5,-580 1349.5,-604"/>
+<text text-anchor="middle" x="1263.5" y="-589.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtmec_StructureConstructor</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptmec_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge64" class="edge"><title>proc~oooptmec_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1349.7,-586.4C1373.47,-589.116 1397.53,-596.53 1415,-613 1502.24,-695.255 1529.43,-1096.32 1534.88,-1195.69"/>
+<polygon fill="black" stroke="black" points="1531.39,-1196 1535.42,-1205.8 1538.38,-1195.63 1531.39,-1196"/>
+</g>
+<!-- proc~oooptemcg_chrteammembersfilename_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node27" class="node"><title>proc~oooptemcg_chrteammembersfilename_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node27"><a xlink:href="../proc/oooptemcg_chrteammembersfilename_ca.html" xlink:title="OOOPtemcG_chrTeamMembersFileName_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1381,-562 1146,-562 1146,-538 1381,-538 1381,-562"/>
+<text text-anchor="middle" x="1263.5" y="-547.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemcG_chrTeamMembersFileName_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemcg_chrteammembersfilename_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge65" class="edge"><title>proc~oooptemcg_chrteammembersfilename_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1381.11,-551.085C1393.67,-555.412 1405.36,-561.8 1415,-571 1507.91,-659.708 1530.95,-1091.61 1535.19,-1195.49"/>
+<polygon fill="black" stroke="black" points="1531.7,-1195.9 1535.59,-1205.76 1538.69,-1195.63 1531.7,-1195.9"/>
+</g>
+<!-- proc~ooopimma_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge66" class="edge"><title>proc~ooopimma_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M455.196,-1594.77C505.062,-1554.01 673.811,-1421.86 837,-1361 953.177,-1317.67 989.199,-1331.16 1112,-1314 1246.16,-1295.25 1285.36,-1320.29 1415,-1281 1449.42,-1270.57 1485.58,-1250.35 1509.3,-1235.62"/>
+<polygon fill="black" stroke="black" points="1511.48,-1238.38 1518.06,-1230.08 1507.74,-1232.47 1511.48,-1238.38"/>
+</g>
+<!-- proc~iiinma_loadteammanagers&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge67" class="edge"><title>proc~iiinma_loadteammanagers&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1030.82,-1584.57C1144.41,-1593.19 1355.99,-1602.54 1415,-1559 1520.64,-1481.05 1534.44,-1303.11 1535.94,-1240.39"/>
+<polygon fill="black" stroke="black" points="1539.45,-1240.12 1536.1,-1230.07 1532.45,-1240.01 1539.45,-1240.12"/>
+</g>
+<!-- proc~ooopstpag_chrpath -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node38" class="node"><title>proc~ooopstpag_chrpath</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node38"><a xlink:href="../proc/ooopstpag_chrpath.html" xlink:title="OOOPstpaG_chrPath">
+<polygon fill="#d9534f" stroke="#d9534f" points="1321,-1630 1206,-1630 1206,-1606 1321,-1606 1321,-1630"/>
+<text text-anchor="middle" x="1263.5" y="-1615.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPstpaG_chrPath</text>
+</a>
+</g>
+</g>
+<!-- proc~iiinma_loadteammanagers&#45;&gt;proc~ooopstpag_chrpath -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge23" class="edge"><title>proc~iiinma_loadteammanagers&#45;&gt;proc~ooopstpag_chrpath</title>
+<path fill="none" stroke="black" d="M1030.56,-1587.58C1080.74,-1594.16 1146.84,-1602.83 1195.64,-1609.23"/>
+<polygon fill="black" stroke="black" points="1195.41,-1612.73 1205.78,-1610.56 1196.32,-1605.79 1195.41,-1612.73"/>
+</g>
+<!-- proc~ooopstpa_loadpath -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node48" class="node"><title>proc~ooopstpa_loadpath</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node48"><a xlink:href="../proc/ooopstpa_loadpath.html" xlink:title="OOOPstpa_LoadPath">
+<polygon fill="#d9534f" stroke="#d9534f" points="1321.5,-1672 1205.5,-1672 1205.5,-1648 1321.5,-1648 1321.5,-1672"/>
+<text text-anchor="middle" x="1263.5" y="-1657.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPstpa_LoadPath</text>
+</a>
+</g>
+</g>
+<!-- proc~iiinma_loadteammanagers&#45;&gt;proc~ooopstpa_loadpath -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge30" class="edge"><title>proc~iiinma_loadteammanagers&#45;&gt;proc~ooopstpa_loadpath</title>
+<path fill="none" stroke="black" d="M982.573,-1590.05C1012.63,-1603.99 1064.87,-1626.6 1112,-1639 1138.8,-1646.05 1168.95,-1650.85 1195.19,-1654.06"/>
+<polygon fill="black" stroke="black" points="1195.07,-1657.57 1205.41,-1655.26 1195.89,-1650.62 1195.07,-1657.57"/>
+</g>
+<!-- proc~ooopinmas_intnumberofteammanagers -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node56" class="node"><title>proc~ooopinmas_intnumberofteammanagers</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node56"><a xlink:href="../proc/ooopinmas_intnumberofteammanagers.html" xlink:title="OOOPinmaS_intNumberOfTeamManagers">
+<polygon fill="#d9534f" stroke="#d9534f" points="1372,-1550 1155,-1550 1155,-1526 1372,-1526 1372,-1550"/>
+<text text-anchor="middle" x="1263.5" y="-1535.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinmaS_intNumberOfTeamManagers</text>
+</a>
+</g>
+</g>
+<!-- proc~iiinma_loadteammanagers&#45;&gt;proc~ooopinmas_intnumberofteammanagers -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge37" class="edge"><title>proc~iiinma_loadteammanagers&#45;&gt;proc~ooopinmas_intnumberofteammanagers</title>
+<path fill="none" stroke="black" d="M1030.56,-1568.42C1069.55,-1563.31 1118.16,-1556.93 1160.79,-1551.34"/>
+<polygon fill="black" stroke="black" points="1161.46,-1554.78 1170.92,-1550.01 1160.55,-1547.84 1161.46,-1554.78"/>
+</g>
+<!-- proc~ooopimscdc_copycoarrayobjimgtoimg_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node30" class="node"><title>proc~ooopimscdc_copycoarrayobjimgtoimg_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node30"><a xlink:href="../proc/ooopimscdc_copycoarrayobjimgtoimg_ca.html" xlink:title="OOOPimscDC_CopyCoarrayObjImgToImg_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1074,-502 839,-502 839,-478 1074,-478 1074,-502"/>
+<text text-anchor="middle" x="956.5" y="-487.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimscDC_CopyCoarrayObjImgToImg_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimscdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge68" class="edge"><title>proc~ooopimscdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1074.04,-492.654C1201.27,-496.681 1390.32,-506.417 1415,-529 1516.25,-621.639 1533.03,-1087.7 1535.58,-1195.65"/>
+<polygon fill="black" stroke="black" points="1532.08,-1195.81 1535.8,-1205.73 1539.08,-1195.66 1532.08,-1195.81"/>
+</g>
+<!-- proc~ooopimsccopyimgtoimg_intimageactivityflag_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node45" class="node"><title>proc~ooopimsccopyimgtoimg_intimageactivityflag_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node45"><a xlink:href="../proc/ooopimsccopyimgtoimg_intimageactivityflag_ca.html" xlink:title="OOOPimscCopyImgToImg_intImageActivityFlag_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1394,-482 1133,-482 1133,-458 1394,-458 1394,-482"/>
+<text text-anchor="middle" x="1263.5" y="-467.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimscCopyImgToImg_intImageActivityFlag_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimscdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooopimsccopyimgtoimg_intimageactivityflag_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge29" class="edge"><title>proc~ooopimscdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooopimsccopyimgtoimg_intimageactivityflag_ca</title>
+<path fill="none" stroke="black" d="M1074.11,-482.353C1090.06,-481.308 1106.56,-480.226 1122.86,-479.157"/>
+<polygon fill="black" stroke="black" points="1123.23,-482.64 1132.98,-478.493 1122.77,-475.655 1123.23,-482.64"/>
+</g>
+<!-- proc~ooopinmcdc_copycoarrayobjimgtoimg_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node31" class="node"><title>proc~ooopinmcdc_copycoarrayobjimgtoimg_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node31"><a xlink:href="../proc/ooopinmcdc_copycoarrayobjimgtoimg_ca.html" xlink:title="OOOPinmcDC_CopyCoarrayObjImgToImg_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1074.5,-1168 838.5,-1168 838.5,-1144 1074.5,-1144 1074.5,-1168"/>
+<text text-anchor="middle" x="956.5" y="-1153.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinmcDC_CopyCoarrayObjImgToImg_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopinmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge69" class="edge"><title>proc~ooopinmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1040.73,-1144C1133.52,-1133.32 1287.32,-1123.75 1415,-1155 1450.49,-1163.69 1487.16,-1184.79 1510.69,-1200.18"/>
+<polygon fill="black" stroke="black" points="1508.77,-1203.11 1519.03,-1205.76 1512.66,-1197.3 1508.77,-1203.11"/>
+</g>
+<!-- proc~ooopinmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooopinmccopyaimgtoimg_chrteammembersfiles99_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge4" class="edge"><title>proc~ooopinmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooopinmccopyaimgtoimg_chrteammembersfiles99_ca</title>
+<path fill="none" stroke="black" d="M1009.23,-1144C1039.18,-1137.21 1077.64,-1128.75 1112,-1122 1133.66,-1117.75 1157.15,-1113.51 1178.99,-1109.73"/>
+<polygon fill="black" stroke="black" points="1179.63,-1113.17 1188.89,-1108.03 1178.44,-1106.27 1179.63,-1113.17"/>
+</g>
+<!-- proc~ooopinmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooopinmccopyaimgtoimg_intteammanagerimages99_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge11" class="edge"><title>proc~ooopinmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooopinmccopyaimgtoimg_intteammanagerimages99_ca</title>
+<path fill="none" stroke="black" d="M997.525,-1168.05C1028.53,-1177.03 1072.69,-1189.07 1112,-1197 1125.42,-1199.71 1139.59,-1202.18 1153.64,-1204.4"/>
+<polygon fill="black" stroke="black" points="1153.43,-1207.91 1163.85,-1205.98 1154.5,-1200.99 1153.43,-1207.91"/>
+</g>
+<!-- proc~ooopinmccopyimgtoimg_intnumberofteammanagers_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node57" class="node"><title>proc~ooopinmccopyimgtoimg_intnumberofteammanagers_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node57"><a xlink:href="../proc/ooopinmccopyimgtoimg_intnumberofteammanagers_ca.html" xlink:title="OOOPinmcCopyImgToImg_intNumberOfTeamManagers_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1415,-1188 1112,-1188 1112,-1164 1415,-1164 1415,-1188"/>
+<text text-anchor="middle" x="1263.5" y="-1173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinmcCopyImgToImg_intNumberOfTeamManagers_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopinmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooopinmccopyimgtoimg_intnumberofteammanagers_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge38" class="edge"><title>proc~ooopinmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooopinmccopyimgtoimg_intnumberofteammanagers_ca</title>
+<path fill="none" stroke="black" d="M1074.55,-1163.68C1083.55,-1164.27 1092.74,-1164.87 1101.96,-1165.47"/>
+<polygon fill="black" stroke="black" points="1101.76,-1168.97 1111.97,-1166.13 1102.22,-1161.98 1101.76,-1168.97"/>
+</g>
+<!-- proc~oooptemas_chrteammembersfilename&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge70" class="edge"><title>proc~oooptemas_chrteammembersfilename&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1063.53,-1863.39C1182.13,-1871.46 1364.29,-1875.78 1415,-1832 1507.16,-1752.44 1530.69,-1341.61 1535.13,-1240.5"/>
+<polygon fill="black" stroke="black" points="1538.63,-1240.37 1535.56,-1230.23 1531.64,-1240.07 1538.63,-1240.37"/>
+</g>
+<!-- proc~ooopimscs_intimageactivityflag_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge71" class="edge"><title>proc~ooopimscs_intimageactivityflag_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1360.64,-1782.28C1380.7,-1778.03 1400.21,-1770.07 1415,-1756 1491.92,-1682.85 1526.37,-1332.75 1534.21,-1240.38"/>
+<polygon fill="black" stroke="black" points="1537.72,-1240.47 1535.06,-1230.21 1530.74,-1239.89 1537.72,-1240.47"/>
+</g>
+<!-- proc~ooopimmc_structureconstructor -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node34" class="node"><title>proc~ooopimmc_structureconstructor</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node34"><a xlink:href="../proc/ooopimmc_structureconstructor.html" xlink:title="OOOPimmc_StructureConstructor">
+<polygon fill="#d9534f" stroke="#d9534f" points="1351,-440 1176,-440 1176,-416 1351,-416 1351,-440"/>
+<text text-anchor="middle" x="1263.5" y="-425.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmc_StructureConstructor</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimmc_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge72" class="edge"><title>proc~ooopimmc_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1351.31,-422.092C1374.7,-424.906 1398.16,-432.45 1415,-449 1524.73,-556.834 1534.99,-1081.08 1535.91,-1195.79"/>
+<polygon fill="black" stroke="black" points="1532.41,-1195.88 1535.98,-1205.86 1539.41,-1195.84 1532.41,-1195.88"/>
+</g>
+<!-- proc~ooopimmcg_chrteammembersfilename_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge73" class="edge"><title>proc~ooopimmcg_chrteammembersfilename_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M801.049,-1975.97C996.495,-1978.08 1370.33,-1976.76 1415,-1937 1522.18,-1841.6 1534.42,-1351.27 1535.82,-1240.33"/>
+<polygon fill="black" stroke="black" points="1539.32,-1240.31 1535.93,-1230.27 1532.32,-1240.24 1539.32,-1240.31"/>
+</g>
+<!-- proc~oooptemag_intnumberofteammembers -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node36" class="node"><title>proc~oooptemag_intnumberofteammembers</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node36"><a xlink:href="../proc/oooptemag_intnumberofteammembers.html" xlink:title="OOOPtemaG_intNumberOfTeamMembers">
+<polygon fill="#d9534f" stroke="#d9534f" points="1371.5,-398 1155.5,-398 1155.5,-374 1371.5,-374 1371.5,-398"/>
+<text text-anchor="middle" x="1263.5" y="-383.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemaG_intNumberOfTeamMembers</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemag_intnumberofteammembers&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge74" class="edge"><title>proc~oooptemag_intnumberofteammembers&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1371.63,-383.766C1387.84,-387.978 1403.1,-395.211 1415,-407 1530.49,-521.402 1536.22,-1077.14 1536.11,-1195.72"/>
+<polygon fill="black" stroke="black" points="1532.61,-1195.79 1536.09,-1205.8 1539.61,-1195.8 1532.61,-1195.79"/>
+</g>
+<!-- proc~ooopimsc_structureconstructor_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node37" class="node"><title>proc~ooopimsc_structureconstructor_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node37"><a xlink:href="../proc/ooopimsc_structureconstructor_ca.html" xlink:title="OOOPimsc_StructureConstructor_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1359,-1432 1168,-1432 1168,-1408 1359,-1408 1359,-1432"/>
+<text text-anchor="middle" x="1263.5" y="-1417.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimsc_StructureConstructor_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimsc_structureconstructor_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge75" class="edge"><title>proc~ooopimsc_structureconstructor_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1359.07,-1419.05C1378.64,-1415.58 1398.35,-1409.44 1415,-1399 1476.14,-1360.66 1513.39,-1278.82 1528.37,-1239.7"/>
+<polygon fill="black" stroke="black" points="1531.67,-1240.89 1531.86,-1230.3 1525.1,-1238.46 1531.67,-1240.89"/>
+</g>
+<!-- proc~ooopstpag_chrpath&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge76" class="edge"><title>proc~ooopstpag_chrpath&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1321.25,-1621.66C1352.32,-1620.64 1389.56,-1614.06 1415,-1592 1523.45,-1497.93 1535.37,-1305.91 1536.17,-1240.45"/>
+<polygon fill="black" stroke="black" points="1539.68,-1240.09 1536.22,-1230.07 1532.68,-1240.06 1539.68,-1240.09"/>
+</g>
+<!-- proc~ooopinmcsa_chrteammembersfiles99_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node39" class="node"><title>proc~ooopinmcsa_chrteammembersfiles99_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node39"><a xlink:href="../proc/ooopinmcsa_chrteammembersfiles99_ca.html" xlink:title="OOOPinmcSA_chrTeamMembersFiles99_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1378,-356 1149,-356 1149,-332 1378,-332 1378,-356"/>
+<text text-anchor="middle" x="1263.5" y="-341.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinmcSA_chrTeamMembersFiles99_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopinmcsa_chrteammembersfiles99_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge77" class="edge"><title>proc~ooopinmcsa_chrteammembersfiles99_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1378.15,-343.555C1391.92,-347.938 1404.73,-354.752 1415,-365 1536.29,-486.014 1537.4,-1073.58 1536.29,-1195.73"/>
+<polygon fill="black" stroke="black" points="1532.79,-1195.74 1536.18,-1205.78 1539.79,-1195.82 1532.79,-1195.74"/>
+</g>
+<!-- proc~ooopimscg_intimageactivityflag_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge78" class="edge"><title>proc~ooopimscg_intimageactivityflag_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M780.03,-2131.91C968.325,-2138.52 1368.93,-2147.46 1415,-2106 1481.73,-2045.96 1526.48,-1372.55 1534.65,-1240.42"/>
+<polygon fill="black" stroke="black" points="1538.15,-1240.47 1535.27,-1230.27 1531.17,-1240.04 1538.15,-1240.47"/>
+</g>
+<!-- proc~ooopinma_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge79" class="edge"><title>proc~ooopinma_structureconstructor&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1042.64,-1514.34C1166.6,-1506.89 1385.31,-1490.97 1415,-1470 1494.61,-1413.78 1523.78,-1290.7 1532.65,-1240.25"/>
+<polygon fill="black" stroke="black" points="1536.15,-1240.54 1534.33,-1230.11 1529.25,-1239.4 1536.15,-1240.54"/>
+</g>
+<!-- proc~ooopimmccopyimgtoimg_intimageactivityflag_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node42" class="node"><title>proc~ooopimmccopyimgtoimg_intimageactivityflag_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node42"><a xlink:href="../proc/ooopimmccopyimgtoimg_intimageactivityflag_ca.html" xlink:title="OOOPimmcCopyImgToImg_intImageActivityFlag_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1396,-234 1131,-234 1131,-210 1396,-210 1396,-234"/>
+<text text-anchor="middle" x="1263.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmcCopyImgToImg_intImageActivityFlag_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimmccopyimgtoimg_intimageactivityflag_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge80" class="edge"><title>proc~ooopimmccopyimgtoimg_intimageactivityflag_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1396.11,-233.361C1403.03,-237.323 1409.42,-242.149 1415,-248 1482.87,-319.135 1527.02,-1056.32 1534.77,-1195.43"/>
+<polygon fill="black" stroke="black" points="1531.3,-1195.92 1535.34,-1205.71 1538.29,-1195.53 1531.3,-1195.92"/>
+</g>
+<!-- proc~oooptemcg_intnumberofteammembers_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node43" class="node"><title>proc~oooptemcg_intnumberofteammembers_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node43"><a xlink:href="../proc/oooptemcg_intnumberofteammembers_ca.html" xlink:title="OOOPtemcG_intNumberOfTeamMembers_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1381,-192 1146,-192 1146,-168 1381,-168 1381,-192"/>
+<text text-anchor="middle" x="1263.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemcG_intNumberOfTeamMembers_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemcg_intnumberofteammembers_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge81" class="edge"><title>proc~oooptemcg_intnumberofteammembers_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1381.34,-180.345C1393.94,-184.776 1405.58,-191.39 1415,-201 1487.32,-274.801 1528.07,-1053.1 1534.95,-1195.65"/>
+<polygon fill="black" stroke="black" points="1531.46,-1195.98 1535.44,-1205.8 1538.46,-1195.65 1531.46,-1195.98"/>
+</g>
+<!-- proc~oooptemccopyaimgtoimg_intteammemberimages99_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node44" class="node"><title>proc~oooptemccopyaimgtoimg_intteammemberimages99_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node44"><a xlink:href="../proc/oooptemccopyaimgtoimg_intteammemberimages99_ca.html" xlink:title="OOOPtemcCopyAImgToImg_intTeamMemberImages99_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1413.5,-2300 1113.5,-2300 1113.5,-2276 1413.5,-2276 1413.5,-2300"/>
+<text text-anchor="middle" x="1263.5" y="-2285.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemcCopyAImgToImg_intTeamMemberImages99_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemccopyaimgtoimg_intteammemberimages99_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge82" class="edge"><title>proc~oooptemccopyaimgtoimg_intteammemberimages99_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1397.52,-2275.9C1403.91,-2272.08 1409.81,-2267.49 1415,-2262 1487.94,-2184.88 1528.25,-1385.37 1534.99,-1240.46"/>
+<polygon fill="black" stroke="black" points="1538.5,-1240.3 1535.46,-1230.15 1531.51,-1239.98 1538.5,-1240.3"/>
+</g>
+<!-- proc~ooopimsccopyimgtoimg_intimageactivityflag_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge83" class="edge"><title>proc~ooopimsccopyimgtoimg_intimageactivityflag_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1394.09,-480.695C1401.75,-484.762 1408.83,-489.797 1415,-496 1516.52,-598.026 1533.12,-1084.64 1535.59,-1195.49"/>
+<polygon fill="black" stroke="black" points="1532.1,-1195.89 1535.81,-1205.81 1539.1,-1195.74 1532.1,-1195.89"/>
+</g>
+<!-- proc~ooopinmcga_intteammanagerimages99_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node46" class="node"><title>proc~ooopinmcga_intteammanagerimages99_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node46"><a xlink:href="../proc/ooopinmcga_intteammanagerimages99_ca.html" xlink:title="OOOPinmcGA_intTeamManagerImages99_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1382,-150 1145,-150 1145,-126 1382,-126 1382,-150"/>
+<text text-anchor="middle" x="1263.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinmcGA_intTeamManagerImages99_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopinmcga_intteammanagerimages99_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge84" class="edge"><title>proc~ooopinmcga_intteammanagerimages99_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1382.13,-138.567C1394.44,-143.002 1405.79,-149.557 1415,-159 1490.24,-236.14 1528.74,-1049.65 1535.06,-1195.63"/>
+<polygon fill="black" stroke="black" points="1531.57,-1195.82 1535.49,-1205.66 1538.56,-1195.52 1531.57,-1195.82"/>
+</g>
+<!-- proc~oooptemcsa_intteammemberimages99_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node47" class="node"><title>proc~oooptemcsa_intteammemberimages99_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node47"><a xlink:href="../proc/oooptemcsa_intteammemberimages99_ca.html" xlink:title="OOOPtemcSA_intTeamMemberImages99_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1380,-108 1147,-108 1147,-84 1380,-84 1380,-108"/>
+<text text-anchor="middle" x="1263.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemcSA_intTeamMemberImages99_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemcsa_intteammemberimages99_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge85" class="edge"><title>proc~oooptemcsa_intteammemberimages99_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1380.31,-95.8779C1393.33,-100.321 1405.35,-107.064 1415,-117 1493.18,-197.497 1529.39,-1046.53 1535.17,-1195.69"/>
+<polygon fill="black" stroke="black" points="1531.68,-1196.04 1535.56,-1205.9 1538.67,-1195.77 1531.68,-1196.04"/>
+</g>
+<!-- proc~ooopstpa_loadpath&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge86" class="edge"><title>proc~ooopstpa_loadpath&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1321.72,-1666.11C1352.75,-1666.26 1389.8,-1660.87 1415,-1639 1477.27,-1584.96 1520.86,-1320.42 1532.74,-1240.75"/>
+<polygon fill="black" stroke="black" points="1536.28,-1240.79 1534.26,-1230.38 1529.35,-1239.77 1536.28,-1240.79"/>
+</g>
+<!-- proc~oooptemas_intnumberofteammembers -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node49" class="node"><title>proc~oooptemas_intnumberofteammembers</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node49"><a xlink:href="../proc/oooptemas_intnumberofteammembers.html" xlink:title="OOOPtemaS_intNumberOfTeamMembers">
+<polygon fill="#d9534f" stroke="#d9534f" points="1370.5,-1714 1156.5,-1714 1156.5,-1690 1370.5,-1690 1370.5,-1714"/>
+<text text-anchor="middle" x="1263.5" y="-1699.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemaS_intNumberOfTeamMembers</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemas_intnumberofteammembers&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge87" class="edge"><title>proc~oooptemas_intnumberofteammembers&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1370.58,-1703.12C1386.91,-1699.03 1402.48,-1692.13 1415,-1681 1483.03,-1620.5 1523.26,-1324.26 1533.43,-1240.25"/>
+<polygon fill="black" stroke="black" points="1536.91,-1240.6 1534.62,-1230.25 1529.96,-1239.77 1536.91,-1240.6"/>
+</g>
+<!-- proc~iitema_activateteammemberimage&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge88" class="edge"><title>proc~iitema_activateteammemberimage&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1048.61,-1823.08C1165.99,-1835.23 1361.34,-1847.58 1415,-1803 1504.1,-1728.97 1529.84,-1338.68 1534.95,-1240.45"/>
+<polygon fill="black" stroke="black" points="1538.44,-1240.6 1535.45,-1230.43 1531.45,-1240.25 1538.44,-1240.6"/>
+</g>
+<!-- proc~iitema_activateteammemberimage&#45;&gt;proc~ooopimscs_intimageactivityflag_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge19" class="edge"><title>proc~iitema_activateteammemberimage&#45;&gt;proc~ooopimscs_intimageactivityflag_ca</title>
+<path fill="none" stroke="black" d="M1048.6,-1803.04C1082.39,-1799.72 1121,-1795.92 1156.04,-1792.47"/>
+<polygon fill="black" stroke="black" points="1156.7,-1795.92 1166.31,-1791.46 1156.01,-1788.96 1156.7,-1795.92"/>
+</g>
+<!-- proc~ooopimmccopyimgtoimg_chrteammembersfilename_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node51" class="node"><title>proc~ooopimmccopyimgtoimg_chrteammembersfilename_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node51"><a xlink:href="../proc/ooopimmccopyimgtoimg_chrteammembersfilename_ca.html" xlink:title="OOOPimmcCopyImgToImg_chrTeamMembersFileName_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1415,-314 1112,-314 1112,-290 1415,-290 1415,-314"/>
+<text text-anchor="middle" x="1263.5" y="-299.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmcCopyImgToImg_chrTeamMembersFileName_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimmccopyimgtoimg_chrteammembersfilename_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge89" class="edge"><title>proc~ooopimmccopyimgtoimg_chrteammembersfilename_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1404.5,-314.2C1408.23,-316.806 1411.74,-319.728 1415,-323 1478.83,-387.102 1525.91,-1062.94 1534.57,-1195.51"/>
+<polygon fill="black" stroke="black" points="1531.09,-1195.93 1535.22,-1205.69 1538.07,-1195.48 1531.09,-1195.93"/>
+</g>
+<!-- proc~oooptemcdc_copycoarrayobjimgtoimg_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node52" class="node"><title>proc~oooptemcdc_copycoarrayobjimgtoimg_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node52"><a xlink:href="../proc/oooptemcdc_copycoarrayobjimgtoimg_ca.html" xlink:title="OOOPtemcDC_CopyCoarrayObjImgToImg_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1075,-2280 838,-2280 838,-2256 1075,-2256 1075,-2280"/>
+<text text-anchor="middle" x="956.5" y="-2265.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemcDC_CopyCoarrayObjImgToImg_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge90" class="edge"><title>proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1075.12,-2265.56C1202.55,-2261.74 1391,-2252.2 1415,-2229 1488.87,-2157.61 1528.35,-1382.29 1534.99,-1240.27"/>
+<polygon fill="black" stroke="black" points="1538.49,-1240.3 1535.46,-1230.15 1531.5,-1239.98 1538.49,-1240.3"/>
+</g>
+<!-- proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~oooptemccopyimgtoimg_chrteammembersfilename_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge1" class="edge"><title>proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~oooptemccopyimgtoimg_chrteammembersfilename_ca</title>
+<path fill="none" stroke="black" d="M1009.23,-2256C1039.18,-2249.21 1077.64,-2240.75 1112,-2234 1133.66,-2229.75 1157.15,-2225.51 1178.99,-2221.73"/>
+<polygon fill="black" stroke="black" points="1179.63,-2225.17 1188.89,-2220.03 1178.44,-2218.27 1179.63,-2225.17"/>
+</g>
+<!-- proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~oooptemccopyimgtoimg_intnumberofteammembers_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge6" class="edge"><title>proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~oooptemccopyimgtoimg_intnumberofteammembers_ca</title>
+<path fill="none" stroke="black" d="M997.525,-2280.05C1028.53,-2289.03 1072.69,-2301.07 1112,-2309 1125.42,-2311.71 1139.59,-2314.18 1153.64,-2316.4"/>
+<polygon fill="black" stroke="black" points="1153.43,-2319.91 1163.85,-2317.98 1154.5,-2312.99 1153.43,-2319.91"/>
+</g>
+<!-- proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~oooptemccopyaimgtoimg_intteammemberimages99_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge28" class="edge"><title>proc~oooptemcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~oooptemccopyaimgtoimg_intteammemberimages99_ca</title>
+<path fill="none" stroke="black" d="M1075.42,-2275.73C1084.53,-2276.33 1093.81,-2276.94 1103.13,-2277.55"/>
+<polygon fill="black" stroke="black" points="1103.04,-2281.05 1113.25,-2278.21 1103.5,-2274.07 1103.04,-2281.05"/>
+</g>
+<!-- proc~iitema_loadteammembers&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge91" class="edge"><title>proc~iitema_loadteammembers&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1029.01,-1702.15C1044.6,-1704.51 1060.93,-1707.44 1076,-1711 1092.41,-1714.88 1095.35,-1720.3 1112,-1723 1178.46,-1733.79 1362.13,-1764.7 1415,-1723 1493.24,-1661.29 1526.58,-1329.64 1534.22,-1240.22"/>
+<polygon fill="black" stroke="black" points="1537.72,-1240.37 1535.07,-1230.12 1530.75,-1239.79 1537.72,-1240.37"/>
+</g>
+<!-- proc~iitema_loadteammembers&#45;&gt;proc~ooopstpag_chrpath -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge24" class="edge"><title>proc~iitema_loadteammembers&#45;&gt;proc~ooopstpag_chrpath</title>
+<path fill="none" stroke="black" d="M985.728,-1681.99C1016.31,-1669.44 1066.79,-1650.08 1112,-1639 1139.03,-1632.38 1169.34,-1627.64 1195.64,-1624.37"/>
+<polygon fill="black" stroke="black" points="1196.37,-1627.81 1205.88,-1623.14 1195.54,-1620.86 1196.37,-1627.81"/>
+</g>
+<!-- proc~iitema_loadteammembers&#45;&gt;proc~ooopstpa_loadpath -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge31" class="edge"><title>proc~iitema_loadteammembers&#45;&gt;proc~ooopstpa_loadpath</title>
+<path fill="none" stroke="black" d="M1029.01,-1686.03C1079.14,-1680.44 1145.73,-1673.02 1194.97,-1667.53"/>
+<polygon fill="black" stroke="black" points="1195.65,-1670.97 1205.2,-1666.39 1194.87,-1664.02 1195.65,-1670.97"/>
+</g>
+<!-- proc~iitema_loadteammembers&#45;&gt;proc~oooptemas_intnumberofteammembers -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge32" class="edge"><title>proc~iitema_loadteammembers&#45;&gt;proc~oooptemas_intnumberofteammembers</title>
+<path fill="none" stroke="black" d="M1029.01,-1695.88C1063.91,-1696.79 1106.79,-1697.92 1146.24,-1698.95"/>
+<polygon fill="black" stroke="black" points="1146.37,-1702.45 1156.46,-1699.22 1146.55,-1695.46 1146.37,-1702.45"/>
+</g>
+<!-- proc~ooopimmcdc_copycoarrayobjimgtoimg_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node54" class="node"><title>proc~ooopimmcdc_copycoarrayobjimgtoimg_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node54"><a xlink:href="../proc/ooopimmcdc_copycoarrayobjimgtoimg_ca.html" xlink:title="OOOPimmcDC_CopyCoarrayObjImgToImg_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1076,-274 837,-274 837,-250 1076,-250 1076,-274"/>
+<text text-anchor="middle" x="956.5" y="-259.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmcDC_CopyCoarrayObjImgToImg_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge92" class="edge"><title>proc~ooopimmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1076.13,-250.347C1195.09,-241.482 1367.28,-237.255 1415,-281 1484.98,-345.143 1527.34,-1059.46 1534.81,-1195.65"/>
+<polygon fill="black" stroke="black" points="1531.32,-1195.94 1535.36,-1205.73 1538.31,-1195.56 1531.32,-1195.94"/>
+</g>
+<!-- proc~ooopimmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooopimmccopyimgtoimg_intimageactivityflag_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge27" class="edge"><title>proc~ooopimmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooopimmccopyimgtoimg_intimageactivityflag_ca</title>
+<path fill="none" stroke="black" d="M1049.01,-249.999C1084.22,-245.382 1124.61,-240.084 1160.73,-235.347"/>
+<polygon fill="black" stroke="black" points="1161.33,-238.798 1170.79,-234.027 1160.42,-231.858 1161.33,-238.798"/>
+</g>
+<!-- proc~ooopimmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooopimmccopyimgtoimg_chrteammembersfilename_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge34" class="edge"><title>proc~ooopimmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooopimmccopyimgtoimg_chrteammembersfilename_ca</title>
+<path fill="none" stroke="black" d="M1049.01,-274.001C1084.22,-278.618 1124.61,-283.916 1160.73,-288.653"/>
+<polygon fill="black" stroke="black" points="1160.42,-292.142 1170.79,-289.973 1161.33,-285.202 1160.42,-292.142"/>
+</g>
+<!-- proc~iiinma_activateteammanagerimage&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge93" class="edge"><title>proc~iiinma_activateteammanagerimage&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1049.69,-1466.64C1165.5,-1473.21 1356.23,-1477.65 1415,-1441 1489.05,-1394.83 1520.95,-1286.56 1531.6,-1239.96"/>
+<polygon fill="black" stroke="black" points="1535.06,-1240.52 1533.76,-1230.01 1528.22,-1239.04 1535.06,-1240.52"/>
+</g>
+<!-- proc~iiinma_activateteammanagerimage&#45;&gt;proc~ooopimscs_intimageactivityflag_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge16" class="edge"><title>proc~iiinma_activateteammanagerimage&#45;&gt;proc~ooopimscs_intimageactivityflag_ca</title>
+<path fill="none" stroke="black" d="M1036.53,-1472.03C1051.48,-1477.69 1065.65,-1485.95 1076,-1498 1141.98,-1574.83 1048.48,-1644.12 1112,-1723 1129.25,-1744.42 1155.34,-1758.08 1180.98,-1766.79"/>
+<polygon fill="black" stroke="black" points="1180.17,-1770.21 1190.76,-1769.9 1182.29,-1763.54 1180.17,-1770.21"/>
+</g>
+<!-- proc~iiinma_activateteammanagerimage&#45;&gt;proc~ooopimsc_structureconstructor_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge22" class="edge"><title>proc~iiinma_activateteammanagerimage&#45;&gt;proc~ooopimsc_structureconstructor_ca</title>
+<path fill="none" stroke="black" d="M1049.01,-1448C1084.22,-1443.38 1124.61,-1438.08 1160.73,-1433.35"/>
+<polygon fill="black" stroke="black" points="1161.33,-1436.8 1170.79,-1432.03 1160.42,-1429.86 1161.33,-1436.8"/>
+</g>
+<!-- proc~ooopimmcs_chrteammembersfilename_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node58" class="node"><title>proc~ooopimmcs_chrteammembersfilename_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node58"><a xlink:href="../proc/ooopimmcs_chrteammembersfilename_ca.html" xlink:title="OOOPimmcS_chrTeamMembersFileName_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1381.5,-1390 1145.5,-1390 1145.5,-1366 1381.5,-1366 1381.5,-1390"/>
+<text text-anchor="middle" x="1263.5" y="-1375.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmcS_chrTeamMembersFileName_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~iiinma_activateteammanagerimage&#45;&gt;proc~ooopimmcs_chrteammembersfilename_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge39" class="edge"><title>proc~iiinma_activateteammanagerimage&#45;&gt;proc~ooopimmcs_chrteammembersfilename_ca</title>
+<path fill="none" stroke="black" d="M982.573,-1447.95C1012.63,-1434.01 1064.87,-1411.4 1112,-1399 1122.25,-1396.3 1133,-1393.93 1143.83,-1391.86"/>
+<polygon fill="black" stroke="black" points="1144.58,-1395.28 1153.78,-1390.03 1143.32,-1388.39 1144.58,-1395.28"/>
+</g>
+<!-- proc~ooopinmas_intnumberofteammanagers&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge94" class="edge"><title>proc~ooopinmas_intnumberofteammanagers&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1372.24,-1533.11C1387.72,-1528.67 1402.59,-1521.95 1415,-1512 1503.04,-1441.43 1527.63,-1296.1 1533.96,-1240.4"/>
+<polygon fill="black" stroke="black" points="1537.47,-1240.53 1535.03,-1230.22 1530.51,-1239.8 1537.47,-1240.53"/>
+</g>
+<!-- proc~ooopinmccopyimgtoimg_intnumberofteammanagers_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge95" class="edge"><title>proc~ooopinmccopyimgtoimg_intnumberofteammanagers_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1354.1,-1188C1374.16,-1190.83 1395.32,-1193.92 1415,-1197 1429.29,-1199.24 1444.51,-1201.76 1459.15,-1204.27"/>
+<polygon fill="black" stroke="black" points="1458.73,-1207.75 1469.18,-1205.99 1459.92,-1200.85 1458.73,-1207.75"/>
+</g>
+<!-- proc~ooopimmcs_chrteammembersfilename_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge96" class="edge"><title>proc~ooopimmcs_chrteammembersfilename_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1381,-1365.98C1392.87,-1362.4 1404.43,-1357.82 1415,-1352 1464.54,-1324.7 1504.37,-1269.3 1523.55,-1238.98"/>
+<polygon fill="black" stroke="black" points="1526.77,-1240.43 1529.04,-1230.09 1520.81,-1236.76 1526.77,-1240.43"/>
+</g>
+<!-- proc~oooptemcs_intnumberofteammembers_ca -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node59" class="node"><title>proc~oooptemcs_intnumberofteammembers_ca</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node59"><a xlink:href="../proc/oooptemcs_intnumberofteammembers_ca.html" xlink:title="OOOPtemcS_intNumberOfTeamMembers_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1380.5,-66 1146.5,-66 1146.5,-42 1380.5,-42 1380.5,-66"/>
+<text text-anchor="middle" x="1263.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemcS_intNumberOfTeamMembers_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~oooptemcs_intnumberofteammembers_ca&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge97" class="edge"><title>proc~oooptemcs_intnumberofteammembers_ca&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1380.72,-53.9692C1393.59,-58.4193 1405.46,-65.1401 1415,-75 1496.13,-158.864 1530.02,-1043.63 1535.26,-1195.78"/>
+<polygon fill="black" stroke="black" points="1531.77,-1195.93 1535.6,-1205.81 1538.76,-1195.69 1531.77,-1195.93"/>
+</g>
+<!-- proc~ooopstpas_chrpath -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node60" class="node"><title>proc~ooopstpas_chrpath</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node60"><a xlink:href="../proc/ooopstpas_chrpath.html" xlink:title="OOOPstpaS_chrPath">
+<polygon fill="#d9534f" stroke="#d9534f" points="1320.5,-24 1206.5,-24 1206.5,-0 1320.5,-0 1320.5,-24"/>
+<text text-anchor="middle" x="1263.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPstpaS_chrPath</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopstpas_chrpath&#45;&gt;proc~ooogglob_subresetprocedures -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge98" class="edge"><title>proc~ooopstpas_chrpath&#45;&gt;proc~ooogglob_subresetprocedures</title>
+<path fill="none" stroke="black" d="M1320.69,-4.30762C1352.76,-3.27643 1391.2,-8.30593 1415,-33 1499,-120.159 1530.56,-1039.15 1535.34,-1195.46"/>
+<polygon fill="black" stroke="black" points="1531.85,-1195.85 1535.65,-1205.74 1538.85,-1195.64 1531.85,-1195.85"/>
+</g>
+<!-- proc~entry_main_sub -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node61" class="node"><title>proc~entry_main_sub</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node61"><a xlink:href="../proc/entry_main_sub.html" xlink:title="Entry_Main_Sub">
+<polygon fill="#d9534f" stroke="#d9534f" points="181,-1884 90,-1884 90,-1860 181,-1860 181,-1884"/>
+<text text-anchor="middle" x="135.5" y="-1869.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Entry_Main_Sub</text>
+</a>
+</g>
+</g>
+<!-- proc~entry_main_sub&#45;&gt;proc~ooopimma_start -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge3" class="edge"><title>proc~entry_main_sub&#45;&gt;proc~ooopimma_start</title>
+<path fill="none" stroke="black" d="M181.256,-1872C189.43,-1872 198.072,-1872 206.584,-1872"/>
+<polygon fill="black" stroke="black" points="206.861,-1875.5 216.861,-1872 206.861,-1868.5 206.861,-1875.5"/>
+</g>
+<!-- program~main -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_node62" class="node"><title>program~main</title>
+<g id="a_proc~~ooogglob_subresetprocedures~~CalledByGraph_node62"><a xlink:href="../program/main.html" xlink:title="Main">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="54,-1884 0,-1884 0,-1860 54,-1860 54,-1884"/>
+<text text-anchor="middle" x="27" y="-1869.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Main</text>
+</a>
+</g>
+</g>
+<!-- program~main&#45;&gt;proc~entry_main_sub -->
+<g id="proc~~ooogglob_subresetprocedures~~CalledByGraph_edge2" class="edge"><title>program~main&#45;&gt;proc~entry_main_sub</title>
+<path fill="none" stroke="black" d="M54.0528,-1872C61.8379,-1872 70.6832,-1872 79.5905,-1872"/>
+<polygon fill="black" stroke="black" points="79.6202,-1875.5 89.6202,-1872 79.6201,-1868.5 79.6202,-1875.5"/>
+</g>
+</g>
+</svg>
+</div>
+                <script>var panprocooogglob_subresetproceduresCalledByGraph = svgPanZoom('#procooogglob_subresetproceduresCalledByGraph', {
+                    zoomEnabled: true,
+                    controlIconsEnabled: true,
+                    fit: true,
+                    center: true,});
+                    </script>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="26pt"
+ viewBox="0.00 0.00 641.00 25.98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.811906 0.811906) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 785.5,-28 785.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="139.5,-24 72.5,-24 72.5,-0 139.5,-0 139.5,-24"/>
+<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="212,-24 158,-24 158,-0 212,-0 212,-24"/>
+<text text-anchor="middle" x="185" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-24 230,-24 230,-0 294,-0 294,-24"/>
+<text text-anchor="middle" x="262" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="366,-24 312,-24 312,-0 366,-0 366,-24"/>
+<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="439.5,-24 384.5,-24 384.5,-0 439.5,-0 439.5,-24"/>
+<text text-anchor="middle" x="412" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="594,-24 458,-24 458,-0 594,-0 594,-24"/>
+<text text-anchor="middle" x="526" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666,-24 612,-24 612,-0 666,-0 666,-24"/>
+<text text-anchor="middle" x="639" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="781.5,-24 684.5,-24 684.5,-0 781.5,-0 781.5,-24"/>
+<text text-anchor="middle" x="733" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+     
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="k">SUBROUTINE </span><span class="n">OOOGglob_subResetProcedures</span>
+  <span class="c">!&lt; Error-Handling and Tracing</span>
+  <span class="c">! refresh the Stack Trace:</span>
+  <span class="n">OOOGglob_intStackTraceCounter</span> <span class="o">=</span> <span class="n">OOOGglob_intStackTraceCounter</span> <span class="o">-</span> <span class="mi">1</span>
+  <span class="n">OOOGglob_chrCurrentProcedure</span> <span class="o">=</span> <span class="n">OOOGglob_chrStackTrace</span> <span class="p">(</span><span class="n">OOOGglob_intStackTraceCounter</span><span class="p">)</span>
+  <span class="n">OOOGglob_chrReturningProcedure</span> <span class="o">=</span> <span class="n">OOOGglob_chrStackTrace</span> <span class="p">(</span><span class="n">OOOGglob_intStackTraceCounter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="k">IF</span> <span class="p">(</span><span class="n">OOOGglob_intStackTraceCounter</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">    </span><span class="n">OOOGglob_chrCallingProcedure</span> <span class="o">=</span> <span class="n">OOOGglob_chrStackTrace</span> <span class="p">(</span><span class="n">OOOGglob_intStackTraceCounter</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="k">END IF</span>
+  <span class="c">!</span>
+<span class="k">END SUBROUTINE </span><span class="n">OOOGglob_subResetProcedures</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-4">&copy; 2016 </div>
+	<div class="col-md-4"><span class="text-center"> MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program was developed by Michael Siehl</span></div>
+        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

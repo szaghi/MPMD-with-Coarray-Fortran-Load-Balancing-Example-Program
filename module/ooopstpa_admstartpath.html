@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="MPMD-style Fortran (2008) coarray example program to illustrate a simple PGAS load balancing technique">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>OOOPstpa_admStartPath &ndash; MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+            <li><a href="../program/main.html">Program</a></li>
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>OOOPstpa_admStartPath 
+    <small>Module</small>
+    
+    </h1>
+	 
+<div class="row">
+<div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+    <li><i class="fa fa-code"></i><a href="../src/OOOPstpa_admStartPath.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li><a href='../sourcefile/ooopstpa_admstartpath.f90.html'>OOOPstpa_admStartPath.f90</a></li>
+  
+     <li class="active">OOOPstpa_admStartPath</li>
+  </ol>
+</div>
+</div>
+</div>
+    
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-3">
+    
+<div id="sidebar">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types">Derived Types</a></h3></div>
+    <div id="types" class="panel-collapse collapse">
+      <div class="list-group">
+        
+        <a class="list-group-item" href="../module/ooopstpa_admstartpath.html#type-ooopstpa_adtstartpath">OOOPstpa_adtStartPath</a>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs">Subroutines</a></h3></div>
+    <div class="list-group">
+        <div id="subs" class="panel-collapse collapse">
+          
+          <a class="list-group-item" href="../module/ooopstpa_admstartpath.html#proc-ooopstpas_chrpath">OOOPstpaS_chrPath</a>
+          
+          <a class="list-group-item" href="../module/ooopstpa_admstartpath.html#proc-ooopstpag_chrpath">OOOPstpaG_chrPath</a>
+          
+          <a class="list-group-item" href="../module/ooopstpa_admstartpath.html#proc-ooopstpa_loadpath">OOOPstpa_LoadPath</a>
+          
+          <a class="list-group-item" href="../module/ooopstpa_admstartpath.html#proc-iistpa_errorhandler">IIstpa_ErrorHandler</a>
+          
+        </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  <hr>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods">All Modules</a></h3></div>
+    <div id="allmods" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../module/main_sub.html">Main_Sub</a>
+          
+          <a class="list-group-item" href="../module/oooeerro_admerror.html">OOOEerro_admError</a>
+          
+          <a class="list-group-item" href="../module/ooogglob_globals.html">OOOGglob_Globals</a>
+          
+          <a class="list-group-item" href="../module/ooopimma_admimagemanager.html">OOOPimma_admImageManager</a>
+          
+          <a class="list-group-item" href="../module/ooopimmc_admimagemanager_ca.html">OOOPimmc_admImageManager_CA</a>
+          
+          <a class="list-group-item" href="../module/ooopimsc_admimagestatus_ca.html">OOOPimsc_admImageStatus_CA</a>
+          
+          <a class="list-group-item" href="../module/ooopinma_adminitialmanager.html">OOOPinma_admInitialManager</a>
+          
+          <a class="list-group-item" href="../module/ooopinmc_adminitialmanager_ca.html">OOOPinmc_admInitialManager_CA</a>
+          
+          <a class="list-group-item" href="../module/ooopstpa_admstartpath.html">OOOPstpa_admStartPath</a>
+          
+          <a class="list-group-item" href="../module/oooptema_admteammanager.html">OOOPtema_admTeamManager</a>
+          
+          <a class="list-group-item" href="../module/oooptemc_admteammanager_ca.html">OOOPtemc_admTeamManager_CA</a>
+          
+          <a class="list-group-item" href="../module/oooptmec_admteammember_ca.html">OOOPtmec_admTeamMember_CA</a>
+          
+          <a class="list-group-item" href="../module/oooptmem_admteammember.html">OOOPtmem_admTeamMember</a>
+          
+        </div>
+    </div>
+  </div>
+  
+</div>
+
+    </div>
+    
+    <div class="col-lg-9" id='text'>
+    
+    
+  
+    <ul class="list-inline">
+      <li><h4>Uses:</h4></li>
+      
+      <li><a href='../module/ooogglob_globals.html'>OOOGglob_Globals</a></li>
+      
+      <li><a href='../module/oooeerro_admerror.html'>OOOEerro_admError</a></li>
+      
+    </ul>
+  
+
+    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: module~~ooopstpa_admstartpath~~UsesGraph Pages: 1 -->
+<svg id="moduleooopstpa_admstartpathUsesGraph" width="439pt" height="52pt"
+ viewBox="0.00 0.00 439.00 52.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~ooopstpa_admstartpath~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 48)">
+<title>module~~ooopstpa_admstartpath~~UsesGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-48 435,-48 435,4 -4,4"/>
+<!-- module~ooopstpa_admstartpath -->
+<g id="module~~ooopstpa_admstartpath~~UsesGraph_node1" class="node"><title>module~ooopstpa_admstartpath</title>
+<polygon fill="none" stroke="black" points="431,-44 295,-44 295,-20 431,-20 431,-44"/>
+<text text-anchor="middle" x="363" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50">OOOPstpa_admStartPath</text>
+</g>
+<!-- module~ooogglob_globals -->
+<g id="module~~ooopstpa_admstartpath~~UsesGraph_node2" class="node"><title>module~ooogglob_globals</title>
+<g id="a_module~~ooopstpa_admstartpath~~UsesGraph_node2"><a xlink:href="../module/ooogglob_globals.html" xlink:title="OOOGglob_Globals">
+<polygon fill="#337ab7" stroke="#337ab7" points="108,-44 0,-44 0,-20 108,-20 108,-44"/>
+<text text-anchor="middle" x="54" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOGglob_Globals</text>
+</a>
+</g>
+</g>
+<!-- module~ooogglob_globals&#45;&gt;module~ooopstpa_admstartpath -->
+<g id="module~~ooopstpa_admstartpath~~UsesGraph_edge2" class="edge"><title>module~ooogglob_globals&#45;&gt;module~ooopstpa_admstartpath</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M108.179,-32.6952C119.973,-32.8221 132.411,-32.9349 144,-33 195.11,-33.2871 207.889,-33.2481 259,-33 267.355,-32.9594 276.09,-32.9004 284.789,-32.8309"/>
+<polygon fill="black" stroke="black" points="284.99,-36.3295 294.96,-32.7451 284.931,-29.3297 284.99,-36.3295"/>
+</g>
+<!-- module~oooeerro_admerror -->
+<g id="module~~ooopstpa_admstartpath~~UsesGraph_node3" class="node"><title>module~oooeerro_admerror</title>
+<g id="a_module~~ooopstpa_admstartpath~~UsesGraph_node3"><a xlink:href="../module/oooeerro_admerror.html" xlink:title="OOOEerro_admError">
+<polygon fill="#337ab7" stroke="#337ab7" points="259,-24 144,-24 144,-0 259,-0 259,-24"/>
+<text text-anchor="middle" x="201.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOEerro_admError</text>
+</a>
+</g>
+</g>
+<!-- module~ooogglob_globals&#45;&gt;module~oooeerro_admerror -->
+<g id="module~~ooopstpa_admstartpath~~UsesGraph_edge1" class="edge"><title>module~ooogglob_globals&#45;&gt;module~oooeerro_admerror</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M108.353,-24.6663C116.63,-23.5285 125.27,-22.3409 133.797,-21.1688"/>
+<polygon fill="black" stroke="black" points="134.298,-24.6329 143.728,-19.8037 133.345,-17.6981 134.298,-24.6329"/>
+</g>
+<!-- module~oooeerro_admerror&#45;&gt;module~ooopstpa_admstartpath -->
+<g id="module~~ooopstpa_admstartpath~~UsesGraph_edge3" class="edge"><title>module~oooeerro_admerror&#45;&gt;module~ooopstpa_admstartpath</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M259.183,-19.1076C267.485,-20.1486 276.152,-21.2354 284.779,-22.3172"/>
+<polygon fill="black" stroke="black" points="284.507,-25.8104 294.865,-23.5818 285.378,-18.8648 284.507,-25.8104"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="26pt"
+ viewBox="0.00 0.00 641.00 25.98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.811906 0.811906) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 785.5,-28 785.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="139.5,-24 72.5,-24 72.5,-0 139.5,-0 139.5,-24"/>
+<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="212,-24 158,-24 158,-0 212,-0 212,-24"/>
+<text text-anchor="middle" x="185" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-24 230,-24 230,-0 294,-0 294,-24"/>
+<text text-anchor="middle" x="262" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="366,-24 312,-24 312,-0 366,-0 366,-24"/>
+<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="439.5,-24 384.5,-24 384.5,-0 439.5,-0 439.5,-24"/>
+<text text-anchor="middle" x="412" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="594,-24 458,-24 458,-0 594,-0 594,-24"/>
+<text text-anchor="middle" x="526" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666,-24 612,-24 612,-0 666,-0 666,-24"/>
+<text text-anchor="middle" x="639" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="781.5,-24 684.5,-24 684.5,-0 781.5,-0 781.5,-24"/>
+<text text-anchor="middle" x="733" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+    
+    <hr>
+<p>Namespace: OOOP - Parallel</p>
+<hr>
+<p>Abstact Data Type Short Name: OOOPstpa</p>
+<hr>
+<p>Abstract Data Type (ADT):         OOOPstpa_adtStartPath
+ Abstract Data Type Module (adm):  OOOPstpa_admStartPath.f90</p>
+<hr>
+<p>Purpose:                    StartPath-Object
+ Language:                   mainly Fortran 95 with Fortran 2008 coarrays
+ Programmer:                 Michael Siehl
+ Date:                       January 2016</p>
+<hr>
+<p>Naming Conventions:</p>
+<p>for scalar members:
+                             m: ADT member
+                             S: property set, G: property get,
+                             CopyImgToImg: copy an ADT member image to image
+  for array members:
+                             A: array
+                             mA: ADT array member
+                             SA: set array property, GA: get array property,
+                             CopyAImgToImg: copy an ADT array member image to image</p>
+<p>for elements of array members:
+                             SAElement: set only one array element property
+                             GAElement: get only one array element property
+                             CopyAElementImgToImg: copy only one element of an ADT array member image to image</p>
+<div class="codehilite"><pre><span></span>                         99: signals a static array member which has an upper array bound
+                             larger than necessary; the upper bound is given by a global parameter
+</pre></div>
+
+
+<p>other naming conventions:
+                             <em>CA: coarray routine / coarray declaration
+                             _SYNC</em>: synchronization routine
+                             CopyCoarrayObjImgToImg: copy a coarray ADT object image to image</p>
+<div class="codehilite"><pre><span></span>                         DC: deep copy routine
+                         Enum: enumeration
+
+                         OO: public (outer) scope (the two leading namespace letters)
+                         II: private (inner) scope
+                         UU: sub-object
+</pre></div>
+
+
+<hr>
+<hr>
+<hr>
+<p>access routines for scalar *
+ and static array members:  *</p>
+<hr>
+<hr>
+<ul>
+<li>Program Logic: **</li>
+</ul>
+<hr>
+<hr>
+<ul>
+<li>Error Handling: **</li>
+</ul>
+<hr>
+<hr>
+<p><strong> Abstract Data Type Declaration: <strong><em>*</em></strong><strong><em>*</em></strong></strong>****</p>
+<hr>
+<hr>
+<p>access routines for scalar   *
+ and static array members:    *</p>
+<hr>
+<hr>
+<hr>
+<hr>
+<p>Program Logic:   *</p>
+<hr>
+<hr>
+<hr>
+<p><strong><em>*</em></strong><strong><em>*</em>  Error Handling:   </strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong>*<em>
+<strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong></em>
+<strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>__
+Private</p>
+    
+    
+    <h3>Used By</h3>
+    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: module~~ooopstpa_admstartpath~~UsedByGraph Pages: 1 -->
+<svg id="moduleooopstpa_admstartpathUsedByGraph" width="641pt" height="70pt"
+ viewBox="0.00 0.00 641.00 69.86" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~ooopstpa_admstartpath~~UsedByGraph" class="graph" transform="scale(0.944035 0.944035) rotate(0) translate(4 70)">
+<title>module~~ooopstpa_admstartpath~~UsedByGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-70 675,-70 675,4 -4,4"/>
+<!-- module~ooopstpa_admstartpath -->
+<g id="module~~ooopstpa_admstartpath~~UsedByGraph_node1" class="node"><title>module~ooopstpa_admstartpath</title>
+<polygon fill="none" stroke="black" points="136,-45 0,-45 0,-21 136,-21 136,-45"/>
+<text text-anchor="middle" x="68" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">OOOPstpa_admStartPath</text>
+</g>
+<!-- module~oooptema_admteammanager -->
+<g id="module~~ooopstpa_admstartpath~~UsedByGraph_node2" class="node"><title>module~oooptema_admteammanager</title>
+<g id="a_module~~ooopstpa_admstartpath~~UsedByGraph_node2"><a xlink:href="../module/oooptema_admteammanager.html" xlink:title="OOOPtema_admTeamManager">
+<polygon fill="#337ab7" stroke="#337ab7" points="338,-66 172,-66 172,-42 338,-42 338,-66"/>
+<text text-anchor="middle" x="255" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtema_admTeamManager</text>
+</a>
+</g>
+</g>
+<!-- module~ooopstpa_admstartpath&#45;&gt;module~oooptema_admteammanager -->
+<g id="module~~ooopstpa_admstartpath~~UsedByGraph_edge4" class="edge"><title>module~ooopstpa_admstartpath&#45;&gt;module~oooptema_admteammanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M136.051,-40.6112C144.375,-41.5561 152.997,-42.5348 161.618,-43.5134"/>
+<polygon fill="black" stroke="black" points="161.389,-47.0098 171.72,-44.6601 162.179,-40.0545 161.389,-47.0098"/>
+</g>
+<!-- module~ooopinma_adminitialmanager -->
+<g id="module~~ooopstpa_admstartpath~~UsedByGraph_node3" class="node"><title>module~ooopinma_adminitialmanager</title>
+<g id="a_module~~ooopstpa_admstartpath~~UsedByGraph_node3"><a xlink:href="../module/ooopinma_adminitialmanager.html" xlink:title="OOOPinma_admInitialManager">
+<polygon fill="#337ab7" stroke="#337ab7" points="336,-24 174,-24 174,-0 336,-0 336,-24"/>
+<text text-anchor="middle" x="255" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinma_admInitialManager</text>
+</a>
+</g>
+</g>
+<!-- module~ooopstpa_admstartpath&#45;&gt;module~ooopinma_adminitialmanager -->
+<g id="module~~ooopstpa_admstartpath~~UsedByGraph_edge5" class="edge"><title>module~ooopstpa_admstartpath&#45;&gt;module~ooopinma_adminitialmanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M136.051,-25.3888C145.088,-24.363 154.476,-23.2974 163.832,-22.2353"/>
+<polygon fill="black" stroke="black" points="164.412,-25.692 173.954,-21.0863 163.623,-18.7366 164.412,-25.692"/>
+</g>
+<!-- module~ooopimma_admimagemanager -->
+<g id="module~~ooopstpa_admstartpath~~UsedByGraph_node4" class="node"><title>module~ooopimma_admimagemanager</title>
+<g id="a_module~~ooopstpa_admstartpath~~UsedByGraph_node4"><a xlink:href="../module/ooopimma_admimagemanager.html" xlink:title="OOOPimma_admImageManager">
+<polygon fill="#337ab7" stroke="#337ab7" points="544,-45 374,-45 374,-21 544,-21 544,-45"/>
+<text text-anchor="middle" x="459" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimma_admImageManager</text>
+</a>
+</g>
+</g>
+<!-- module~oooptema_admteammanager&#45;&gt;module~ooopimma_admimagemanager -->
+<g id="module~~ooopstpa_admstartpath~~UsedByGraph_edge2" class="edge"><title>module~oooptema_admteammanager&#45;&gt;module~ooopimma_admimagemanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M338.161,-45.4585C346.64,-44.577 355.302,-43.6765 363.898,-42.7829"/>
+<polygon fill="black" stroke="black" points="364.358,-46.254 373.943,-41.7386 363.634,-39.2915 364.358,-46.254"/>
+</g>
+<!-- module~ooopinma_adminitialmanager&#45;&gt;module~ooopimma_admimagemanager -->
+<g id="module~~ooopstpa_admstartpath~~UsedByGraph_edge3" class="edge"><title>module~ooopinma_adminitialmanager&#45;&gt;module~ooopimma_admimagemanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M336.126,-20.3299C345.267,-21.2802 354.646,-22.2553 363.946,-23.2221"/>
+<polygon fill="black" stroke="black" points="363.684,-26.7136 373.992,-24.2665 364.408,-19.7512 363.684,-26.7136"/>
+</g>
+<!-- proc~entry_main_sub -->
+<g id="module~~ooopstpa_admstartpath~~UsedByGraph_node5" class="node"><title>proc~entry_main_sub</title>
+<g id="a_module~~ooopstpa_admstartpath~~UsedByGraph_node5"><a xlink:href="../proc/entry_main_sub.html" xlink:title="Entry_Main_Sub">
+<polygon fill="#d9534f" stroke="#d9534f" points="671,-45 580,-45 580,-21 671,-21 671,-45"/>
+<text text-anchor="middle" x="625.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Entry_Main_Sub</text>
+</a>
+</g>
+</g>
+<!-- module~ooopimma_admimagemanager&#45;&gt;proc~entry_main_sub -->
+<g id="module~~ooopstpa_admstartpath~~UsedByGraph_edge1" class="edge"><title>module~ooopimma_admimagemanager&#45;&gt;proc~entry_main_sub</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M544.178,-33C552.848,-33 561.49,-33 569.718,-33"/>
+<polygon fill="black" stroke="black" points="569.889,-36.5001 579.889,-33 569.889,-29.5001 569.889,-36.5001"/>
+</g>
+</g>
+</svg>
+</div>
+                <script>var panmoduleooopstpa_admstartpathUsedByGraph = svgPanZoom('#moduleooopstpa_admstartpathUsedByGraph', {
+                    zoomEnabled: true,
+                    controlIconsEnabled: true,
+                    fit: true,
+                    center: true,});
+                    </script>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="26pt"
+ viewBox="0.00 0.00 641.00 25.98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.811906 0.811906) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 785.5,-28 785.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="139.5,-24 72.5,-24 72.5,-0 139.5,-0 139.5,-24"/>
+<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="212,-24 158,-24 158,-0 212,-0 212,-24"/>
+<text text-anchor="middle" x="185" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-24 230,-24 230,-0 294,-0 294,-24"/>
+<text text-anchor="middle" x="262" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="366,-24 312,-24 312,-0 366,-0 366,-24"/>
+<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="439.5,-24 384.5,-24 384.5,-0 439.5,-0 439.5,-24"/>
+<text text-anchor="middle" x="412" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="594,-24 458,-24 458,-0 594,-0 594,-24"/>
+<text text-anchor="middle" x="526" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666,-24 612,-24 612,-0 666,-0 666,-24"/>
+<text text-anchor="middle" x="639" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="781.5,-24 684.5,-24 684.5,-0 781.5,-0 781.5,-24"/>
+<text text-anchor="middle" x="733" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+    <br>
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    <section>
+     <h2>Derived Types</h2>
+	 
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="type-ooopstpa_adtstartpath"></span><h3>type, public :: <a href='../type/ooopstpa_adtstartpath.html'>OOOPstpa_adtStartPath</a>
+    
+  </h3></div>
+  <div class="panel-body">
+     
+     <h4>Components</h4>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-m_chrpath"></span>character(kind=OOOGglob_kcha,LEN=OOOGglob_Len200),</td>
+  
+  <td>private</td>
+  <td></td><td>::</td>
+  <td><strong>m_chrPath</strong></td><td> =</td><td>""</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-m_uuerrocerror%7E9"></span>type(OOOEerroc_colError),</td>
+  
+  <td>private</td>
+  <td></td><td>::</td>
+  <td><strong>m_UUerrocError</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+     
+     
+          
+     
+     
+     <h4>Description</h4>
+       
+       
+     
+  </div>
+</div>
+
+     
+    </section>
+	<br>
+    
+    
+    
+
+    
+    <section>
+    <h2>Subroutines</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-ooopstpas_chrpath"></span><h3>
+public subroutine <a href='../proc/ooopstpas_chrpath.html'>OOOPstpaS_chrPath</a>(Object, chrPath)
+    
+    
+    
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ooopstpa_adtstartpath.html'>OOOPstpa_adtStartPath</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>Object</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(kind=OOOGglob_kcha,LEN=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>chrPath</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-ooopstpag_chrpath"></span><h3>
+public subroutine <a href='../proc/ooopstpag_chrpath.html'>OOOPstpaG_chrPath</a>(Object, chrPath)
+    
+    
+    
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ooopstpa_adtstartpath.html'>OOOPstpa_adtStartPath</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>Object</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(kind=OOOGglob_kcha,LEN=*),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>chrPath</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-ooopstpa_loadpath"></span><h3>
+public subroutine <a href='../proc/ooopstpa_loadpath.html'>OOOPstpa_LoadPath</a>(Object)
+    
+    
+    
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ooopstpa_adtstartpath.html'>OOOPstpa_adtStartPath</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>Object</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-iistpa_errorhandler"></span><h3>
+private subroutine <a href='../proc/iistpa_errorhandler.html'>IIstpa_ErrorHandler</a>(Object, chrErrorDescription, intErrorType, intErrorNumber)
+    
+    
+    
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ooopstpa_adtstartpath.html'>OOOPstpa_adtStartPath</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>Object</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(kind=1,LEN=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>chrErrorDescription</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer(kind=OOOGglob_kint),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>intErrorType</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer(kind=OOOGglob_kint),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>intErrorNumber</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+  </div>
+  </div>
+
+    
+    </section>    
+    <br>
+    
+    
+    
+    </div>
+  </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-4">&copy; 2016 </div>
+	<div class="col-md-4"><span class="text-center"> MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program was developed by Michael Siehl</span></div>
+        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

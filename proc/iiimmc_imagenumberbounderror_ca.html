@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="MPMD-style Fortran (2008) coarray example program to illustrate a simple PGAS load balancing technique">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>IIimmc_ImageNumberBoundError_CA &ndash; MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+            <li><a href="../program/main.html">Program</a></li>
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>IIimmc_ImageNumberBoundError_CA
+    <small>Function</small>
+    
+    </h1>
+	 
+<div class="row">
+<div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+    <li><i class="fa fa-code"></i><a href="../src/OOOPimmc_admImageManager_CA.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li><a href='../sourcefile/ooopimmc_admimagemanager_ca.f90.html'>OOOPimmc_admImageManager_CA.f90</a></li>
+  
+     <li><a href='../module/ooopimmc_admimagemanager_ca.html'>OOOPimmc_admImageManager_CA</a></li>
+  
+     <li class="active">IIimmc_ImageNumberBoundError_CA</li>
+  </ol>
+</div>
+</div>
+</div>
+    
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-3">
+    
+<div id="sidebar">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+    <div class="list-group">
+      <a class="list-group-item" href="../proc/iiimmc_imagenumberbounderror_ca.html#src">IIimmc_ImageNumberBoundError_CA</a>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprocs">All Procedures</a></h3></div>
+    <div id="allprocs" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../proc/entry_main_sub.html">Entry_Main_Sub</a>
+          
+          <a class="list-group-item" href="../proc/iiimma_errorhandler.html">IIimma_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiimma_sync_checkactivityflag.html">IIimma_SYNC_CheckActivityFlag</a>
+          
+          <a class="list-group-item" href="../proc/iiimmc_errorhandler.html">IIimmc_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiimmc_imagenumberbounderror_ca.html">IIimmc_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iiimsc_errorhandler.html">IIimsc_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiimsc_imagenumberbounderror_ca.html">IIimsc_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iiinma_activateteammanagerimage.html">IIinma_ActivateTeamManagerImage</a>
+          
+          <a class="list-group-item" href="../proc/iiinma_errorhandler.html">IIinma_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiinma_loadteammanagers.html">IIinma_LoadTeamManagers</a>
+          
+          <a class="list-group-item" href="../proc/iiinmc_errorhandler.html">IIinmc_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iiinmc_imagenumberbounderror_ca.html">IIinmc_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iistpa_errorhandler.html">IIstpa_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iitema_activateteammemberimage.html">IItema_ActivateTeamMemberImage</a>
+          
+          <a class="list-group-item" href="../proc/iitema_errorhandler.html">IItema_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iitema_loadteammembers.html">IItema_LoadTeamMembers</a>
+          
+          <a class="list-group-item" href="../proc/iitemc_errorhandler.html">IItemc_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iitemc_imagenumberbounderror_ca.html">IItemc_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iitmec_errorhandler.html">IItmec_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/iitmec_imagenumberbounderror_ca.html">IItmec_ImageNumberBoundError_CA</a>
+          
+          <a class="list-group-item" href="../proc/iitmem_errorhandler.html">IItmem_ErrorHandler</a>
+          
+          <a class="list-group-item" href="../proc/oooeerroc_addobject.html">OOOEerroc_AddObject</a>
+          
+          <a class="list-group-item" href="../proc/ooogglob_subresetprocedures.html">OOOGglob_subResetProcedures</a>
+          
+          <a class="list-group-item" href="../proc/ooogglob_subsetprocedures.html">OOOGglob_subSetProcedures</a>
+          
+          <a class="list-group-item" href="../proc/ooopimma_start.html">OOOPimma_Start</a>
+          
+          <a class="list-group-item" href="../proc/ooopimma_structureconstructor.html">OOOPimma_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmc_structureconstructor.html">OOOPimmc_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmccopyimgtoimg_chrteammembersfilename_ca.html">OOOPimmcCopyImgToImg_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmccopyimgtoimg_intimageactivityflag_ca.html">OOOPimmcCopyImgToImg_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcdc_copycoarrayobjimgtoimg_ca.html">OOOPimmcDC_CopyCoarrayObjImgToImg_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcg_chrteammembersfilename_ca.html">OOOPimmcG_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcg_intimageactivityflag_ca.html">OOOPimmcG_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcs_chrteammembersfilename_ca.html">OOOPimmcS_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimmcs_intimageactivityflag_ca.html">OOOPimmcS_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimsc_structureconstructor.html">OOOPimsc_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopimsc_structureconstructor_ca.html">OOOPimsc_StructureConstructor_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimsccopyimgtoimg_intimageactivityflag_ca.html">OOOPimscCopyImgToImg_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimscdc_copycoarrayobjimgtoimg_ca.html">OOOPimscDC_CopyCoarrayObjImgToImg_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimscg_intimageactivityflag_ca.html">OOOPimscG_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopimscs_intimageactivityflag_ca.html">OOOPimscS_intImageActivityFlag_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinma_start.html">OOOPinma_Start</a>
+          
+          <a class="list-group-item" href="../proc/ooopinma_structureconstructor.html">OOOPinma_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmag_intnumberofteammanagers.html">OOOPinmaG_intNumberOfTeamManagers</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmas_intnumberofteammanagers.html">OOOPinmaS_intNumberOfTeamManagers</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmc_structureconstructor.html">OOOPinmc_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmccopyaimgtoimg_chrteammembersfiles99_ca.html">OOOPinmcCopyAImgToImg_chrTeamMembersFiles99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmccopyaimgtoimg_intteammanagerimages99_ca.html">OOOPinmcCopyAImgToImg_intTeamManagerImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmccopyimgtoimg_intnumberofteammanagers_ca.html">OOOPinmcCopyImgToImg_intNumberOfTeamManagers_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcdc_copycoarrayobjimgtoimg_ca.html">OOOPinmcDC_CopyCoarrayObjImgToImg_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcg_intnumberofteammanagers_ca.html">OOOPinmcG_intNumberOfTeamManagers_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcga_chrteammembersfiles99_ca.html">OOOPinmcGA_chrTeamMembersFiles99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcga_intteammanagerimages99_ca.html">OOOPinmcGA_intTeamManagerImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcs_intnumberofteammanagers_ca.html">OOOPinmcS_intNumberOfTeamManagers_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcsa_chrteammembersfiles99_ca.html">OOOPinmcSA_chrTeamMembersFiles99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopinmcsa_intteammanagerimages99_ca.html">OOOPinmcSA_intTeamManagerImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/ooopstpa_loadpath.html">OOOPstpa_LoadPath</a>
+          
+          <a class="list-group-item" href="../proc/ooopstpag_chrpath.html">OOOPstpaG_chrPath</a>
+          
+          <a class="list-group-item" href="../proc/ooopstpas_chrpath.html">OOOPstpaS_chrPath</a>
+          
+          <a class="list-group-item" href="../proc/oooptema_start.html">OOOPtema_Start</a>
+          
+          <a class="list-group-item" href="../proc/oooptema_structureconstructor.html">OOOPtema_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/oooptemag_chrteammembersfilename.html">OOOPtemaG_chrTeamMembersFileName</a>
+          
+          <a class="list-group-item" href="../proc/oooptemag_intnumberofteammembers.html">OOOPtemaG_intNumberOfTeamMembers</a>
+          
+          <a class="list-group-item" href="../proc/oooptemas_chrteammembersfilename.html">OOOPtemaS_chrTeamMembersFileName</a>
+          
+          <a class="list-group-item" href="../proc/oooptemas_intnumberofteammembers.html">OOOPtemaS_intNumberOfTeamMembers</a>
+          
+          <a class="list-group-item" href="../proc/oooptemc_structureconstructor.html">OOOPtemc_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/oooptemccopyaimgtoimg_intteammemberimages99_ca.html">OOOPtemcCopyAImgToImg_intTeamMemberImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemccopyimgtoimg_chrteammembersfilename_ca.html">OOOPtemcCopyImgToImg_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemccopyimgtoimg_intnumberofteammembers_ca.html">OOOPtemcCopyImgToImg_intNumberOfTeamMembers_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcdc_copycoarrayobjimgtoimg_ca.html">OOOPtemcDC_CopyCoarrayObjImgToImg_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcg_chrteammembersfilename_ca.html">OOOPtemcG_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcg_intnumberofteammembers_ca.html">OOOPtemcG_intNumberOfTeamMembers_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcga_intteammemberimages99_ca.html">OOOPtemcGA_intTeamMemberImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcs_chrteammembersfilename_ca.html">OOOPtemcS_chrTeamMembersFileName_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcs_intnumberofteammembers_ca.html">OOOPtemcS_intNumberOfTeamMembers_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptemcsa_intteammemberimages99_ca.html">OOOPtemcSA_intTeamMemberImages99_CA</a>
+          
+          <a class="list-group-item" href="../proc/oooptmec_structureconstructor.html">OOOPtmec_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../proc/oooptmem_start.html">OOOPtmem_Start</a>
+          
+          <a class="list-group-item" href="../proc/oooptmem_structureconstructor.html">OOOPtmem_StructureConstructor</a>
+          
+        </div>
+    </div>
+  </div>
+  
+</div>
+
+    </div>
+    
+    <div class="col-lg-9" id='text'>
+    <h2>
+public function IIimmc_ImageNumberBoundError_CA(Object_CA, intImageNumber)
+    
+    
+    
+</h2>
+    
+  
+
+
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-object_ca%7E19"></span>type(<a href='../type/ooopimmc_adtimagemanager_ca.html'>OOOPimmc_adtImageManager_CA</a>),</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>CODIMENSION[*]</td><td>::</td>
+  <td><strong>Object_CA</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-intimagenumber%7E10"></span>integer(kind=OOOGglob_kint),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>intImageNumber</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    
+    
+    
+    
+	 <h3>Return Value <small><span class="anchor" id="variable-iiimmc_imagenumberbounderror_ca"></span>logical(kind=OOOGglob_klog)
+  </small></h3>
+    
+    
+    
+    <h3>Description</h3>
+    <hr>
+    
+    
+     
+     <h3>Called By</h3>
+     
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph Pages: 1 -->
+<svg id="prociiimmc_imagenumberbounderror_caCalledByGraph" width="641pt" height="133pt"
+ viewBox="0.00 0.00 641.00 132.92" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph" class="graph" transform="scale(0.467201 0.467201) rotate(0) translate(4 280.503)">
+<title>proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-280.503 1368,-280.503 1368,4 -4,4"/>
+<!-- proc~iiimmc_imagenumberbounderror_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node1" class="node"><title>proc~iiimmc_imagenumberbounderror_ca</title>
+<polygon fill="none" stroke="black" points="1364,-150 1171,-150 1171,-126 1364,-126 1364,-150"/>
+<text text-anchor="middle" x="1267.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50">IIimmc_ImageNumberBoundError_CA</text>
+</g>
+<!-- proc~ooopimmcg_chrteammembersfilename_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node2" class="node"><title>proc~ooopimmcg_chrteammembersfilename_ca</title>
+<g id="a_proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node2"><a xlink:href="../proc/ooopimmcg_chrteammembersfilename_ca.html" xlink:title="OOOPimmcG_chrTeamMembersFileName_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="795.5,-271 557.5,-271 557.5,-247 795.5,-247 795.5,-271"/>
+<text text-anchor="middle" x="676.5" y="-256.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmcG_chrTeamMembersFileName_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimmcg_chrteammembersfilename_ca&#45;&gt;proc~iiimmc_imagenumberbounderror_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_edge10" class="edge"><title>proc~ooopimmcg_chrteammembersfilename_ca&#45;&gt;proc~iiimmc_imagenumberbounderror_ca</title>
+<path fill="none" stroke="black" d="M771.832,-271.039C866.647,-279.466 1015.48,-282.537 1135,-239 1181.66,-222.004 1225.14,-182.054 1248.55,-157.802"/>
+<polygon fill="black" stroke="black" points="1251.37,-159.909 1255.69,-150.234 1246.28,-155.104 1251.37,-159.909"/>
+</g>
+<!-- proc~ooopimmccopyimgtoimg_chrteammembersfilename_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node3" class="node"><title>proc~ooopimmccopyimgtoimg_chrteammembersfilename_ca</title>
+<g id="a_proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node3"><a xlink:href="../proc/ooopimmccopyimgtoimg_chrteammembersfilename_ca.html" xlink:title="OOOPimmcCopyImgToImg_chrTeamMembersFileName_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1135,-150 832,-150 832,-126 1135,-126 1135,-150"/>
+<text text-anchor="middle" x="983.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmcCopyImgToImg_chrTeamMembersFileName_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimmccopyimgtoimg_chrteammembersfilename_ca&#45;&gt;proc~iiimmc_imagenumberbounderror_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_edge11" class="edge"><title>proc~ooopimmccopyimgtoimg_chrteammembersfilename_ca&#45;&gt;proc~iiimmc_imagenumberbounderror_ca</title>
+<path fill="none" stroke="black" d="M1135.41,-138C1143.97,-138 1152.49,-138 1160.83,-138"/>
+<polygon fill="black" stroke="black" points="1160.9,-141.5 1170.9,-138 1160.9,-134.5 1160.9,-141.5"/>
+</g>
+<!-- proc~ooopimmcs_chrteammembersfilename_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node4" class="node"><title>proc~ooopimmcs_chrteammembersfilename_ca</title>
+<g id="a_proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node4"><a xlink:href="../proc/ooopimmcs_chrteammembersfilename_ca.html" xlink:title="OOOPimmcS_chrTeamMembersFileName_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1101.5,-230 865.5,-230 865.5,-206 1101.5,-206 1101.5,-230"/>
+<text text-anchor="middle" x="983.5" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmcS_chrTeamMembersFileName_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimmcs_chrteammembersfilename_ca&#45;&gt;proc~iiimmc_imagenumberbounderror_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_edge12" class="edge"><title>proc~ooopimmcs_chrteammembersfilename_ca&#45;&gt;proc~iiimmc_imagenumberbounderror_ca</title>
+<path fill="none" stroke="black" d="M1073.17,-205.999C1093.67,-202.312 1115.25,-197.686 1135,-192 1169.22,-182.147 1206.64,-166.248 1232.78,-154.247"/>
+<polygon fill="black" stroke="black" points="1234.28,-157.409 1241.87,-150.02 1231.33,-151.061 1234.28,-157.409"/>
+</g>
+<!-- proc~ooopimmcs_intimageactivityflag_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node5" class="node"><title>proc~ooopimmcs_intimageactivityflag_ca</title>
+<g id="a_proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node5"><a xlink:href="../proc/ooopimmcs_intimageactivityflag_ca.html" xlink:title="OOOPimmcS_intImageActivityFlag_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1082.5,-66 884.5,-66 884.5,-42 1082.5,-42 1082.5,-66"/>
+<text text-anchor="middle" x="983.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmcS_intImageActivityFlag_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimmcs_intimageactivityflag_ca&#45;&gt;proc~iiimmc_imagenumberbounderror_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_edge13" class="edge"><title>proc~ooopimmcs_intimageactivityflag_ca&#45;&gt;proc~iiimmc_imagenumberbounderror_ca</title>
+<path fill="none" stroke="black" d="M1082.6,-63.2298C1100.25,-66.1465 1118.33,-69.9759 1135,-75 1171.91,-86.1245 1211.45,-106.31 1237.42,-120.838"/>
+<polygon fill="black" stroke="black" points="1235.92,-124.011 1246.34,-125.907 1239.38,-117.925 1235.92,-124.011"/>
+</g>
+<!-- proc~ooopimmcdc_copycoarrayobjimgtoimg_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node6" class="node"><title>proc~ooopimmcdc_copycoarrayobjimgtoimg_ca</title>
+<g id="a_proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node6"><a xlink:href="../proc/ooopimmcdc_copycoarrayobjimgtoimg_ca.html" xlink:title="OOOPimmcDC_CopyCoarrayObjImgToImg_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="796,-150 557,-150 557,-126 796,-126 796,-150"/>
+<text text-anchor="middle" x="676.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmcDC_CopyCoarrayObjImgToImg_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~iiimmc_imagenumberbounderror_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_edge14" class="edge"><title>proc~ooopimmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~iiimmc_imagenumberbounderror_ca</title>
+<path fill="none" stroke="black" d="M750.774,-150.022C776.393,-153.677 805.397,-157.2 832,-159 966.36,-168.089 1000.76,-169.652 1135,-159 1154.33,-157.466 1175.11,-154.683 1194.32,-151.634"/>
+<polygon fill="black" stroke="black" points="1194.89,-155.086 1204.2,-150.02 1193.77,-148.177 1194.89,-155.086"/>
+</g>
+<!-- proc~ooopimmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooopimmccopyimgtoimg_chrteammembersfilename_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_edge5" class="edge"><title>proc~ooopimmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooopimmccopyimgtoimg_chrteammembersfilename_ca</title>
+<path fill="none" stroke="black" d="M796.294,-138C804.71,-138 813.269,-138 821.863,-138"/>
+<polygon fill="black" stroke="black" points="821.962,-141.5 831.962,-138 821.962,-134.5 821.962,-141.5"/>
+</g>
+<!-- proc~ooopimmccopyimgtoimg_intimageactivityflag_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node7" class="node"><title>proc~ooopimmccopyimgtoimg_intimageactivityflag_ca</title>
+<g id="a_proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node7"><a xlink:href="../proc/ooopimmccopyimgtoimg_intimageactivityflag_ca.html" xlink:title="OOOPimmcCopyImgToImg_intImageActivityFlag_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1116,-108 851,-108 851,-84 1116,-84 1116,-108"/>
+<text text-anchor="middle" x="983.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmcCopyImgToImg_intImageActivityFlag_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooopimmccopyimgtoimg_intimageactivityflag_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_edge9" class="edge"><title>proc~ooopimmcdc_copycoarrayobjimgtoimg_ca&#45;&gt;proc~ooopimmccopyimgtoimg_intimageactivityflag_ca</title>
+<path fill="none" stroke="black" d="M764.901,-125.964C802.47,-120.791 846.529,-114.724 885.139,-109.407"/>
+<polygon fill="black" stroke="black" points="885.921,-112.832 895.35,-108.001 884.966,-105.898 885.921,-112.832"/>
+</g>
+<!-- proc~ooopimmccopyimgtoimg_intimageactivityflag_ca&#45;&gt;proc~iiimmc_imagenumberbounderror_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_edge15" class="edge"><title>proc~ooopimmccopyimgtoimg_intimageactivityflag_ca&#45;&gt;proc~iiimmc_imagenumberbounderror_ca</title>
+<path fill="none" stroke="black" d="M1072.88,-108.035C1093.29,-110.897 1114.91,-113.994 1135,-117 1150.38,-119.301 1166.76,-121.842 1182.54,-124.339"/>
+<polygon fill="black" stroke="black" points="1182.39,-127.859 1192.82,-125.971 1183.49,-120.946 1182.39,-127.859"/>
+</g>
+<!-- proc~ooopimmcg_intimageactivityflag_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node8" class="node"><title>proc~ooopimmcg_intimageactivityflag_ca</title>
+<g id="a_proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node8"><a xlink:href="../proc/ooopimmcg_intimageactivityflag_ca.html" xlink:title="OOOPimmcG_intImageActivityFlag_CA">
+<polygon fill="#d9534f" stroke="#d9534f" points="1083,-24 884,-24 884,-0 1083,-0 1083,-24"/>
+<text text-anchor="middle" x="983.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmcG_intImageActivityFlag_CA</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimmcg_intimageactivityflag_ca&#45;&gt;proc~iiimmc_imagenumberbounderror_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_edge16" class="edge"><title>proc~ooopimmcg_intimageactivityflag_ca&#45;&gt;proc~iiimmc_imagenumberbounderror_ca</title>
+<path fill="none" stroke="black" d="M1083.32,-18.0894C1100.99,-21.3198 1118.88,-26.0677 1135,-33 1181.5,-53.0002 1225.29,-94.0199 1248.74,-118.449"/>
+<polygon fill="black" stroke="black" points="1246.21,-120.87 1255.61,-125.75 1251.31,-116.071 1246.21,-120.87"/>
+</g>
+<!-- proc~iiimma_sync_checkactivityflag -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node9" class="node"><title>proc~iiimma_sync_checkactivityflag</title>
+<g id="a_proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node9"><a xlink:href="../proc/iiimma_sync_checkactivityflag.html" xlink:title="IIimma_SYNC_CheckActivityFlag">
+<polygon fill="#d9534f" stroke="#d9534f" points="521,-271 352,-271 352,-247 521,-247 521,-271"/>
+<text text-anchor="middle" x="436.5" y="-256.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IIimma_SYNC_CheckActivityFlag</text>
+</a>
+</g>
+</g>
+<!-- proc~iiimma_sync_checkactivityflag&#45;&gt;proc~ooopimmcg_chrteammembersfilename_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_edge4" class="edge"><title>proc~iiimma_sync_checkactivityflag&#45;&gt;proc~ooopimmcg_chrteammembersfilename_ca</title>
+<path fill="none" stroke="black" d="M521.075,-259C529.639,-259 538.472,-259 547.374,-259"/>
+<polygon fill="black" stroke="black" points="547.442,-262.5 557.442,-259 547.442,-255.5 547.442,-262.5"/>
+</g>
+<!-- proc~ooopimma_start -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node10" class="node"><title>proc~ooopimma_start</title>
+<g id="a_proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node10"><a xlink:href="../proc/ooopimma_start.html" xlink:title="OOOPimma_Start">
+<polygon fill="#d9534f" stroke="#d9534f" points="316,-250 217,-250 217,-226 316,-226 316,-250"/>
+<text text-anchor="middle" x="266.5" y="-235.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimma_Start</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimma_start&#45;&gt;proc~iiimma_sync_checkactivityflag -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_edge3" class="edge"><title>proc~ooopimma_start&#45;&gt;proc~iiimma_sync_checkactivityflag</title>
+<path fill="none" stroke="black" d="M316.093,-244.074C324.26,-245.095 332.974,-246.184 341.834,-247.292"/>
+<polygon fill="black" stroke="black" points="341.52,-250.78 351.877,-248.547 342.388,-243.834 341.52,-250.78"/>
+</g>
+<!-- proc~ooopinma_start -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node14" class="node"><title>proc~ooopinma_start</title>
+<g id="a_proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node14"><a xlink:href="../proc/ooopinma_start.html" xlink:title="OOOPinma_Start">
+<polygon fill="#d9534f" stroke="#d9534f" points="484.5,-229 388.5,-229 388.5,-205 484.5,-205 484.5,-229"/>
+<text text-anchor="middle" x="436.5" y="-214.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinma_Start</text>
+</a>
+</g>
+</g>
+<!-- proc~ooopimma_start&#45;&gt;proc~ooopinma_start -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_edge6" class="edge"><title>proc~ooopimma_start&#45;&gt;proc~ooopinma_start</title>
+<path fill="none" stroke="black" d="M316.093,-231.926C335.574,-229.491 358.167,-226.667 378.423,-224.135"/>
+<polygon fill="black" stroke="black" points="378.975,-227.593 388.464,-222.88 378.107,-220.647 378.975,-227.593"/>
+</g>
+<!-- proc~entry_main_sub -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node11" class="node"><title>proc~entry_main_sub</title>
+<g id="a_proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node11"><a xlink:href="../proc/entry_main_sub.html" xlink:title="Entry_Main_Sub">
+<polygon fill="#d9534f" stroke="#d9534f" points="181,-250 90,-250 90,-226 181,-226 181,-250"/>
+<text text-anchor="middle" x="135.5" y="-235.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Entry_Main_Sub</text>
+</a>
+</g>
+</g>
+<!-- proc~entry_main_sub&#45;&gt;proc~ooopimma_start -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_edge2" class="edge"><title>proc~entry_main_sub&#45;&gt;proc~ooopimma_start</title>
+<path fill="none" stroke="black" d="M181.256,-238C189.43,-238 198.072,-238 206.584,-238"/>
+<polygon fill="black" stroke="black" points="206.861,-241.5 216.861,-238 206.861,-234.5 206.861,-241.5"/>
+</g>
+<!-- program~main -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node12" class="node"><title>program~main</title>
+<g id="a_proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node12"><a xlink:href="../program/main.html" xlink:title="Main">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="54,-250 0,-250 0,-226 54,-226 54,-250"/>
+<text text-anchor="middle" x="27" y="-235.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Main</text>
+</a>
+</g>
+</g>
+<!-- program~main&#45;&gt;proc~entry_main_sub -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_edge1" class="edge"><title>program~main&#45;&gt;proc~entry_main_sub</title>
+<path fill="none" stroke="black" d="M54.0528,-238C61.8379,-238 70.6832,-238 79.5905,-238"/>
+<polygon fill="black" stroke="black" points="79.6202,-241.5 89.6202,-238 79.6201,-234.5 79.6202,-241.5"/>
+</g>
+<!-- proc~iiinma_activateteammanagerimage -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node13" class="node"><title>proc~iiinma_activateteammanagerimage</title>
+<g id="a_proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_node13"><a xlink:href="../proc/iiinma_activateteammanagerimage.html" xlink:title="IIinma_ActivateTeamManagerImage">
+<polygon fill="#d9534f" stroke="#d9534f" points="769.5,-229 583.5,-229 583.5,-205 769.5,-205 769.5,-229"/>
+<text text-anchor="middle" x="676.5" y="-214.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IIinma_ActivateTeamManagerImage</text>
+</a>
+</g>
+</g>
+<!-- proc~iiinma_activateteammanagerimage&#45;&gt;proc~ooopimmcs_chrteammembersfilename_ca -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_edge8" class="edge"><title>proc~iiinma_activateteammanagerimage&#45;&gt;proc~ooopimmcs_chrteammembersfilename_ca</title>
+<path fill="none" stroke="black" d="M769.838,-217.303C796.736,-217.391 826.607,-217.489 855.256,-217.583"/>
+<polygon fill="black" stroke="black" points="855.32,-221.083 865.331,-217.616 855.343,-214.083 855.32,-221.083"/>
+</g>
+<!-- proc~ooopinma_start&#45;&gt;proc~iiinma_activateteammanagerimage -->
+<g id="proc~~iiimmc_imagenumberbounderror_ca~~CalledByGraph_edge7" class="edge"><title>proc~ooopinma_start&#45;&gt;proc~iiinma_activateteammanagerimage</title>
+<path fill="none" stroke="black" d="M484.521,-217C509.837,-217 542.115,-217 572.899,-217"/>
+<polygon fill="black" stroke="black" points="573.27,-220.5 583.27,-217 573.27,-213.5 573.27,-220.5"/>
+</g>
+</g>
+</svg>
+</div>
+                <script>var panprociiimmc_imagenumberbounderror_caCalledByGraph = svgPanZoom('#prociiimmc_imagenumberbounderror_caCalledByGraph', {
+                    zoomEnabled: true,
+                    controlIconsEnabled: true,
+                    fit: true,
+                    center: true,});
+                    </script>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="26pt"
+ viewBox="0.00 0.00 641.00 25.98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.811906 0.811906) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 785.5,-28 785.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="139.5,-24 72.5,-24 72.5,-0 139.5,-0 139.5,-24"/>
+<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="212,-24 158,-24 158,-0 212,-0 212,-24"/>
+<text text-anchor="middle" x="185" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-24 230,-24 230,-0 294,-0 294,-24"/>
+<text text-anchor="middle" x="262" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="366,-24 312,-24 312,-0 366,-0 366,-24"/>
+<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="439.5,-24 384.5,-24 384.5,-0 439.5,-0 439.5,-24"/>
+<text text-anchor="middle" x="412" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="594,-24 458,-24 458,-0 594,-0 594,-24"/>
+<text text-anchor="middle" x="526" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666,-24 612,-24 612,-0 666,-0 666,-24"/>
+<text text-anchor="middle" x="639" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="781.5,-24 684.5,-24 684.5,-0 781.5,-0 781.5,-24"/>
+<text text-anchor="middle" x="733" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+     
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="kt">LOGICAL</span><span class="p">(</span><span class="n">OOOGglob_klog</span><span class="p">)</span> <span class="k">FUNCTION </span><span class="n">IIimmc_ImageNumberBoundError_CA</span> <span class="p">(</span><span class="n">Object_CA</span><span class="p">,</span> <span class="n">intImageNumber</span><span class="p">)</span>
+  <span class="c">! error handling routine</span>
+  <span class="c">! checks if the image number does exist</span>
+  <span class="k">TYPE</span><span class="p">(</span><span class="n">OOOPimmc_adtImageManager_CA</span><span class="p">),</span> <span class="k">CODIMENSION</span><span class="p">[</span><span class="o">*</span><span class="p">],</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">INOUT</span><span class="p">)</span> <span class="kd">::</span> <span class="n">Object_CA</span>
+  <span class="kt">INTEGER</span><span class="p">(</span><span class="n">OOOGglob_kint</span><span class="p">),</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span> <span class="kd">::</span> <span class="n">intImageNumber</span>
+  <span class="c">!</span>
+  <span class="n">IIimmc_ImageNumberBoundError_CA</span> <span class="o">=</span> <span class="p">.</span><span class="n">FALSE</span><span class="p">.</span>
+  <span class="c">!</span>
+  <span class="k">IF</span> <span class="p">(</span><span class="n">intImageNumber</span> <span class="p">.</span><span class="n">LT</span><span class="p">.</span> <span class="mi">1</span><span class="p">)</span> <span class="k">THEN</span> <span class="c">! image number is too small</span>
+    <span class="n">IIimmc_ImageNumberBoundError_CA</span> <span class="o">=</span> <span class="p">.</span><span class="n">TRUE</span><span class="p">.</span>
+  <span class="k">END IF</span>
+  <span class="c">!</span>
+  <span class="c">!********</span>
+  <span class="c">!</span>
+  <span class="k">IF</span> <span class="p">(</span><span class="n">intImageNumber</span> <span class="p">.</span><span class="n">GT</span><span class="p">.</span> <span class="nb">NUM_IMAGES</span><span class="p">())</span> <span class="k">THEN</span> <span class="c">! image number is too large</span>
+    <span class="n">IIimmc_ImageNumberBoundError_CA</span> <span class="o">=</span> <span class="p">.</span><span class="n">TRUE</span><span class="p">.</span>
+  <span class="k">END IF</span>
+  <span class="c">!</span>
+<span class="k">END FUNCTION </span><span class="n">IIimmc_ImageNumberBoundError_CA</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-4">&copy; 2016 </div>
+	<div class="col-md-4"><span class="text-center"> MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program was developed by Michael Siehl</span></div>
+        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

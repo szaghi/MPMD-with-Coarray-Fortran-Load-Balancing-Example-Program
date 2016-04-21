@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="MPMD-style Fortran (2008) coarray example program to illustrate a simple PGAS load balancing technique">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>OOOPimma_admImageManager &ndash; MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+            <li><a href="../program/main.html">Program</a></li>
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>OOOPimma_admImageManager 
+    <small>Module</small>
+    
+    </h1>
+	 
+<div class="row">
+<div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+    <li><i class="fa fa-code"></i><a href="../src/OOOPimma_admImageManager.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li><a href='../sourcefile/ooopimma_admimagemanager.f90.html'>OOOPimma_admImageManager.f90</a></li>
+  
+     <li class="active">OOOPimma_admImageManager</li>
+  </ol>
+</div>
+</div>
+</div>
+    
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-3">
+    
+<div id="sidebar">
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars">Variables</a></h3></div>
+    <div id="vars" class="panel-collapse collapse">
+      <div class="list-group">
+        
+        <a class="list-group-item" href="../module/ooopimma_admimagemanager.html#variable-ooopimmaimagemanager_1">OOOPimmaImageManager_1</a>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types">Derived Types</a></h3></div>
+    <div id="types" class="panel-collapse collapse">
+      <div class="list-group">
+        
+        <a class="list-group-item" href="../module/ooopimma_admimagemanager.html#type-ooopimma_adtimagemanager">OOOPimma_adtImageManager</a>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs">Subroutines</a></h3></div>
+    <div class="list-group">
+        <div id="subs" class="panel-collapse collapse">
+          
+          <a class="list-group-item" href="../module/ooopimma_admimagemanager.html#proc-ooopimma_structureconstructor">OOOPimma_StructureConstructor</a>
+          
+          <a class="list-group-item" href="../module/ooopimma_admimagemanager.html#proc-ooopimma_start">OOOPimma_Start</a>
+          
+          <a class="list-group-item" href="../module/ooopimma_admimagemanager.html#proc-iiimma_sync_checkactivityflag">IIimma_SYNC_CheckActivityFlag</a>
+          
+          <a class="list-group-item" href="../module/ooopimma_admimagemanager.html#proc-iiimma_errorhandler">IIimma_ErrorHandler</a>
+          
+        </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  <hr>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods">All Modules</a></h3></div>
+    <div id="allmods" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../module/main_sub.html">Main_Sub</a>
+          
+          <a class="list-group-item" href="../module/oooeerro_admerror.html">OOOEerro_admError</a>
+          
+          <a class="list-group-item" href="../module/ooogglob_globals.html">OOOGglob_Globals</a>
+          
+          <a class="list-group-item" href="../module/ooopimma_admimagemanager.html">OOOPimma_admImageManager</a>
+          
+          <a class="list-group-item" href="../module/ooopimmc_admimagemanager_ca.html">OOOPimmc_admImageManager_CA</a>
+          
+          <a class="list-group-item" href="../module/ooopimsc_admimagestatus_ca.html">OOOPimsc_admImageStatus_CA</a>
+          
+          <a class="list-group-item" href="../module/ooopinma_adminitialmanager.html">OOOPinma_admInitialManager</a>
+          
+          <a class="list-group-item" href="../module/ooopinmc_adminitialmanager_ca.html">OOOPinmc_admInitialManager_CA</a>
+          
+          <a class="list-group-item" href="../module/ooopstpa_admstartpath.html">OOOPstpa_admStartPath</a>
+          
+          <a class="list-group-item" href="../module/oooptema_admteammanager.html">OOOPtema_admTeamManager</a>
+          
+          <a class="list-group-item" href="../module/oooptemc_admteammanager_ca.html">OOOPtemc_admTeamManager_CA</a>
+          
+          <a class="list-group-item" href="../module/oooptmec_admteammember_ca.html">OOOPtmec_admTeamMember_CA</a>
+          
+          <a class="list-group-item" href="../module/oooptmem_admteammember.html">OOOPtmem_admTeamMember</a>
+          
+        </div>
+    </div>
+  </div>
+  
+</div>
+
+    </div>
+    
+    <div class="col-lg-9" id='text'>
+    
+    
+  
+    <ul class="list-inline">
+      <li><h4>Uses:</h4></li>
+      
+      <li><a href='../module/ooogglob_globals.html'>OOOGglob_Globals</a></li>
+      
+      <li><a href='../module/oooeerro_admerror.html'>OOOEerro_admError</a></li>
+      
+      <li><a href='../module/ooopimmc_admimagemanager_ca.html'>OOOPimmc_admImageManager_CA</a></li>
+      
+      <li><a href='../module/oooptema_admteammanager.html'>OOOPtema_admTeamManager</a></li>
+      
+      <li><a href='../module/oooptmem_admteammember.html'>OOOPtmem_admTeamMember</a></li>
+      
+      <li><a href='../module/ooopinma_adminitialmanager.html'>OOOPinma_admInitialManager</a></li>
+      
+    </ul>
+  
+
+    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: module~~ooopimma_admimagemanager~~UsesGraph Pages: 1 -->
+<svg id="moduleooopimma_admimagemanagerUsesGraph" width="641pt" height="298pt"
+ viewBox="0.00 0.00 641.00 297.88" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~ooopimma_admimagemanager~~UsesGraph" class="graph" transform="scale(0.696739 0.696739) rotate(0) translate(4 423.537)">
+<title>module~~ooopimma_admimagemanager~~UsesGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-423.537 916,-423.537 916,4 -4,4"/>
+<!-- module~ooopimma_admimagemanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_node1" class="node"><title>module~ooopimma_admimagemanager</title>
+<polygon fill="none" stroke="black" points="912,-172.771 742,-172.771 742,-148.771 912,-148.771 912,-172.771"/>
+<text text-anchor="middle" x="827" y="-158.371" font-family="Helvetica,sans-Serif" font-size="10.50">OOOPimma_admImageManager</text>
+</g>
+<!-- module~ooopimmc_admimagemanager_ca -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_node2" class="node"><title>module~ooopimmc_admimagemanager_ca</title>
+<g id="a_module~~ooopimma_admimagemanager~~UsesGraph_node2"><a xlink:href="../module/ooopimmc_admimagemanager_ca.html" xlink:title="OOOPimmc_admImageManager_CA">
+<polygon fill="#337ab7" stroke="#337ab7" points="706,-372.771 516,-372.771 516,-348.771 706,-348.771 706,-372.771"/>
+<text text-anchor="middle" x="611" y="-358.371" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimmc_admImageManager_CA</text>
+</a>
+</g>
+</g>
+<!-- module~ooopimmc_admimagemanager_ca&#45;&gt;module~ooopimma_admimagemanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge27" class="edge"><title>module~ooopimmc_admimagemanager_ca&#45;&gt;module~ooopimma_admimagemanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M625.065,-348.562C661.116,-314.869 762.196,-220.401 805.685,-179.757"/>
+<polygon fill="black" stroke="black" points="808.19,-182.207 813.106,-172.821 803.411,-177.092 808.19,-182.207"/>
+</g>
+<!-- module~oooptema_admteammanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_node3" class="node"><title>module~oooptema_admteammanager</title>
+<g id="a_module~~ooopimma_admimagemanager~~UsesGraph_node3"><a xlink:href="../module/oooptema_admteammanager.html" xlink:title="OOOPtema_admTeamManager">
+<polygon fill="#337ab7" stroke="#337ab7" points="694,-232.771 528,-232.771 528,-208.771 694,-208.771 694,-232.771"/>
+<text text-anchor="middle" x="611" y="-218.371" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtema_admTeamManager</text>
+</a>
+</g>
+</g>
+<!-- module~oooptema_admteammanager&#45;&gt;module~ooopimma_admimagemanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge28" class="edge"><title>module~oooptema_admteammanager&#45;&gt;module~ooopimma_admimagemanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M656.012,-208.659C671.785,-204.302 689.695,-199.336 706,-194.771 728.321,-188.522 752.957,-181.554 774.069,-175.562"/>
+<polygon fill="black" stroke="black" points="775.148,-178.894 783.811,-172.794 773.236,-172.16 775.148,-178.894"/>
+</g>
+<!-- module~oooeerro_admerror -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_node4" class="node"><title>module~oooeerro_admerror</title>
+<g id="a_module~~ooopimma_admimagemanager~~UsesGraph_node4"><a xlink:href="../module/oooeerro_admerror.html" xlink:title="OOOEerro_admError">
+<polygon fill="#337ab7" stroke="#337ab7" points="259,-232.771 144,-232.771 144,-208.771 259,-208.771 259,-232.771"/>
+<text text-anchor="middle" x="201.5" y="-218.371" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOEerro_admError</text>
+</a>
+</g>
+</g>
+<!-- module~oooeerro_admerror&#45;&gt;module~ooopimma_admimagemanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge29" class="edge"><title>module~oooeerro_admerror&#45;&gt;module~ooopimma_admimagemanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M388.5,-180.771C451.902,-169.716 622.769,-164.536 731.244,-162.296"/>
+<polygon fill="black" stroke="black" points="731.614,-165.789 741.542,-162.088 731.473,-158.79 731.614,-165.789"/>
+</g>
+<!-- module~oooeerro_admerror&#45;&gt;module~ooopimmc_admimagemanager_ca -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge5" class="edge"><title>module~oooeerro_admerror&#45;&gt;module~ooopimmc_admimagemanager_ca</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M216.587,-232.776C233.935,-246.964 264.824,-270.338 295,-283.771 366.033,-315.393 452.105,-335.306 516.314,-346.941"/>
+<polygon fill="black" stroke="black" points="515.968,-350.434 526.426,-348.738 517.192,-343.542 515.968,-350.434"/>
+</g>
+<!-- module~oooeerro_admerror&#45;&gt;module~oooptema_admteammanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge14" class="edge"><title>module~oooeerro_admerror&#45;&gt;module~oooptema_admteammanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M388.5,-180.771C419.576,-175.353 499.555,-192.679 554.393,-206.216"/>
+<polygon fill="black" stroke="black" points="553.773,-209.668 564.323,-208.693 555.467,-202.876 553.773,-209.668"/>
+</g>
+<!-- module~ooopinma_adminitialmanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_node5" class="node"><title>module~ooopinma_adminitialmanager</title>
+<g id="a_module~~ooopimma_admimagemanager~~UsesGraph_node5"><a xlink:href="../module/ooopinma_adminitialmanager.html" xlink:title="OOOPinma_admInitialManager">
+<polygon fill="#337ab7" stroke="#337ab7" points="692,-152.771 530,-152.771 530,-128.771 692,-128.771 692,-152.771"/>
+<text text-anchor="middle" x="611" y="-138.371" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinma_admInitialManager</text>
+</a>
+</g>
+</g>
+<!-- module~oooeerro_admerror&#45;&gt;module~ooopinma_adminitialmanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge21" class="edge"><title>module~oooeerro_admerror&#45;&gt;module~ooopinma_adminitialmanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M388.5,-180.771C437.147,-172.289 491.74,-162.434 534.554,-154.629"/>
+<polygon fill="black" stroke="black" points="535.406,-158.031 544.615,-152.793 534.15,-151.145 535.406,-158.031"/>
+</g>
+<!-- module~oooptmem_admteammember -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_node6" class="node"><title>module~oooptmem_admteammember</title>
+<g id="a_module~~ooopimma_admimagemanager~~UsesGraph_node6"><a xlink:href="../module/oooptmem_admteammember.html" xlink:title="OOOPtmem_admTeamMember">
+<polygon fill="#337ab7" stroke="#337ab7" points="694,-72.7714 528,-72.7714 528,-48.7714 694,-48.7714 694,-72.7714"/>
+<text text-anchor="middle" x="611" y="-58.3714" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtmem_admTeamMember</text>
+</a>
+</g>
+</g>
+<!-- module~oooeerro_admerror&#45;&gt;module~oooptmem_admteammember -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge26" class="edge"><title>module~oooeerro_admerror&#45;&gt;module~oooptmem_admteammember</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M252.651,-208.692C289.522,-200.1 340.93,-188.717 386.5,-180.771"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M388.5,-180.771C429.417,-173.637 444.237,-182.892 480,-161.771 501.169,-149.269 497.377,-135.822 516,-119.771 534.939,-103.448 558.831,-88.5137 577.788,-77.7541"/>
+<polygon fill="black" stroke="black" points="579.618,-80.741 586.654,-72.8197 576.214,-74.6244 579.618,-80.741"/>
+</g>
+<!-- module~ooopimsc_admimagestatus_ca -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_node8" class="node"><title>module~ooopimsc_admimagestatus_ca</title>
+<g id="a_module~~ooopimma_admimagemanager~~UsesGraph_node8"><a xlink:href="../module/ooopimsc_admimagestatus_ca.html" xlink:title="OOOPimsc_admImageStatus_CA">
+<polygon fill="#337ab7" stroke="#337ab7" points="474,-392.771 301,-392.771 301,-368.771 474,-368.771 474,-392.771"/>
+<text text-anchor="middle" x="387.5" y="-378.371" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPimsc_admImageStatus_CA</text>
+</a>
+</g>
+</g>
+<!-- module~oooeerro_admerror&#45;&gt;module~ooopimsc_admimagestatus_ca -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge2" class="edge"><title>module~oooeerro_admerror&#45;&gt;module~ooopimsc_admimagestatus_ca</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M214.111,-233.221C226.119,-246.432 245.036,-268.198 259,-288.771 277.765,-316.418 268.896,-333.914 295,-354.771 299.711,-358.536 304.94,-361.755 310.443,-364.509"/>
+<polygon fill="black" stroke="black" points="309.36,-367.857 319.92,-368.716 312.2,-361.459 309.36,-367.857"/>
+</g>
+<!-- module~oooptemc_admteammanager_ca -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_node9" class="node"><title>module~oooptemc_admteammanager_ca</title>
+<g id="a_module~~ooopimma_admimagemanager~~UsesGraph_node9"><a xlink:href="../module/oooptemc_admteammanager_ca.html" xlink:title="OOOPtemc_admTeamManager_CA">
+<polygon fill="#337ab7" stroke="#337ab7" points="480,-274.771 295,-274.771 295,-250.771 480,-250.771 480,-274.771"/>
+<text text-anchor="middle" x="387.5" y="-260.371" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtemc_admTeamManager_CA</text>
+</a>
+</g>
+</g>
+<!-- module~oooeerro_admerror&#45;&gt;module~oooptemc_admteammanager_ca -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge7" class="edge"><title>module~oooeerro_admerror&#45;&gt;module~oooptemc_admteammanager_ca</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M255.227,-232.807C276.592,-237.684 301.436,-243.355 323.725,-248.442"/>
+<polygon fill="black" stroke="black" points="323.237,-251.921 333.765,-250.734 324.795,-245.096 323.237,-251.921"/>
+</g>
+<!-- module~ooopstpa_admstartpath -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_node10" class="node"><title>module~ooopstpa_admstartpath</title>
+<g id="a_module~~ooopimma_admimagemanager~~UsesGraph_node10"><a xlink:href="../module/ooopstpa_admstartpath.html" xlink:title="OOOPstpa_admStartPath">
+<polygon fill="#337ab7" stroke="#337ab7" points="455.5,-232.771 319.5,-232.771 319.5,-208.771 455.5,-208.771 455.5,-232.771"/>
+<text text-anchor="middle" x="387.5" y="-218.371" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPstpa_admStartPath</text>
+</a>
+</g>
+</g>
+<!-- module~oooeerro_admerror&#45;&gt;module~ooopstpa_admstartpath -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge9" class="edge"><title>module~oooeerro_admerror&#45;&gt;module~ooopstpa_admstartpath</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M259.207,-220.771C274.947,-220.771 292.312,-220.771 309.021,-220.771"/>
+<polygon fill="black" stroke="black" points="309.319,-224.271 319.319,-220.771 309.319,-217.271 309.319,-224.271"/>
+</g>
+<!-- module~ooopinmc_adminitialmanager_ca -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_node11" class="node"><title>module~ooopinmc_adminitialmanager_ca</title>
+<g id="a_module~~ooopimma_admimagemanager~~UsesGraph_node11"><a xlink:href="../module/ooopinmc_adminitialmanager_ca.html" xlink:title="OOOPinmc_admInitialManager_CA">
+<polygon fill="#337ab7" stroke="#337ab7" points="478,-152.771 297,-152.771 297,-128.771 478,-128.771 478,-152.771"/>
+<text text-anchor="middle" x="387.5" y="-138.371" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPinmc_admInitialManager_CA</text>
+</a>
+</g>
+</g>
+<!-- module~oooeerro_admerror&#45;&gt;module~ooopinmc_adminitialmanager_ca -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge17" class="edge"><title>module~oooeerro_admerror&#45;&gt;module~ooopinmc_adminitialmanager_ca</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M220.22,-208.604C238.337,-196.609 267.627,-178.43 295,-166.771 304.672,-162.652 315.191,-158.974 325.538,-155.772"/>
+<polygon fill="black" stroke="black" points="326.785,-159.053 335.373,-152.849 324.79,-152.343 326.785,-159.053"/>
+</g>
+<!-- module~oooptmec_admteammember_ca -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_node12" class="node"><title>module~oooptmec_admteammember_ca</title>
+<g id="a_module~~ooopimma_admimagemanager~~UsesGraph_node12"><a xlink:href="../module/oooptmec_admteammember_ca.html" xlink:title="OOOPtmec_admTeamMember_CA">
+<polygon fill="#337ab7" stroke="#337ab7" points="478.5,-72.7714 296.5,-72.7714 296.5,-48.7714 478.5,-48.7714 478.5,-72.7714"/>
+<text text-anchor="middle" x="387.5" y="-58.3714" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOPtmec_admTeamMember_CA</text>
+</a>
+</g>
+</g>
+<!-- module~oooeerro_admerror&#45;&gt;module~oooptmec_admteammember_ca -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge23" class="edge"><title>module~oooeerro_admerror&#45;&gt;module~oooptmec_admteammember_ca</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M211.885,-208.645C227.687,-188.688 261.203,-148.296 295,-119.771 313.782,-103.919 337.091,-88.9487 355.482,-78.0543"/>
+<polygon fill="black" stroke="black" points="357.457,-80.9542 364.337,-72.8969 353.934,-74.9054 357.457,-80.9542"/>
+</g>
+<!-- module~ooopinma_adminitialmanager&#45;&gt;module~ooopimma_admimagemanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge30" class="edge"><title>module~ooopinma_adminitialmanager&#45;&gt;module~ooopimma_admimagemanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M692.295,-148.276C705.148,-149.477 718.55,-150.729 731.694,-151.958"/>
+<polygon fill="black" stroke="black" points="731.398,-155.445 741.681,-152.891 732.05,-148.476 731.398,-155.445"/>
+</g>
+<!-- module~oooptmem_admteammember&#45;&gt;module~ooopimma_admimagemanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge31" class="edge"><title>module~oooptmem_admteammember&#45;&gt;module~ooopimma_admimagemanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M637.813,-72.8337C676.053,-90.7027 747.853,-124.254 790.859,-144.35"/>
+<polygon fill="black" stroke="black" points="789.554,-147.604 800.095,-148.666 792.517,-141.262 789.554,-147.604"/>
+</g>
+<!-- module~ooogglob_globals -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_node7" class="node"><title>module~ooogglob_globals</title>
+<g id="a_module~~ooopimma_admimagemanager~~UsesGraph_node7"><a xlink:href="../module/ooogglob_globals.html" xlink:title="OOOGglob_Globals">
+<polygon fill="#337ab7" stroke="#337ab7" points="108,-232.771 0,-232.771 0,-208.771 108,-208.771 108,-232.771"/>
+<text text-anchor="middle" x="54" y="-218.371" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OOOGglob_Globals</text>
+</a>
+</g>
+</g>
+<!-- module~ooogglob_globals&#45;&gt;module~ooopimma_admimagemanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge32" class="edge"><title>module~ooogglob_globals&#45;&gt;module~ooopimma_admimagemanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M65.1332,-208.537C86.888,-183.257 140.947,-125.556 200.5,-100.771"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M202.5,-100.771C247.966,-81.8499 249.525,-58.6701 295,-39.7714 333.354,-23.8321 345.486,-27.3258 386.5,-20.7714"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M388.5,-20.7714C528.092,1.53694 577.192,18.4719 706,-39.7714 754.164,-61.5499 793.549,-111.866 812.949,-140.278"/>
+<polygon fill="black" stroke="black" points="810.079,-142.282 818.532,-148.669 815.907,-138.405 810.079,-142.282"/>
+</g>
+<!-- module~ooogglob_globals&#45;&gt;module~ooopimmc_admimagemanager_ca -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge3" class="edge"><title>module~ooogglob_globals&#45;&gt;module~ooopimmc_admimagemanager_ca</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M202.5,-302.771C260.153,-320.156 239.765,-377.787 295,-401.771 389.877,-442.97 514.816,-401.792 574.838,-376.83"/>
+<polygon fill="black" stroke="black" points="576.411,-379.965 584.243,-372.829 573.671,-373.523 576.411,-379.965"/>
+</g>
+<!-- module~ooogglob_globals&#45;&gt;module~oooptema_admteammanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge12" class="edge"><title>module~ooogglob_globals&#45;&gt;module~oooptema_admteammanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M202.5,-302.771C320.839,-338.523 360.527,-315.53 480,-283.771 517.346,-273.844 556.829,-253.045 582.348,-238.057"/>
+<polygon fill="black" stroke="black" points="584.303,-240.966 591.089,-232.829 580.71,-234.959 584.303,-240.966"/>
+</g>
+<!-- module~ooogglob_globals&#45;&gt;module~oooeerro_admerror -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge15" class="edge"><title>module~ooogglob_globals&#45;&gt;module~oooeerro_admerror</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M108.353,-220.771C116.54,-220.771 125.082,-220.771 133.519,-220.771"/>
+<polygon fill="black" stroke="black" points="133.728,-224.271 143.728,-220.771 133.728,-217.271 133.728,-224.271"/>
+</g>
+<!-- module~ooogglob_globals&#45;&gt;module~ooopinma_adminitialmanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge20" class="edge"><title>module~ooogglob_globals&#45;&gt;module~ooopinma_adminitialmanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M202.5,-100.771C262.524,-75.7444 444.905,-106.924 544.081,-126.751"/>
+<polygon fill="black" stroke="black" points="543.502,-130.205 553.997,-128.751 544.886,-123.343 543.502,-130.205"/>
+</g>
+<!-- module~ooogglob_globals&#45;&gt;module~oooptmem_admteammember -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge25" class="edge"><title>module~ooogglob_globals&#45;&gt;module~oooptmem_admteammember</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M388.5,-20.7714C419.559,-15.8078 499.143,-32.9038 553.943,-46.2787"/>
+<polygon fill="black" stroke="black" points="553.323,-49.7304 563.87,-48.7266 554.999,-42.934 553.323,-49.7304"/>
+</g>
+<!-- module~ooogglob_globals&#45;&gt;module~ooopimsc_admimagestatus_ca -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge1" class="edge"><title>module~ooogglob_globals&#45;&gt;module~ooopimsc_admimagestatus_ca</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M202.5,-302.771C257.075,-319.259 317.396,-346.716 353.603,-364.268"/>
+<polygon fill="black" stroke="black" points="352.19,-367.473 362.711,-368.721 355.264,-361.184 352.19,-367.473"/>
+</g>
+<!-- module~ooogglob_globals&#45;&gt;module~oooptemc_admteammanager_ca -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge6" class="edge"><title>module~ooogglob_globals&#45;&gt;module~oooptemc_admteammanager_ca</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M202.5,-302.771C214.869,-306.508 282.145,-290.372 331.787,-277.484"/>
+<polygon fill="black" stroke="black" points="332.982,-280.79 341.772,-274.875 331.212,-274.017 332.982,-280.79"/>
+</g>
+<!-- module~ooogglob_globals&#45;&gt;module~ooopstpa_admstartpath -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge8" class="edge"><title>module~ooogglob_globals&#45;&gt;module~ooopstpa_admstartpath</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M70.9341,-232.92C96.6063,-251.731 149.428,-287.342 200.5,-302.771"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M202.5,-302.771C249.641,-317.013 249.725,-261.143 295,-241.771 300.057,-239.608 305.371,-237.649 310.787,-235.88"/>
+<polygon fill="black" stroke="black" points="312.059,-239.151 320.61,-232.896 310.025,-232.454 312.059,-239.151"/>
+</g>
+<!-- module~ooogglob_globals&#45;&gt;module~ooopinmc_adminitialmanager_ca -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge16" class="edge"><title>module~ooogglob_globals&#45;&gt;module~ooopinmc_adminitialmanager_ca</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M202.5,-100.771C214.593,-95.7293 283.696,-112.688 333.665,-126.07"/>
+<polygon fill="black" stroke="black" points="332.815,-129.466 343.382,-128.692 334.638,-122.708 332.815,-129.466"/>
+</g>
+<!-- module~ooogglob_globals&#45;&gt;module~oooptmec_admteammember_ca -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge22" class="edge"><title>module~ooogglob_globals&#45;&gt;module~oooptmec_admteammember_ca</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M202.5,-100.771C230.03,-89.2925 261.31,-80.9149 290.169,-74.886"/>
+<polygon fill="black" stroke="black" points="291.155,-78.2577 300.266,-72.8502 289.771,-71.3958 291.155,-78.2577"/>
+</g>
+<!-- module~ooopimsc_admimagestatus_ca&#45;&gt;module~ooopimmc_admimagemanager_ca -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge4" class="edge"><title>module~ooopimsc_admimagestatus_ca&#45;&gt;module~ooopimmc_admimagemanager_ca</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M474.138,-373.039C484.47,-372.106 495.111,-371.145 505.673,-370.191"/>
+<polygon fill="black" stroke="black" points="506.118,-373.666 515.763,-369.28 505.489,-366.694 506.118,-373.666"/>
+</g>
+<!-- module~ooopimsc_admimagestatus_ca&#45;&gt;module~oooptema_admteammanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge13" class="edge"><title>module~ooopimsc_admimagestatus_ca&#45;&gt;module~oooptema_admteammanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M406.136,-368.635C424.632,-355.861 454.499,-335.101 480,-316.771 517.047,-290.143 559.484,-258.607 585.514,-239.144"/>
+<polygon fill="black" stroke="black" points="587.773,-241.825 593.682,-233.031 583.579,-236.221 587.773,-241.825"/>
+</g>
+<!-- module~oooptemc_admteammanager_ca&#45;&gt;module~oooptema_admteammanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge10" class="edge"><title>module~oooptemc_admteammanager_ca&#45;&gt;module~oooptema_admteammanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M451.973,-250.736C478.387,-245.727 509.219,-239.881 536.6,-234.689"/>
+<polygon fill="black" stroke="black" points="537.345,-238.11 546.518,-232.809 536.041,-231.233 537.345,-238.11"/>
+</g>
+<!-- module~ooopstpa_admstartpath&#45;&gt;module~oooptema_admteammanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge11" class="edge"><title>module~ooopstpa_admstartpath&#45;&gt;module~oooptema_admteammanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M455.558,-220.771C475.145,-220.771 496.904,-220.771 517.761,-220.771"/>
+<polygon fill="black" stroke="black" points="517.914,-224.271 527.914,-220.771 517.914,-217.271 517.914,-224.271"/>
+</g>
+<!-- module~ooopstpa_admstartpath&#45;&gt;module~ooopinma_adminitialmanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge19" class="edge"><title>module~ooopstpa_admstartpath&#45;&gt;module~ooopinma_adminitialmanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M434.908,-208.718C449.456,-204.638 465.497,-199.825 480,-194.771 512.333,-183.505 548.212,-168.397 574.072,-157.027"/>
+<polygon fill="black" stroke="black" points="575.738,-160.117 583.464,-152.867 572.903,-153.716 575.738,-160.117"/>
+</g>
+<!-- module~ooopinmc_adminitialmanager_ca&#45;&gt;module~ooopinma_adminitialmanager -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge18" class="edge"><title>module~ooopinmc_adminitialmanager_ca&#45;&gt;module~ooopinma_adminitialmanager</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M478.273,-140.771C491.843,-140.771 505.849,-140.771 519.435,-140.771"/>
+<polygon fill="black" stroke="black" points="519.729,-144.271 529.729,-140.771 519.729,-137.271 519.729,-144.271"/>
+</g>
+<!-- module~oooptmec_admteammember_ca&#45;&gt;module~oooptmem_admteammember -->
+<g id="module~~ooopimma_admimagemanager~~UsesGraph_edge24" class="edge"><title>module~oooptmec_admteammember_ca&#45;&gt;module~oooptmem_admteammember</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M478.593,-60.7714C491.446,-60.7714 504.684,-60.7714 517.58,-60.7714"/>
+<polygon fill="black" stroke="black" points="517.836,-64.2715 527.836,-60.7714 517.836,-57.2715 517.836,-64.2715"/>
+</g>
+</g>
+</svg>
+</div>
+                <script>var panmoduleooopimma_admimagemanagerUsesGraph = svgPanZoom('#moduleooopimma_admimagemanagerUsesGraph', {
+                    zoomEnabled: true,
+                    controlIconsEnabled: true,
+                    fit: true,
+                    center: true,});
+                    </script>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="26pt"
+ viewBox="0.00 0.00 641.00 25.98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.811906 0.811906) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 785.5,-28 785.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="139.5,-24 72.5,-24 72.5,-0 139.5,-0 139.5,-24"/>
+<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="212,-24 158,-24 158,-0 212,-0 212,-24"/>
+<text text-anchor="middle" x="185" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-24 230,-24 230,-0 294,-0 294,-24"/>
+<text text-anchor="middle" x="262" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="366,-24 312,-24 312,-0 366,-0 366,-24"/>
+<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="439.5,-24 384.5,-24 384.5,-0 439.5,-0 439.5,-24"/>
+<text text-anchor="middle" x="412" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="594,-24 458,-24 458,-0 594,-0 594,-24"/>
+<text text-anchor="middle" x="526" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666,-24 612,-24 612,-0 666,-0 666,-24"/>
+<text text-anchor="middle" x="639" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="781.5,-24 684.5,-24 684.5,-0 781.5,-0 781.5,-24"/>
+<text text-anchor="middle" x="733" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+    
+    <p>Image manager object definition.</p>
+<hr>
+<p>Namespace: OOOP - Parallel</p>
+<hr>
+<p>Abstact Data Type Short Name: OOOPimma</p>
+<hr>
+<p>Abstract Data Type (ADT):         OOOPimma_adtImageManager</p>
+<p>Abstract Data Type Module (adm):  OOOPimma_admImageManager.f90</p>
+<hr>
+<ul>
+<li>Purpose:                    ImageManager-Object</li>
+<li>Language:                   mainly Fortran 95 with Fortran 2008 coarrays</li>
+<li>Programmer:                 Michael Siehl</li>
+<li>Date:                       January 2016</li>
+</ul>
+<hr>
+<h3 id="naming-conventions"><a class="toclink" href="#naming-conventions">Naming Conventions:</a></h3>
+<h4 id="for-scalar-members"><a class="toclink" href="#for-scalar-members">for scalar members:</a></h4>
+<div class="codehilite"><pre><span></span>                         m: ADT member
+                         S: property set, G: property get,
+                         CopyImgToImg: copy an ADT member image to image
+</pre></div>
+
+
+<h4 id="for-array-members"><a class="toclink" href="#for-array-members">for array members:</a></h4>
+<div class="codehilite"><pre><span></span>                         A: array
+                         mA: ADT array member
+                         SA: set array property, GA: get array property,
+                         CopyAImgToImg: copy an ADT array member image to image
+</pre></div>
+
+
+<h4 id="for-elements-of-array-members"><a class="toclink" href="#for-elements-of-array-members">for elements of array members:</a></h4>
+<div class="codehilite"><pre><span></span>                         SAElement: set only one array element property
+                         GAElement: get only one array element property
+                         CopyAElementImgToImg: copy only one element of an ADT array member image to image
+
+                         99: signals a static array member which has an upper array bound
+                             larger than necessary; the upper bound is given by a global parameter
+</pre></div>
+
+
+<h4 id="other-naming-conventions"><a class="toclink" href="#other-naming-conventions">other naming conventions:</a></h4>
+<div class="codehilite"><pre><span></span>                         _CA: coarray routine / coarray declaration
+                         _SYNC_: synchronization routine
+                         CopyCoarrayObjImgToImg: copy a coarray ADT object image to image
+
+                         DC: deep copy routine
+                         Enum: enumeration
+
+                         OO: public (outer) scope (the two leading namespace letters)
+                         II: private (inner) scope
+                         UU: sub-object
+</pre></div>
+
+
+<hr>
+    
+    
+    <h3>Used By</h3>
+    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: module~~ooopimma_admimagemanager~~UsedByGraph Pages: 1 -->
+<svg id="moduleooopimma_admimagemanagerUsedByGraph" width="305pt" height="32pt"
+ viewBox="0.00 0.00 305.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~ooopimma_admimagemanager~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>module~~ooopimma_admimagemanager~~UsedByGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 301,-28 301,4 -4,4"/>
+<!-- module~ooopimma_admimagemanager -->
+<g id="module~~ooopimma_admimagemanager~~UsedByGraph_node1" class="node"><title>module~ooopimma_admimagemanager</title>
+<polygon fill="none" stroke="black" points="170,-24 0,-24 0,-0 170,-0 170,-24"/>
+<text text-anchor="middle" x="85" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">OOOPimma_admImageManager</text>
+</g>
+<!-- proc~entry_main_sub -->
+<g id="module~~ooopimma_admimagemanager~~UsedByGraph_node2" class="node"><title>proc~entry_main_sub</title>
+<g id="a_module~~ooopimma_admimagemanager~~UsedByGraph_node2"><a xlink:href="../proc/entry_main_sub.html" xlink:title="Entry_Main_Sub">
+<polygon fill="#d9534f" stroke="#d9534f" points="297,-24 206,-24 206,-0 297,-0 297,-24"/>
+<text text-anchor="middle" x="251.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Entry_Main_Sub</text>
+</a>
+</g>
+</g>
+<!-- module~ooopimma_admimagemanager&#45;&gt;proc~entry_main_sub -->
+<g id="module~~ooopimma_admimagemanager~~UsedByGraph_edge1" class="edge"><title>module~ooopimma_admimagemanager&#45;&gt;proc~entry_main_sub</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M170.178,-12C178.848,-12 187.49,-12 195.718,-12"/>
+<polygon fill="black" stroke="black" points="195.889,-15.5001 205.889,-12 195.889,-8.5001 195.889,-15.5001"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="26pt"
+ viewBox="0.00 0.00 641.00 25.98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.811906 0.811906) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 785.5,-28 785.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="139.5,-24 72.5,-24 72.5,-0 139.5,-0 139.5,-24"/>
+<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="212,-24 158,-24 158,-0 212,-0 212,-24"/>
+<text text-anchor="middle" x="185" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-24 230,-24 230,-0 294,-0 294,-24"/>
+<text text-anchor="middle" x="262" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="366,-24 312,-24 312,-0 366,-0 366,-24"/>
+<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="439.5,-24 384.5,-24 384.5,-0 439.5,-0 439.5,-24"/>
+<text text-anchor="middle" x="412" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="594,-24 458,-24 458,-0 594,-0 594,-24"/>
+<text text-anchor="middle" x="526" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666,-24 612,-24 612,-0 666,-0 666,-24"/>
+<text text-anchor="middle" x="639" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="781.5,-24 684.5,-24 684.5,-0 781.5,-0 781.5,-24"/>
+<text text-anchor="middle" x="733" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+    <br>
+    
+
+    
+    <section>
+    <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ooopimmaimagemanager_1"></span>type(<a href='../type/ooopimma_adtimagemanager.html'>OOOPimma_adtImageManager</a>),</td>
+  
+  <td>public,</td>
+  <td>SAVE</td><td>::</td>
+  <td><strong>OOOPimmaImageManager_1</strong></td><td></td><td></td><td><p>Local Image Manager.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    <section>
+     <h2>Derived Types</h2>
+	 
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="type-ooopimma_adtimagemanager"></span><h3>type, public :: <a href='../type/ooopimma_adtimagemanager.html'>OOOPimma_adtImageManager</a>
+    
+  </h3></div>
+  <div class="panel-body">
+     
+     <h4>Components</h4>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-m_uuerrocerror%7E3"></span>type(OOOEerroc_colError),</td>
+  
+  <td>private</td>
+  <td></td><td>::</td>
+  <td><strong>m_UUerrocError</strong></td><td></td><td></td><td><p>error-Collection</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+     
+     
+          
+     
+     
+     <h4>Description</h4>
+       
+       <p>Abstract image manager.</p>
+     
+  </div>
+</div>
+
+     
+    </section>
+	<br>
+    
+    
+    
+
+    
+    <section>
+    <h2>Subroutines</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-ooopimma_structureconstructor"></span><h3>
+public subroutine <a href='../proc/ooopimma_structureconstructor.html'>OOOPimma_StructureConstructor</a>(Object)
+    
+    
+    
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ooopimma_adtimagemanager.html'>OOOPimma_adtImageManager</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>Object</strong></td><td><p>Abstract image manager.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+       
+
+
+       
+       <p>Structure constructor</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-ooopimma_start"></span><h3>
+public subroutine <a href='../proc/ooopimma_start.html'>OOOPimma_Start</a>(Object)
+    
+    
+    
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ooopimma_adtimagemanager.html'>OOOPimma_adtImageManager</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>Object</strong></td><td><p>Abstract image manager.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+       
+
+
+       
+       <p>Start image manager.</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-iiimma_sync_checkactivityflag"></span><h3>
+private subroutine <a href='../proc/iiimma_sync_checkactivityflag.html'>IIimma_SYNC_CheckActivityFlag</a>(Object)
+    
+    
+    
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ooopimma_adtimagemanager.html'>OOOPimma_adtImageManager</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>Object</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+       
+
+
+       
+       <p>synchronization routine.</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-iiimma_errorhandler"></span><h3>
+private subroutine <a href='../proc/iiimma_errorhandler.html'>IIimma_ErrorHandler</a>(Object, chrErrorDescription, intErrorType, intErrorNumber)
+    
+    
+    
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/ooopimma_adtimagemanager.html'>OOOPimma_adtImageManager</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>Object</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(kind=1,LEN=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>chrErrorDescription</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer(kind=OOOGglob_kint),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>intErrorType</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer(kind=OOOGglob_kint),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>intErrorNumber</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+       
+
+
+       
+       <p>ErrorHandler for the ADT-Routines</p>
+        
+
+  </div>
+  </div>
+
+    
+    </section>    
+    <br>
+    
+    
+    
+    </div>
+  </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-4">&copy; 2016 </div>
+	<div class="col-md-4"><span class="text-center"> MPMD-with-Coarray-Fortran-Load-Balancing-Example-Program was developed by Michael Siehl</span></div>
+        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>
