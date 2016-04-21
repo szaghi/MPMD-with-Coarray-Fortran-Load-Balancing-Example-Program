@@ -4,7 +4,9 @@
 ! www.mpmd-with-coarray-fortran.de
 ! http://www.mpmd-with-coarray-fortran.de/MPMD_Load_Balancing_example.pdf
 
+!< *OOOEerro_admError* definition.
 MODULE OOOEerro_admError
+!< *OOOEerro_admError* definition.
 
 USE OOOGglob_Globals
 
@@ -17,6 +19,7 @@ PUBLIC :: OOOEerroc_AddObject
 !___________________________________________________________
 !
 TYPE, PUBLIC :: OOOEerroc_colError
+  !< Errors handler class.
   PRIVATE
   !
 END TYPE OOOEerroc_colError
@@ -28,10 +31,13 @@ CONTAINS
 !
 SUBROUTINE OOOEerroc_AddObject (Collection, chrErrorDescription, &
   intErrorType)
-  TYPE (OOOEerroc_colError), INTENT (INOUT) :: Collection
-  CHARACTER(KIND=OOOGglob_kcha,LEN=*), INTENT(IN) :: chrErrorDescription
-  INTEGER(KIND=OOOGglob_kint), INTENT(IN) :: intErrorType
-  CHARACTER(KIND=OOOGglob_kcha,LEN=OOOGglob_Len200) :: chrSelection
+  TYPE (OOOEerroc_colError),           INTENT(INOUT) :: Collection          !< Error collection.
+  CHARACTER(KIND=OOOGglob_kcha,LEN=*), INTENT(IN)    :: chrErrorDescription !< Error description.
+  INTEGER(KIND=OOOGglob_kint),         INTENT(IN)    :: intErrorType        !< Error code.
+  CHARACTER(KIND=OOOGglob_kcha,LEN=OOOGglob_Len200)  :: chrSelection        !< Dummy string for handling user's input.
+  !< Handle errors occurrence.
+  !<
+  !< @note Prompt user for errors-handling choice.
   !
   !
 Write(*,*) "CurrentProc: ", OOOGglob_chrCurrentProcedure

@@ -4,33 +4,37 @@
 ! www.mpmd-with-coarray-fortran.de
 ! http://www.mpmd-with-coarray-fortran.de/MPMD_Load_Balancing_example.pdf
 
+!< Image manager object definition.
 MODULE OOOPimma_admImageManager
+!< Image manager object definition.
+
 !************************************************
 ! Namespace: OOOP - Parallel
 !************************************************
 ! Abstact Data Type Short Name: OOOPimma
 !********************************************************
 ! Abstract Data Type (ADT):         OOOPimma_adtImageManager
+!
 ! Abstract Data Type Module (adm):  OOOPimma_admImageManager.f90
 !********************************************************
-! Purpose:                    ImageManager-Object
-! Language:                   mainly Fortran 95 with Fortran 2008 coarrays
-! Programmer:                 Michael Siehl
-! Date:                       January 2016
+!+ Purpose:                    ImageManager-Object
+!+ Language:                   mainly Fortran 95 with Fortran 2008 coarrays
+!+ Programmer:                 Michael Siehl
+!+ Date:                       January 2016
 !********************************************************
-! Naming Conventions:
+!### Naming Conventions:
 !
-!  for scalar members:
+!#### for scalar members:
 !                             m: ADT member
 !                             S: property set, G: property get,
 !                             CopyImgToImg: copy an ADT member image to image
-!  for array members:
+!#### for array members:
 !                             A: array
 !                             mA: ADT array member
 !                             SA: set array property, GA: get array property,
 !                             CopyAImgToImg: copy an ADT array member image to image
 !
-!  for elements of array members:
+!#### for elements of array members:
 !                             SAElement: set only one array element property
 !                             GAElement: get only one array element property
 !                             CopyAElementImgToImg: copy only one element of an ADT array member image to image
@@ -38,7 +42,7 @@ MODULE OOOPimma_admImageManager
 !                             99: signals a static array member which has an upper array bound
 !                                 larger than necessary; the upper bound is given by a global parameter
 !
-!  other naming conventions:
+!#### other naming conventions:
 !                             _CA: coarray routine / coarray declaration
 !                             _SYNC_: synchronization routine
 !                             CopyCoarrayObjImgToImg: copy a coarray ADT object image to image
@@ -50,129 +54,65 @@ MODULE OOOPimma_admImageManager
 !                             II: private (inner) scope
 !                             UU: sub-object
 !********************************************************
-!___________________________________________________________
 
 USE OOOGglob_Globals
 USE OOOEerro_admError
-!
+
 USE OOOPimmc_admImageManager_CA
 USE OOOPtema_admTeamManager
 USE OOOPtmem_admTeamMember
 USE OOOPinma_admInitialManager
-!___________________________________________________________
 
 IMPLICIT NONE
-!___________________________________________________________
 
 PRIVATE
-!___________________________________________________________
-!
-!*****************************
-! access routines for scalar *
-! and static array members:  *
-!*****************************
-!
-!**********************************
-! access routines for dynamic     *
-! array and derived type members: *
-!**********************************
 
-!
-!****************************
-! access routines for the   *
-! coarray wrapper member:   *
-!****************************
-!
-!*******************
-! ADT-Management: **
-!*******************
+! access routines for scalar
+! and static array members:
+
+! access routines for dynamic
+! array and derived type members:
+
+! access routines for the
+! coarray wrapper member:
+
+! ADT-Management:
 PUBLIC :: OOOPimma_StructureConstructor
-!___________________________________________________________
-!
-!********************
-!** Program Logic: **
-!********************
+
+! Program Logic:
 PUBLIC :: OOOPimma_Start
 PRIVATE :: IIimma_SYNC_CheckActivityFlag ! synchronization routine
-!___________________________________________________________
-!
-!********************
-!** Error Handling: *
-!********************
-PRIVATE :: IIimma_ErrorHandler
-!___________________________________________________________
-!
-!*********************
-!**  Enumerations:  **
-!*********************
 
-!___________________________________________________________
-!
-!********************************************************
-!*** Abstract Data Type Declaration: ********************
-!********************************************************
+! Error Handling:
+PRIVATE :: IIimma_ErrorHandler
+
+! Enumerations:
+
+! Abstract Data Type Declaration:
 TYPE, PUBLIC :: OOOPimma_adtImageManager
+  !< Abstract image manager.
   PRIVATE
   !*****
-  TYPE (OOOEerroc_colError) :: m_UUerrocError ! error-Collection
+  TYPE (OOOEerroc_colError) :: m_UUerrocError !< error-Collection
   !
 END TYPE OOOPimma_adtImageManager
-!__________________________________________________________
-!
-!****************************************************
-!***  Corresponding Local Object Declaration:  ******
-!****************************************************
-!***
-TYPE (OOOPimma_adtImageManager), PUBLIC, SAVE :: OOOPimmaImageManager_1
-!
-!___________________________________________________________
 
-
-
+! Corresponding Local Object Declaration:
+TYPE (OOOPimma_adtImageManager), PUBLIC, SAVE :: OOOPimmaImageManager_1 !< Local Image Manager.
 
 CONTAINS
 
+! access routines for scalar
+! and static array members:
 
-!##################################################################################################
-!##################################################################################################
-!##################################################################################################
+! access routines for the
+! coarray wrapper member:
 
-!*******************************
-! access routines for scalar   *
-! and static array members:    *
-!*******************************
-
-
-
-
-
-!##################################################################################################
-!##################################################################################################
-!##################################################################################################
-
-!****************************
-! access routines for the   *
-! coarray wrapper member:   *
-!****************************
-!___________________________________________________________
-!
-
-
-
-
-
-!##################################################################################################
-!##################################################################################################
-!##################################################################################################
-
-!*******************
-! ADT-Management:  *
-!*******************
-!___________________________________________________________
+! ADT-Management:
 
 SUBROUTINE OOOPimma_StructureConstructor (Object)
-  ! structure constructor
-  TYPE (OOOPimma_adtImageManager), INTENT (INOUT) :: Object
+  !< Structure constructor
+  TYPE (OOOPimma_adtImageManager), INTENT (INOUT) :: Object !< Abstract image manager.
   !
                                                                 CALL OOOGglob_subSetProcedures ("OOOPimma_StructureConstructor")
   !
@@ -180,23 +120,12 @@ SUBROUTINE OOOPimma_StructureConstructor (Object)
   !
                                                                 CALL OOOGglob_subResetProcedures
 END SUBROUTINE OOOPimma_StructureConstructor
-!___________________________________________________________
 
+! Program Logic:
 
-
-
-
-!##################################################################################################
-!##################################################################################################
-!##################################################################################################
-
-!*******************
-! Program Logic:   *
-!*******************
-!___________________________________________________________
-!
 SUBROUTINE OOOPimma_Start (Object)
-  TYPE (OOOPimma_adtImageManager), INTENT (INOUT) :: Object
+  !< Start image manager.
+  TYPE (OOOPimma_adtImageManager), INTENT (INOUT) :: Object !< Abstract image manager.
   !
                                                                 CALL OOOGglob_subSetProcedures ("OOOPimma_Start")
   !
@@ -234,14 +163,14 @@ SUBROUTINE OOOPimma_Start (Object)
     !
                                                                 CALL OOOGglob_subResetProcedures
 END SUBROUTINE OOOPimma_Start
-!___________________________________________________________
-!
+
 SUBROUTINE IIimma_SYNC_CheckActivityFlag (Object)
-  !!! synchronization routine !!!!!
-  !!! synchronization counterpart routines are:  !!!!
-  !!! IIinma_ActivateTeamManagerImage  !!!!
-  !!! IItema_ActivateTeamMemberImage   !!!!
+  !< synchronization routine.
   !
+  !< Synchronization counterpart routines are:
+  !<
+  !< - IIinma_ActivateTeamManagerImage
+  !< - IItema_ActivateTeamMemberImage
   USE OOOPimsc_admImageStatus_CA ! access corresponding coarrays to
                                  ! communicate with remote or local PGAS memory
   TYPE (OOOPimma_adtImageManager), INTENT (IN) :: Object
@@ -283,25 +212,12 @@ SUBROUTINE IIimma_SYNC_CheckActivityFlag (Object)
                                                                 CALL OOOGglob_subResetProcedures
 END SUBROUTINE IIimma_SYNC_CheckActivityFlag
 
-!___________________________________________________________
+! Error Handling:
 
-
-
-
-
-!##################################################################################################
-!##################################################################################################
-!##################################################################################################
-
-!**********************************************************
-!*************  Error Handling:   *************************
-!**********************************************************
-!__________________________________________________________
-!
-!Private
+! Private
 SUBROUTINE IIimma_ErrorHandler (Object, chrErrorDescription, &
   intErrorType, intErrorNumber)
-  ! ErrorHandler for the ADT-Routines
+  !< ErrorHandler for the ADT-Routines
   TYPE(OOOPimma_adtImageManager), INTENT(INOUT) :: Object
   CHARACTER(KIND=1, LEN=*), INTENT(IN) :: chrErrorDescription
   INTEGER(OOOGglob_kint), INTENT(IN) :: intErrorType ! 1=warning, 2=Severe System error
@@ -309,11 +225,5 @@ SUBROUTINE IIimma_ErrorHandler (Object, chrErrorDescription, &
   CALL OOOEerroc_AddObject (Object % m_UUerrocError, chrErrorDescription, &
     intErrorType)
 END SUBROUTINE IIimma_ErrorHandler
-!__________________________________________________________
-
-
-
-
-
 
 END MODULE OOOPimma_admImageManager

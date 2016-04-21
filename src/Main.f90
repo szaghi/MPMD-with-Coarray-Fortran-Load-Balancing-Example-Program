@@ -4,7 +4,9 @@
 ! www.mpmd-with-coarray-fortran.de
 ! http://www.mpmd-with-coarray-fortran.de/MPMD_Load_Balancing_example.pdf
 
+!< Main program entry.
 PROGRAM Main
+  !< Main program entry.
   !
   USE Main_Sub
   !

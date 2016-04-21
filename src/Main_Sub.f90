@@ -4,13 +4,18 @@
 ! www.mpmd-with-coarray-fortran.de
 ! http://www.mpmd-with-coarray-fortran.de/MPMD_Load_Balancing_example.pdf
 
+!< *Entry_Main_Sub* definition.
 MODULE Main_Sub
+!< *Entry_Main_Sub* definition.
 !
 CONTAINS
 !
 !**********
 !
 SUBROUTINE Entry_Main_Sub
+  !< Main entry subroutine.
+  !<
+  !< @note Start the ImageManager on all images.
   !
   USE OOOPimma_admImageManager
   !
